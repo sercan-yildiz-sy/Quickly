@@ -8,8 +8,17 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="Quicky.Pages.MainPage"
              x:DataType="pageModels:MainPageModel"
-             Title="{Binding Today}">
+             BackgroundColor="#F3F3F3">
 
+    <Shell.TitleView>
+        <Label Text="Quicky" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+        <Label Text="Inventory" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+    </Shell.TitleView>
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding ToolbarItemCommand}" />
+    </ContentPage.ToolbarItems>
+    
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior
                 EventName="NavigatedTo"
@@ -33,28 +42,41 @@
             IsRefreshing="{Binding IsRefreshing}"
             RefreshCommand="{Binding RefreshCommand}">
             <pullToRefresh:SfPullToRefresh.PullableContent>
-                <ScrollView>
-                    <VerticalStackLayout Spacing="{StaticResource LayoutSpacing}" Padding="{StaticResource LayoutPadding}">
-                        <controls:CategoryChart />
-                        <Label Text="Projects" Style="{StaticResource Title2}"/>
-                        <ScrollView Orientation="Horizontal" Margin="-30,0">
-                            <HorizontalStackLayout 
+                <VerticalStackLayout Spacing="{StaticResource LayoutSpacing}" Padding="{StaticResource LayoutPadding}">
+                    <Picker x:Name="picker"
+                            TextColor="#838383"
+                            BackgroundColor="#FFFFFF"
+                            WidthRequest="180"
+                            HorizontalOptions="Start"
+                            Title="All items">
+                        <Picker.Items>
+                            <x:String>All Items</x:String>
+                            <x:String>Produce</x:String>
+                            <x:String>Meat</x:String>
+                            <x:String>Dry Food</x:String>
+                            <x:String>Canned Food</x:String>
+                            <x:String>Others</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <ScrollView Orientation="Horizontal" Margin="-30,0">
+                        <HorizontalStackLayout 
                                 Spacing="15" Padding="30,0"
                                 BindableLayout.ItemsSource="{Binding Projects}">
-                                <BindableLayout.ItemTemplate>
-                                    <DataTemplate x:DataType="models:Project">
-                                        <controls:ProjectCardView WidthRequest="200">
-                                            <controls:ProjectCardView.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding NavigateToProjectCommand, Source={RelativeSource AncestorType={x:Type pageModels:MainPageModel}}, x:DataType=pageModels:MainPageModel}" CommandParameter="{Binding .}"/>
-                                            </controls:ProjectCardView.GestureRecognizers>
-                                        </controls:ProjectCardView>
-                                    </DataTemplate>
-                                </BindableLayout.ItemTemplate>
-                            </HorizontalStackLayout>
-                        </ScrollView>
-                        <Grid HeightRequest="44">
-                            <Label Text="Tasks" Style="{StaticResource Title2}" VerticalOptions="Center"/>
-                            <ImageButton 
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate x:DataType="models:Project">
+                                    <controls:ProjectCardView WidthRequest="200">
+                                        <controls:ProjectCardView.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding NavigateToProjectCommand, Source={RelativeSource AncestorType={x:Type pageModels:MainPageModel}}, x:DataType=pageModels:MainPageModel}" CommandParameter="{Binding .}"/>
+                                        </controls:ProjectCardView.GestureRecognizers>
+                                    </controls:ProjectCardView>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </HorizontalStackLayout>
+                    </ScrollView>
+                    <Grid HeightRequest="44">
+                        <Label Text="Tasks" Style="{StaticResource Title2}" VerticalOptions="Center"/>
+                        <ImageButton 
                                 Source="{StaticResource IconClean}"
                                 HorizontalOptions="End"
                                 VerticalOptions="Center"
@@ -64,17 +86,16 @@
                                 IsVisible="{Binding HasCompletedTasks}"
                                 Command="{Binding CleanTasksCommand}"
                                 />
-                        </Grid>
-                        <VerticalStackLayout Spacing="15"
+                    </Grid>
+                    <VerticalStackLayout Spacing="15"
                             BindableLayout.ItemsSource="{Binding Tasks}">
-                            <BindableLayout.ItemTemplate>
-                                <DataTemplate>
-                                    <controls:TaskView TaskCompletedCommand="{Binding TaskCompletedCommand, Source={RelativeSource AncestorType={x:Type pageModels:MainPageModel}}, x:DataType=pageModels:MainPageModel}" />
-                                </DataTemplate>
-                            </BindableLayout.ItemTemplate>
-                        </VerticalStackLayout>
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <controls:TaskView TaskCompletedCommand="{Binding TaskCompletedCommand, Source={RelativeSource AncestorType={x:Type pageModels:MainPageModel}}, x:DataType=pageModels:MainPageModel}" />
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
                     </VerticalStackLayout>
-                </ScrollView>
+                </VerticalStackLayout>
             </pullToRefresh:SfPullToRefresh.PullableContent>
         </pullToRefresh:SfPullToRefresh>
 
