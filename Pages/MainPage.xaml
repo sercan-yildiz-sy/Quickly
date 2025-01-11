@@ -8,12 +8,10 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="Quicky.Pages.MainPage"
              x:DataType="pageModels:MainPageModel"
-             BackgroundColor="#F3F3F3">
-
-    <Shell.TitleView>
-        <Label Text="Quicky" HorizontalOptions="Center" VerticalOptions="Center"></Label>
-        <Label Text="Inventory" HorizontalOptions="Center" VerticalOptions="Center"></Label>
-    </Shell.TitleView>
+             BackgroundColor="#F3F3F3"
+             Shell.NavBarIsVisible="False">
+    
+    
     
     <ContentPage.ToolbarItems>
         <ToolbarItem Command="{Binding ToolbarItemCommand}" />
@@ -42,12 +40,50 @@
             IsRefreshing="{Binding IsRefreshing}"
             RefreshCommand="{Binding RefreshCommand}">
             <pullToRefresh:SfPullToRefresh.PullableContent>
+
                 <VerticalStackLayout Spacing="{StaticResource LayoutSpacing}" Padding="{StaticResource LayoutPadding}">
-                    <Picker x:Name="picker"
+
+                    <Grid RowDefinitions="Auto, *">
+                        <Button ImageSource="back_icon.png" 
+                                BackgroundColor="#F3F3F3" 
+                                HorizontalOptions="StartAndExpand"/>
+                        <Grid>
+                            
+                            <Image Source="background_logo.png"
+                                   Aspect="AspectFit" 
+                                   HeightRequest="23.5"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center"
+                                   />
+                        
+                            <Label Text="Quicky Inventory"
+                                   TextColor="#C0372F"
+                                   HorizontalOptions="CenterAndExpand"
+                                   HorizontalTextAlignment="Center"
+                                   FontFamily="LibreBaskerville-Bold" 
+                                   LineBreakMode="WordWrap" 
+                                   WidthRequest="88"
+                                   BackgroundColor="Transparent"
+                                   LineHeight="1.01"/>
+                        </Grid>
+                        
+                    </Grid>
+
+                    <Frame BackgroundColor="Transparent"
+                           WidthRequest="180"
+                           HeightRequest="40"
+                           Padding="0"
+                           HasShadow="False"
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center"
+                           CornerRadius="25">
+                        
+                        <Picker x:Name="picker"
                             TextColor="#838383"
                             BackgroundColor="#FFFFFF"
                             WidthRequest="180"
-                            HorizontalOptions="Start"
+                            HeightRequest="40"
+                            HorizontalOptions="StartAndExpand"
                             Title="All items">
                         <Picker.Items>
                             <x:String>All Items</x:String>
@@ -57,7 +93,9 @@
                             <x:String>Canned Food</x:String>
                             <x:String>Others</x:String>
                         </Picker.Items>
-                    </Picker>
+                        </Picker>
+                    
+                    </Frame>
 
                     <ScrollView Orientation="Horizontal" Margin="-30,0">
                         <HorizontalStackLayout 

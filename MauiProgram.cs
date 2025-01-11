@@ -18,6 +18,9 @@ namespace Quicky
                 })
                 .ConfigureFonts(fonts =>
                 {
+                    fonts.AddFont("LibreBaskerville-Bold.ttf", "LibreBaskerville-Bold");
+                    fonts.AddFont("LibreBaskerville-Regular.ttf", "LibreBaskerville-Regular");
+                    fonts.AddFont("LibreBaskerville-Italic.ttf", "LibreBaskerville-Italic");
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                     fonts.AddFont("SegoeUI-Semibold.ttf", "SegoeSemibold");
