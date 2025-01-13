@@ -15,9 +15,17 @@ namespace Quicky
                 .ConfigureSyncfusionToolkit()
                 .ConfigureMauiHandlers(handlers =>
                 {
+                    Microsoft.Maui.Handlers.PickerHandler.Mapper.AppendToMapping(nameof(Entry), (handler, view) =>
+                    {
+#if ANDROID
+                        handler.PlatformView.BackgroundTintList =
+            Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
+#endif
+                    });
                 })
                 .ConfigureFonts(fonts =>
                 {
+                    fonts.AddFont("roboto.regular.ttf", "Roboto");
                     fonts.AddFont("LibreBaskerville-Bold.ttf", "LibreBaskerville-Bold");
                     fonts.AddFont("LibreBaskerville-Regular.ttf", "LibreBaskerville-Regular");
                     fonts.AddFont("LibreBaskerville-Italic.ttf", "LibreBaskerville-Italic");

@@ -1,60 +1,93 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Border xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-        xmlns:controls="clr-namespace:Quicky.Pages.Controls"
-        xmlns:models="clr-namespace:Quicky.Models"
-        xmlns:fonts="clr-namespace:Fonts"
-        xmlns:pageModels="clr-namespace:Quicky.PageModels"
-        xmlns:shimmer="clr-namespace:Syncfusion.Maui.Toolkit.Shimmer;assembly=Syncfusion.Maui.Toolkit"
-        x:Class="Quicky.Pages.Controls.ProjectCardView"
-        Style="{StaticResource CardStyle}"
-        x:DataType="models:Project">
+<Border
+    x:Class="Quicky.Pages.Controls.ProjectCardView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Quicky.Pages.Controls"
+    xmlns:fonts="clr-namespace:Fonts"
+    xmlns:models="clr-namespace:Quicky.Models"
+    xmlns:pageModels="clr-namespace:Quicky.PageModels"
+    xmlns:shimmer="clr-namespace:Syncfusion.Maui.Toolkit.Shimmer;assembly=Syncfusion.Maui.Toolkit"
+    x:DataType="models:Project"
+    Background="Transparent"
+    Style="{StaticResource CardStyle}">
     <shimmer:SfShimmer
         BackgroundColor="Transparent"
-        VerticalOptions="FillAndExpand"
-        IsActive="{Binding IsBusy, Source={RelativeSource AncestorType={x:Type pageModels:MainPageModel}}, x:DataType=pageModels:IProjectTaskPageModel}">
+        IsActive="{Binding IsBusy, Source={RelativeSource AncestorType={x:Type pageModels:MainPageModel}}, x:DataType=pageModels:IProjectTaskPageModel}"
+        VerticalOptions="FillAndExpand">
         <shimmer:SfShimmer.CustomView>
             <VerticalStackLayout Spacing="15">
-                <BoxView 
+                <BoxView
                     CornerRadius="48"
-                    WidthRequest="24"
                     HeightRequest="24"
                     HorizontalOptions="Start"
+                    Style="{StaticResource ShimmerCustomViewStyle}"
                     VerticalOptions="Start"
-                    Style="{StaticResource ShimmerCustomViewStyle}"/>
-                <BoxView 
+                    WidthRequest="24" />
+                <BoxView HeightRequest="24" Style="{StaticResource ShimmerCustomViewStyle}" />
+                <BoxView HeightRequest="48" Style="{StaticResource ShimmerCustomViewStyle}" />
+                <BoxView
+                    Margin="0,12"
                     HeightRequest="24"
-                    Style="{StaticResource ShimmerCustomViewStyle}"/>
-                <BoxView 
-                    HeightRequest="48"
-                    Style="{StaticResource ShimmerCustomViewStyle}"/>
-                <BoxView 
-                    HeightRequest="24"
-                    Margin="0, 12"
-                    Style="{StaticResource ShimmerCustomViewStyle}"/>
+                    Style="{StaticResource ShimmerCustomViewStyle}" />
             </VerticalStackLayout>
         </shimmer:SfShimmer.CustomView>
         <shimmer:SfShimmer.Content>
-            <VerticalStackLayout Spacing="15">
-                <Image HorizontalOptions="Start" Aspect="Center">
+            <Grid ColumnDefinitions="Auto,*">
+                <Image
+                    Grid.Column="0"
+                    Aspect="Center"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center">
                     <Image.Source>
-                        <FontImageSource 
-                    Glyph="{Binding Icon}" 
-                    FontFamily="{x:Static fonts:FluentUI.FontFamily}" 
-                    Color="{AppThemeBinding Light={StaticResource DarkOnLightBackground}, Dark={StaticResource LightOnDarkBackground}}"
-                    Size="{StaticResource IconSize}"/>
+                        <FontImageSource
+                            FontFamily="{x:Static fonts:FluentUI.FontFamily}"
+                            Glyph="{Binding Icon}"
+                            Size="{StaticResource IconSize}"
+                            Color="{AppThemeBinding Light={StaticResource DarkOnLightBackground},
+                                                    Dark={StaticResource LightOnDarkBackground}}" />
                     </Image.Source>
                 </Image>
-                <Label Text="{Binding Name}" TextColor="{StaticResource Gray400}" FontSize="14" TextTransform="Uppercase"/>
-                <Label Text="{Binding Description}" LineBreakMode="WordWrap"/>
-                <HorizontalStackLayout Spacing="15" BindableLayout.ItemsSource="{Binding Tags}">
-                    <BindableLayout.ItemTemplate>
-                        <DataTemplate x:DataType="models:Tag">
-                            <controls:TagView />
-                        </DataTemplate>
-                    </BindableLayout.ItemTemplate>
-                </HorizontalStackLayout>
-            </VerticalStackLayout>
+                <Grid
+                    Grid.Column="1"
+                    HorizontalOptions="End"
+                    RowDefinitions="*, *, *,* ">
+
+                    <Label
+                        Grid.Row="0"
+                        FontFamily="LibreBaskerville-Regular"
+                        FontSize="12"
+                        Text="{Binding Name}"
+                        TextColor="{StaticResource Gray400}"
+                        TextTransform="Uppercase"
+                        VerticalOptions="Start" />
+
+                    <BoxView
+                        Grid.Row="1"
+                        BackgroundColor="Transparent"
+                        HeightRequest="5" />
+
+                    <Label
+                        Grid.Row="2"
+                        Margin="0,3,0,0"
+                        FontFamily="Roboto"
+                        FontSize="8"
+                        HorizontalOptions="Start"
+                        Text="quantity"
+                        TextColor="#838383"
+                        VerticalOptions="End" />
+
+                    <Label
+                        Grid.Row="3"
+                        FontFamily="Roboto"
+                        FontSize="8"
+                        LineBreakMode="WordWrap"
+                        Text="{Binding Description}"
+                        VerticalOptions="End" />
+                </Grid>
+
+            </Grid>
+
         </shimmer:SfShimmer.Content>
     </shimmer:SfShimmer>
 </Border>

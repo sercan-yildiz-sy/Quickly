@@ -1,32 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:pageModels="clr-namespace:Quicky.PageModels"             
-             xmlns:models="clr-namespace:Quicky.Models"
-             xmlns:controls="clr-namespace:Quicky.Pages.Controls"
-             xmlns:pullToRefresh="clr-namespace:Syncfusion.Maui.Toolkit.PullToRefresh;assembly=Syncfusion.Maui.Toolkit"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             x:Class="Quicky.Pages.MainPage"
-             x:DataType="pageModels:MainPageModel"
-             BackgroundColor="#F3F3F3"
-             Shell.NavBarIsVisible="False">
-    
-    
-    
+<ContentPage
+    x:Class="Quicky.Pages.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Quicky.Pages.Controls"
+    xmlns:models="clr-namespace:Quicky.Models"
+    xmlns:pageModels="clr-namespace:Quicky.PageModels"
+    xmlns:pullToRefresh="clr-namespace:Syncfusion.Maui.Toolkit.PullToRefresh;assembly=Syncfusion.Maui.Toolkit"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:DataType="pageModels:MainPageModel"
+    BackgroundColor="#F3F3F3"
+    Shell.NavBarIsVisible="False">
+
+
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Command="{Binding ToolbarItemCommand}" />
     </ContentPage.ToolbarItems>
-    
+
     <ContentPage.Behaviors>
-        <toolkit:EventToCommandBehavior
-                EventName="NavigatedTo"
-                Command="{Binding NavigatedToCommand}" />
-        <toolkit:EventToCommandBehavior
-                EventName="NavigatedFrom"
-                Command="{Binding NavigatedFromCommand}" />
-        <toolkit:EventToCommandBehavior
-                EventName="Appearing"                
-                Command="{Binding AppearingCommand}" />
+        <toolkit:EventToCommandBehavior Command="{Binding NavigatedToCommand}" EventName="NavigatedTo" />
+        <toolkit:EventToCommandBehavior Command="{Binding NavigatedFromCommand}" EventName="NavigatedFrom" />
+        <toolkit:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
 
     <ContentPage.Resources>
@@ -36,99 +31,148 @@
     </ContentPage.Resources>
 
     <Grid>
-        <pullToRefresh:SfPullToRefresh
-            IsRefreshing="{Binding IsRefreshing}"
-            RefreshCommand="{Binding RefreshCommand}">
+        <pullToRefresh:SfPullToRefresh IsRefreshing="{Binding IsRefreshing}" RefreshCommand="{Binding RefreshCommand}">
             <pullToRefresh:SfPullToRefresh.PullableContent>
 
-                <VerticalStackLayout Spacing="{StaticResource LayoutSpacing}" Padding="{StaticResource LayoutPadding}">
+                <VerticalStackLayout Padding="{StaticResource LayoutPadding}" Spacing="{StaticResource LayoutSpacing}">
 
-                    <Grid RowDefinitions="Auto, *">
-                        <Button ImageSource="back_icon.png" 
-                                BackgroundColor="#F3F3F3" 
-                                HorizontalOptions="StartAndExpand"/>
+                    <Grid RowDefinitions="Auto, *, Auto">
+                        <Button
+                            BackgroundColor="#F3F3F3"
+                            HorizontalOptions="StartAndExpand"
+                            ImageSource="back_icon.png" />
                         <Grid>
-                            
-                            <Image Source="background_logo.png"
-                                   Aspect="AspectFit" 
-                                   HeightRequest="23.5"
-                                   VerticalOptions="Center"
-                                   HorizontalOptions="Center"
-                                   />
-                        
-                            <Label Text="Quicky Inventory"
-                                   TextColor="#C0372F"
-                                   HorizontalOptions="CenterAndExpand"
-                                   HorizontalTextAlignment="Center"
-                                   FontFamily="LibreBaskerville-Bold" 
-                                   LineBreakMode="WordWrap" 
-                                   WidthRequest="88"
-                                   BackgroundColor="Transparent"
-                                   LineHeight="1.01"/>
+
+                            <Image
+                                Aspect="AspectFit"
+                                HeightRequest="23.5"
+                                HorizontalOptions="Center"
+                                Source="background_logo.png"
+                                VerticalOptions="Center" />
+
+                            <Label
+                                BackgroundColor="Transparent"
+                                FontFamily="LibreBaskerville-Bold"
+                                HorizontalOptions="CenterAndExpand"
+                                HorizontalTextAlignment="Center"
+                                LineBreakMode="WordWrap"
+                                LineHeight="1.01"
+                                Text="Quicky Inventory"
+                                TextColor="#C0372F"
+                                WidthRequest="88" />
                         </Grid>
-                        
+                        <BoxView
+                            Grid.Row="2"
+                            BackgroundColor="Transparent"
+                            HeightRequest="20" />
                     </Grid>
 
-                    <Border Background="#FFFFFF"
-                           WidthRequest="180"
-                           HeightRequest="40"
-                           Padding="0"
-                           HorizontalOptions="Start"
-                           VerticalOptions="Center"
-                           StrokeShape="RoundRectangle 24,24,24,24"
-                           Stroke="#838383"
-                            StrokeThickness="1">
+                    <Border
+                        Background="#FFFFFF"
+                        HeightRequest="40"
+                        HorizontalOptions="Start"
+                        Stroke="#18000000"
+                        StrokeShape="RoundRectangle 12,12,12,12"
+                        StrokeThickness="2"
+                        VerticalOptions="Center"
+                        WidthRequest="180">
 
-                        <Picker x:Name="picker"
-                            TextColor="#838383"
+                        <Picker
+                            x:Name="picker"
+                            Title="All Items"
+                            Margin="15,5,0,0"
                             BackgroundColor="Transparent"
-                            WidthRequest="180"
+                            FontFamily="Roboto"
                             HeightRequest="40"
-                            HorizontalOptions="StartAndExpand"
-                            Title="All items"
-                            >
-                        <Picker.Items>
-                            <x:String>All items</x:String>
-                            <x:String>Produce</x:String>
-                            <x:String>Meat</x:String>
-                            <x:String>Dry Food</x:String>
-                            <x:String>Canned Food</x:String>
-                            <x:String>Others</x:String>
-                        </Picker.Items>
+                            HorizontalOptions="FillAndExpand"
+                            TextColor="#838383"
+                            VerticalOptions="Center"
+                            WidthRequest="180">
+                            <Picker.Items>
+                                <x:String>All Items</x:String>
+                                <x:String>Produce</x:String>
+                                <x:String>Meat</x:String>
+                                <x:String>Dry Food</x:String>
+                                <x:String>Canned Food</x:String>
+                                <x:String>Others</x:String>
+                            </Picker.Items>
                         </Picker>
-                    
+
                     </Border>
 
-                    <ScrollView Orientation="Horizontal" Margin="-30,0">
-                        <HorizontalStackLayout 
-                                Spacing="15" Padding="30,0"
-                                BindableLayout.ItemsSource="{Binding Projects}">
+                    <BoxView
+                        Grid.Row="2"
+                        BackgroundColor="Transparent"
+                        HeightRequest="10" />
+
+                    <ScrollView Margin="-30,0" Orientation="Horizontal">
+                        <HorizontalStackLayout
+                            Padding="30,0"
+                            BindableLayout.ItemsSource="{Binding Projects}"
+                            Spacing="15">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate x:DataType="models:Project">
-                                    <controls:ProjectCardView WidthRequest="200">
+                                    <controls:ProjectCardView WidthRequest="160" HeightRequest="80">
                                         <controls:ProjectCardView.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding NavigateToProjectCommand, Source={RelativeSource AncestorType={x:Type pageModels:MainPageModel}}, x:DataType=pageModels:MainPageModel}" CommandParameter="{Binding .}"/>
+                                            <TapGestureRecognizer Command="{Binding NavigateToProjectCommand, Source={RelativeSource AncestorType={x:Type pageModels:MainPageModel}}, x:DataType=pageModels:MainPageModel}" CommandParameter="{Binding .}" />
                                         </controls:ProjectCardView.GestureRecognizers>
                                     </controls:ProjectCardView>
                                 </DataTemplate>
                             </BindableLayout.ItemTemplate>
                         </HorizontalStackLayout>
                     </ScrollView>
+
+                    <ScrollView Margin="-30,0" Orientation="Horizontal">
+                        <CollectionView ItemsLayout="HorizontalList" ItemsSource="{Binding Projects}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Padding="10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            FontAttributes="Italic"
+                                            Text="{Binding }"
+                                            VerticalOptions="End" />
+                                        <Label
+                                            Grid.Column="1"
+                                            FontAttributes="Bold"
+                                            Text="{Binding Projects.Count}" />
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            FontAttributes="Italic"
+                                            Text="{Binding Projects.Capacity}"
+                                            VerticalOptions="End" />
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </ScrollView>
+
                     <Grid HeightRequest="44">
-                        <Label Text="Tasks" Style="{StaticResource Title2}" VerticalOptions="Center"/>
-                        <ImageButton 
-                                Source="{StaticResource IconClean}"
-                                HorizontalOptions="End"
-                                VerticalOptions="Center"
-                                Aspect="Center"
-                                HeightRequest="44"
-                                WidthRequest="44"
-                                IsVisible="{Binding HasCompletedTasks}"
-                                Command="{Binding CleanTasksCommand}"
-                                />
+                        <Label
+                            Style="{StaticResource Title2}"
+                            Text="Tasks"
+                            VerticalOptions="Center" />
+                        <ImageButton
+                            Aspect="Center"
+                            Command="{Binding CleanTasksCommand}"
+                            HeightRequest="44"
+                            HorizontalOptions="End"
+                            IsVisible="{Binding HasCompletedTasks}"
+                            Source="{StaticResource IconClean}"
+                            VerticalOptions="Center"
+                            WidthRequest="44" />
                     </Grid>
-                    <VerticalStackLayout Spacing="15"
-                            BindableLayout.ItemsSource="{Binding Tasks}">
+                    <VerticalStackLayout BindableLayout.ItemsSource="{Binding Tasks}" Spacing="15">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
                                 <controls:TaskView TaskCompletedCommand="{Binding TaskCompletedCommand, Source={RelativeSource AncestorType={x:Type pageModels:MainPageModel}}, x:DataType=pageModels:MainPageModel}" />
@@ -139,8 +183,6 @@
             </pullToRefresh:SfPullToRefresh.PullableContent>
         </pullToRefresh:SfPullToRefresh>
 
-        <controls:AddButton 
-            IsEnabled="{Binding IsBusy, Converter={StaticResource InvertedBoolConverter}}"
-            Command="{Binding AddTaskCommand}" />
+        <controls:AddButton Command="{Binding AddTaskCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource InvertedBoolConverter}}" />
     </Grid>
 </ContentPage>
