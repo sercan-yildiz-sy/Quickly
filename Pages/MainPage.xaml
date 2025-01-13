@@ -69,24 +69,26 @@
                         
                     </Grid>
 
-                    <Frame BackgroundColor="Transparent"
+                    <Border Background="#FFFFFF"
                            WidthRequest="180"
                            HeightRequest="40"
                            Padding="0"
-                           HasShadow="False"
                            HorizontalOptions="Start"
                            VerticalOptions="Center"
-                           CornerRadius="25">
-                        
+                           StrokeShape="RoundRectangle 24,24,24,24"
+                           Stroke="#838383"
+                            StrokeThickness="1">
+
                         <Picker x:Name="picker"
                             TextColor="#838383"
-                            BackgroundColor="#FFFFFF"
+                            BackgroundColor="Transparent"
                             WidthRequest="180"
                             HeightRequest="40"
                             HorizontalOptions="StartAndExpand"
-                            Title="All items">
+                            Title="All items"
+                            >
                         <Picker.Items>
-                            <x:String>All Items</x:String>
+                            <x:String>All items</x:String>
                             <x:String>Produce</x:String>
                             <x:String>Meat</x:String>
                             <x:String>Dry Food</x:String>
@@ -95,7 +97,7 @@
                         </Picker.Items>
                         </Picker>
                     
-                    </Frame>
+                    </Border>
 
                     <ScrollView Orientation="Horizontal" Margin="-30,0">
                         <HorizontalStackLayout 
