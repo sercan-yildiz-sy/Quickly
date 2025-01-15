@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Text.Json;
 using Microsoft.Extensions.Logging;
 using Quicky.Models;
@@ -32,6 +33,7 @@ namespace Quicky.Data
             try
             {
                 payload = JsonSerializer.Deserialize(templateStream, JsonContext.Default.ProjectsJson);
+
             }
             catch (Exception e)
             {

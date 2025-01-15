@@ -51,24 +51,32 @@
                 <Grid
                     Grid.Column="1"
                     HorizontalOptions="End"
-                    RowDefinitions="*, *, *,* ">
+                    RowDefinitions="*, *, *,* "
+                    ColumnDefinitions="*, *">
 
                     <Label
                         Grid.Row="0"
+                        Grid.Column="0" 
                         FontFamily="LibreBaskerville-Regular"
                         FontSize="12"
                         Text="{Binding Name}"
-                        TextColor="{StaticResource Gray400}"
-                        TextTransform="Uppercase"
-                        VerticalOptions="Start" />
+                        TextColor="#000000"
+                        VerticalOptions="Start"
+                        HorizontalOptions="End"
+                        LineBreakMode="WordWrap"
+                        HorizontalTextAlignment="Start"
+                        WidthRequest="100"
+                        />
 
                     <BoxView
                         Grid.Row="1"
+                        Grid.ColumnSpan="2"
                         BackgroundColor="Transparent"
                         HeightRequest="5" />
 
                     <Label
                         Grid.Row="2"
+                        Grid.Column="0"
                         Margin="0,3,0,0"
                         FontFamily="Roboto"
                         FontSize="8"
@@ -79,11 +87,12 @@
 
                     <Label
                         Grid.Row="3"
+                        Grid.Column="0"
                         FontFamily="Roboto"
                         FontSize="8"
                         LineBreakMode="WordWrap"
                         Text="{Binding Description}"
-                        VerticalOptions="End" />
+                        VerticalOptions="Start" />
                 </Grid>
 
             </Grid>
