@@ -38,14 +38,18 @@
 
                     <Grid RowDefinitions="Auto, *, Auto">
                         <Button
+                            Grid.Row="0"
+                            Grid.Column="0"
                             BackgroundColor="#F3F3F3"
-                            HorizontalOptions="StartAndExpand"
-                            ImageSource="back_icon.png" />
+                            HorizontalOptions="Start"
+                            ImageSource="back_icon.png"
+                            IsEnabled="True"
+                            ZIndex="1" />
                         <Grid>
 
                             <Image
                                 Aspect="AspectFit"
-                                HeightRequest="23.5"
+                                HeightRequest="35"
                                 HorizontalOptions="Center"
                                 Source="background_logo.png"
                                 VerticalOptions="Center" />
@@ -53,68 +57,83 @@
                             <Label
                                 BackgroundColor="Transparent"
                                 FontFamily="LibreBaskerville-Bold"
+                                FontSize="25"
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 LineBreakMode="WordWrap"
                                 LineHeight="1.01"
                                 Text="Quicky Inventory"
                                 TextColor="#C0372F"
-                                WidthRequest="90" />
+                                WidthRequest="130" />
                         </Grid>
                         <BoxView
                             Grid.Row="2"
                             BackgroundColor="Transparent"
                             HeightRequest="20" />
                     </Grid>
-
-                    <Border
-                        Background="#FFFFFF"
-                        HeightRequest="40"
-                        HorizontalOptions="Start"
-                        Stroke="#18000000"
-                        StrokeShape="RoundRectangle 12,12,12,12"
-                        StrokeThickness="2"
-                        VerticalOptions="Center"
-                        WidthRequest="180">
-
-                        <Picker
-                            x:Name="picker"
-                            Title="All Items"
-                            Margin="15,5,0,0"
-                            BackgroundColor="Transparent"
-                            FontFamily="Roboto"
+                    <Grid>
+                        <Border
+                            Background="#FFFFFF"
                             HeightRequest="40"
-                            HorizontalOptions="FillAndExpand"
-                            TextColor="#838383"
-                            VerticalOptions="Center"
-                            WidthRequest="180">
-                            <Picker.Items>
-                                <x:String>All Items</x:String>
-                                <x:String>Produce</x:String>
-                                <x:String>Meat</x:String>
-                                <x:String>Dry Food</x:String>
-                                <x:String>Canned Food</x:String>
-                                <x:String>Others</x:String>
-                            </Picker.Items>
-                        </Picker>
+                            HorizontalOptions="StartAndExpand"
+                            Stroke="#18000000"
+                            StrokeShape="RoundRectangle 10,10,10,10"
+                            StrokeThickness="1.2"
+                            VerticalOptions="FillAndExpand"
+                            WidthRequest="180" />
 
-                    </Border>
+                        <Grid
+                            ColumnDefinitions="*, Auto"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Center">
+
+                            <Picker
+                                x:Name="picker"
+                                Title="All Items"
+                                Margin="15,5,0,0"
+                                BackgroundColor="Transparent"
+                                FontFamily="Roboto"
+                                FontSize="10"
+                                HorizontalOptions="FillAndExpand"
+                                TextColor="#838383"
+                                VerticalOptions="Center">
+                                <Picker.Items>
+                                    <x:String>All Items</x:String>
+                                    <x:String>Produce</x:String>
+                                    <x:String>Meat</x:String>
+                                    <x:String>Dry Food</x:String>
+                                    <x:String>Canned Food</x:String>
+                                    <x:String>Others</x:String>
+                                </Picker.Items>
+                            </Picker>
+
+                            <Image
+                                Grid.Column="1"
+                                Margin="0,0,210,0"
+                                HeightRequest="20"
+                                HorizontalOptions="End"
+                                Source="dropdown_menu.png"
+                                VerticalOptions="Center"
+                                WidthRequest="20" />
+                        </Grid>
+                    </Grid>
+
 
                     <BoxView
                         Grid.Row="2"
                         BackgroundColor="Transparent"
                         HeightRequest="10" />
 
-                    <CollectionView HorizontalScrollBarVisibility="Never" ItemsSource="{Binding Projects} ">
+                    <CollectionView HorizontalScrollBarVisibility="Never" ItemsSource="{Binding Projects}">
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout
                                 HorizontalItemSpacing="15"
                                 Orientation="Horizontal"
-                                Span="2" />
+                                Span="3" />
                         </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="models:Project">
-                                <controls:ProjectCardView HeightRequest="80" WidthRequest="160">
+                                <controls:ProjectCardView HeightRequest="100" WidthRequest="160">
                                     <controls:ProjectCardView.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding NavigateToProjectCommand, Source={RelativeSource AncestorType={x:Type pageModels:MainPageModel}}, x:DataType=pageModels:MainPageModel}" CommandParameter="{Binding .}" />
                                     </controls:ProjectCardView.GestureRecognizers>
@@ -123,31 +142,25 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>
 
+                    <BoxView
+                        Grid.Row="2"
+                        BackgroundColor="Transparent"
+                        HeightRequest="10" />
 
-                    <Grid HeightRequest="44">
-                        <Label
-                            Text="Category"
-                            FontFamily="LibreBaskerville-Regular"
-                            FontSize="15"
-                            TextColor="#000000"
-                            HorizontalOptions="Center" />
-                        <ImageButton
-                            Aspect="Center"
-                            Command="{Binding CleanTasksCommand}"
-                            HeightRequest="44"
-                            HorizontalOptions="End"
-                            IsVisible="{Binding HasCompletedTasks}"
-                            Source="{StaticResource IconClean}"
-                            VerticalOptions="Center"
-                            WidthRequest="44" />
-                    </Grid>
-                    <VerticalStackLayout BindableLayout.ItemsSource="{Binding Tasks}" Spacing="15">
-                        <BindableLayout.ItemTemplate>
-                            <DataTemplate>
-                                <controls:TaskView TaskCompletedCommand="{Binding TaskCompletedCommand, Source={RelativeSource AncestorType={x:Type pageModels:MainPageModel}}, x:DataType=pageModels:MainPageModel}" />
-                            </DataTemplate>
-                        </BindableLayout.ItemTemplate>
-                    </VerticalStackLayout>
+                    <Label
+                        FontFamily="LibreBaskerville-Regular"
+                        FontSize="15"
+                        HorizontalOptions="Center"
+                        Text="Category"
+                        TextColor="#000000" />
+
+                    <HorizontalStackLayout Padding="45" Spacing="55">
+                        <ImageButton BackgroundColor="#F9F9F9" Source="pantry_icon.png" />
+                        <ImageButton BackgroundColor="#F9F9F9" Source="fridge_icon.png" />
+                        <ImageButton BackgroundColor="#F9F9F9" Source="freezer_icon.png" />
+
+                    </HorizontalStackLayout>
+
                 </VerticalStackLayout>
             </pullToRefresh:SfPullToRefresh.PullableContent>
         </pullToRefresh:SfPullToRefresh>
