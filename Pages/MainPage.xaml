@@ -151,7 +151,7 @@
                         FontFamily="LibreBaskerville-Regular"
                         FontSize="15"
                         HorizontalOptions="Center"
-                        Text="CATEGORY"
+                        Text="Category"
                         TextColor="#000000" />
 
                     <HorizontalStackLayout Padding="45" Spacing="55">
