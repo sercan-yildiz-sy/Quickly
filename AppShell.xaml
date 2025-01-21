@@ -5,26 +5,22 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:Quicky.Pages"
     xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.SegmentedControl;assembly=Syncfusion.Maui.Toolkit"
-    Title="Quicky"
-    Shell.FlyoutBehavior="Flyout">
+    Title="Quicky">
 
-    <ShellContent
-        Title="Dashboard"
-        ContentTemplate="{DataTemplate pages:MainPage}"
-        Icon="{StaticResource IconDashboard}"
-        Route="main" />
-
-    <ShellContent
-        Title="Projects"
-        ContentTemplate="{DataTemplate pages:ProjectListPage}"
-        Icon="{StaticResource IconProjects}"
-        Route="projects" />
-
-    <ShellContent
-        Title="Manage Meta"
-        ContentTemplate="{DataTemplate pages:ManageMetaPage}"
-        Icon="{StaticResource IconMeta}"
-        Route="manage" />
+    <TabBar>
+        <ShellContent
+            ContentTemplate="{DataTemplate pages:MainPage}"
+            Icon="main_page.png"
+            Route="main" />
+        <ShellContent
+            ContentTemplate="{DataTemplate pages:ProjectListPage}"
+            Icon="add_page.png"
+            Route="projects" />
+        <ShellContent
+            ContentTemplate="{DataTemplate pages:ManageMetaPage}"
+            Icon="profile_page.png"
+            Route="manage" />
+    </TabBar>
 
     <Shell.FlyoutFooter>
         <Grid Padding="15">
@@ -44,5 +40,4 @@
             </sf:SfSegmentedControl>
         </Grid>
     </Shell.FlyoutFooter>
-
 </Shell>
