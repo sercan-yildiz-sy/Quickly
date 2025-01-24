@@ -50,9 +50,9 @@
                 </Image>
                 <Grid
                     Grid.Column="1"
-                    ColumnDefinitions="*, Auto"
+                    ColumnDefinitions="*, *"
                     HorizontalOptions="FillAndExpand"
-                    RowDefinitions="*, Auto, Auto">
+                    RowDefinitions="*, Auto, *">
 
                     <Label
                         Grid.Row="0"
@@ -73,11 +73,11 @@
                         FontFamily="Roboto"
                         FontSize="8"
                         HorizontalOptions="Start"
+                        VerticalOptions="End"
                         Text="quantity"
-                        TextColor="#838383"
-                        VerticalOptions="Center" />
+                        TextColor="#838383" />
 
-                    <HorizontalStackLayout Grid.Row="2">
+                    <HorizontalStackLayout Grid.Row="2" Grid.ColumnSpan="2" >
                         <Grid>
                             <Border
                                 Background="#FFFFFF"
@@ -92,7 +92,6 @@
                                 FontFamily="Roboto"
                                 FontSize="8"
                                 HorizontalOptions="Center"
-                                MaxLines="1"
                                 Text="{Binding ID}"
                                 TextColor="#838383"
                                 VerticalOptions="Center" />
@@ -100,19 +99,19 @@
                         <Grid>
                             <Border
                                 Background="#FFFFFF"
-                                HeightRequest="15"
+                                HeightRequest="18"
                                 HorizontalOptions="StartAndExpand"
                                 Stroke="#D9D9D9"
                                 StrokeShape="RoundRectangle 10,10,10,10"
                                 StrokeThickness="1.2"
                                 VerticalOptions="FillAndExpand"
-                                WidthRequest="25" />
+                                WidthRequest="35" />
                             <Picker
                                 x:Name="picker2"
                                 Title="{Binding Name}"
                                 BackgroundColor="Transparent"
                                 FontFamily="Roboto"
-                                FontSize="10"
+                                FontSize="8"
                                 HorizontalOptions="Center"
                                 TextColor="#838383"
                                 VerticalOptions="Center">
