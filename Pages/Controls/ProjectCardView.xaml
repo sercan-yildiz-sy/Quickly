@@ -61,8 +61,8 @@
                         FontSize="12"
                         HorizontalOptions="Start"
                         LineBreakMode="WordWrap"
-                        MaxLines="2"
                         LineHeight="0.8"
+                        MaxLines="2"
                         Text="{Binding Name}"
                         TextColor="#000000"
                         VerticalOptions="Center" />
@@ -77,14 +77,55 @@
                         TextColor="#838383"
                         VerticalOptions="Center" />
 
-                    <Label
-                        Grid.Row="2"
-                        Grid.Column="0"
-                        FontFamily="Roboto"
-                        FontSize="8"
-                        MaxLines="1"
-                        Text="{Binding Description}"
-                        VerticalOptions="Start" />
+                    <HorizontalStackLayout Grid.Row="2">
+                        <Grid>
+                            <Border
+                                Background="#FFFFFF"
+                                HeightRequest="15"
+                                HorizontalOptions="StartAndExpand"
+                                Stroke="#D9D9D9"
+                                StrokeShape="RoundRectangle 10,10,10,10"
+                                StrokeThickness="1.2"
+                                VerticalOptions="FillAndExpand"
+                                WidthRequest="25" />
+                            <Label
+                                FontFamily="Roboto"
+                                FontSize="8"
+                                HorizontalOptions="Center"
+                                MaxLines="1"
+                                Text="{Binding ID}"
+                                TextColor="#838383"
+                                VerticalOptions="Center" />
+                        </Grid>
+                        <Grid>
+                            <Border
+                                Background="#FFFFFF"
+                                HeightRequest="15"
+                                HorizontalOptions="StartAndExpand"
+                                Stroke="#D9D9D9"
+                                StrokeShape="RoundRectangle 10,10,10,10"
+                                StrokeThickness="1.2"
+                                VerticalOptions="FillAndExpand"
+                                WidthRequest="25" />
+                            <Picker
+                                x:Name="picker2"
+                                Title="{Binding Name}"
+                                BackgroundColor="Transparent"
+                                FontFamily="Roboto"
+                                FontSize="10"
+                                HorizontalOptions="Center"
+                                TextColor="#838383"
+                                VerticalOptions="Center">
+                                <Picker.Items>
+                                    <x:String>kg</x:String>
+                                    <x:String>unit</x:String>
+                                    <x:String>liter</x:String>
+                                    <x:String>lbs</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </Grid>
+                    </HorizontalStackLayout>
+
                 </Grid>
 
             </Grid>

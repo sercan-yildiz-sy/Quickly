@@ -32,12 +32,12 @@
     </ContentPage.Resources>
 
     <Grid>
-        
+
         <pullToRefresh:SfPullToRefresh IsRefreshing="{Binding IsRefreshing}" RefreshCommand="{Binding RefreshCommand}">
             <pullToRefresh:SfPullToRefresh.PullableContent>
 
                 <VerticalStackLayout Padding="{StaticResource LayoutPadding}" Spacing="{StaticResource LayoutSpacing}">
-                    
+
                     <Grid RowDefinitions="Auto, *, Auto">
                         <Button
                             Grid.Row="0"
@@ -156,20 +156,34 @@
                         Text="Category"
                         TextColor="#000000" />
 
-                    <HorizontalStackLayout Padding="25" Spacing="55" HorizontalOptions="Center">
+                    <HorizontalStackLayout
+                        Padding="25"
+                        HorizontalOptions="Center"
+                        Spacing="55">
                         <ImageButton BackgroundColor="#F9F9F9" Source="pantry_icon.png" />
                         <ImageButton BackgroundColor="#F9F9F9" Source="fridge_icon.png" />
                         <ImageButton BackgroundColor="#F9F9F9" Source="freezer_icon.png" />
 
                     </HorizontalStackLayout>
-                    
-                    <HorizontalStackLayout Padding="-5" Spacing="65" HorizontalOptions="Center">
-                        <Label Text="Pantry" FontFamily="Roboto" FontSize="15" TextColor="#5F5F5F"/>
-                        <Label Text="Fridge" FontFamily="Roboto" FontSize="15" TextColor="#5F5F5F"/>
-                        <Label Text="Freezer" FontFamily="Roboto" FontSize="15" TextColor="#5F5F5F"/>
+
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="65">
+                        <Label
+                            FontFamily="RobotoExtraBold"
+                            FontSize="15"
+                            Text="Pantry"
+                            TextColor="#5F5F5F" />
+                        <Label
+                            FontFamily="RobotoExtraBold"
+                            FontSize="15"
+                            Text="Fridge"
+                            TextColor="#5F5F5F" />
+                        <Label
+                            FontFamily="RobotoExtraBold"
+                            FontSize="15"
+                            Text="Freezer"
+                            TextColor="#5F5F5F" />
 
                     </HorizontalStackLayout>
-
 
                 </VerticalStackLayout>
             </pullToRefresh:SfPullToRefresh.PullableContent>

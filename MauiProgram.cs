@@ -25,7 +25,7 @@ namespace Quicky
                 })
                 .ConfigureFonts(fonts =>
                 {
-                    fonts.AddFont("RobotoExtraBoldregular.ttf", "RobotoExtraBold");
+                    fonts.AddFont("Roboto-ExtraBold.ttf", "RobotoExtraBold");
                     fonts.AddFont("Roboto-Regular.ttf", "Roboto");
                     fonts.AddFont("LibreBaskerville-Bold.ttf", "LibreBaskerville-Bold");
                     fonts.AddFont("LibreBaskerville-Regular.ttf", "LibreBaskerville-Regular");
