@@ -57,6 +57,7 @@
                                 VerticalOptions="Center" />
 
                             <Label
+                                Text="Quicky Inventory"
                                 BackgroundColor="Transparent"
                                 FontFamily="LibreBaskerville-Bold"
                                 FontSize="25"
@@ -64,7 +65,6 @@
                                 HorizontalTextAlignment="Center"
                                 LineBreakMode="WordWrap"
                                 LineHeight="1.01"
-                                Text="Quicky Inventory"
                                 TextColor="#C0372F"
                                 WidthRequest="130" />
                         </Grid>
@@ -160,13 +160,13 @@
                         Padding="25"
                         HorizontalOptions="Center"
                         Spacing="55">
-                        <ImageButton BackgroundColor="#F9F9F9" Source="pantry_icon.png" />
-                        <ImageButton BackgroundColor="#F9F9F9" Source="fridge_icon.png" />
-                        <ImageButton BackgroundColor="#F9F9F9" Source="freezer_icon.png" />
+                        <ImageButton BackgroundColor="Transparent" Source="pantry_icon.png" />
+                        <ImageButton BackgroundColor="Transparent" Source="fridge_icon.png" />
+                        <ImageButton BackgroundColor="Transparent" Source="freezer_icon.png" />
 
                     </HorizontalStackLayout>
 
-                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="65">
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="65" Margin="-20">
                         <Label
                             FontFamily="RobotoExtraBold"
                             FontSize="15"
