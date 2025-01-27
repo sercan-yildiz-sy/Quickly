@@ -6,34 +6,80 @@
     xmlns:controls="clr-namespace:Quicky.Pages.Controls"
     xmlns:models="clr-namespace:Quicky.Models"
     xmlns:pageModels="clr-namespace:Quicky.PageModels"
+    xmlns:pullToRefresh="clr-namespace:Syncfusion.Maui.Toolkit.PullToRefresh;assembly=Syncfusion.Maui.Toolkit"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    Title="Projects"
     x:DataType="pageModels:ProjectListPageModel">
 
 
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
-    <Grid>
-        <VerticalStackLayout
-            Margin="{StaticResource LayoutPadding}"
-            BindableLayout.ItemsSource="{Binding Projects}"
-            Spacing="{StaticResource LayoutSpacing}">
-            <BindableLayout.ItemTemplate>
-                <DataTemplate x:DataType="models:Project">
-                    <Border>
-                        <VerticalStackLayout Padding="10">
-                            <Label FontSize="24" Text="{Binding Name}" />
-                            <Label Text="{Binding Description}" />
-                        </VerticalStackLayout>
-                        <Border.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding NavigateToProjectCommand, Source={RelativeSource AncestorType={x:Type pageModels:ProjectListPageModel}}, x:DataType=pageModels:ProjectListPageModel}" CommandParameter="{Binding .}" />
-                        </Border.GestureRecognizers>
-                    </Border>
-                </DataTemplate>
-            </BindableLayout.ItemTemplate>
-        </VerticalStackLayout>
 
-        <controls:AddButton Command="{Binding AddProjectCommand}" />
+    <Grid>
+        <Grid HorizontalOptions="Center" VerticalOptions="Start">
+            <Border
+                Background="#FFFFFF"
+                HeightRequest="32"
+                HorizontalOptions="Center"
+                Stroke="#18000000"
+                StrokeShape="RoundRectangle 10,10,10,10"
+                StrokeThickness="1.2"
+                VerticalOptions="Center"
+                WidthRequest="180" />
+
+            <Grid
+                ColumnDefinitions="*, Auto"
+                HorizontalOptions="Fill"
+                VerticalOptions="Center">
+                <Picker
+                    x:Name="picker"
+                    Title="title"
+                    Grid.Column="0"
+                    Margin="5,0,0,0"
+                    BackgroundColor="Transparent"
+                    FontFamily="Roboto"
+                    FontSize="10"
+                    HorizontalOptions="StartAndExpand"
+                    TextColor="#838383"
+                    VerticalOptions="Center"
+                    WidthRequest="150">
+                    <Picker.Items>
+                        <x:String>Unit</x:String>
+                        <x:String>kg</x:String>
+                        <x:String>lb</x:String>
+                        <x:String>lt</x:String>
+                        <x:String>oz</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <Image
+                    Grid.Column="1"
+                    Margin="0,0,10,0"
+                    HeightRequest="10"
+                    HorizontalOptions="End"
+                    Source="search_icon.png"
+                    VerticalOptions="Center"
+                    WidthRequest="10" />
+            </Grid>
+        </Grid>
+        
+        <CollectionView HorizontalScrollBarVisibility="Never" ItemsSource="{Binding Projects}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout
+            HorizontalItemSpacing="15"
+            Orientation="Horizontal"
+            Span="3" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Project">
+                    <controls:ProjectCardView HeightRequest="100" WidthRequest="160">
+                        <controls:ProjectCardView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateToProjectCommand, Source={RelativeSource AncestorType={x:Type pageModels:ProjectListPageModel}}, x:DataType=pageModels:ProjectListPageModel}" CommandParameter="{Binding .}" />
+                        </controls:ProjectCardView.GestureRecognizers>
+                    </controls:ProjectCardView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
     </Grid>
 </ContentPage>

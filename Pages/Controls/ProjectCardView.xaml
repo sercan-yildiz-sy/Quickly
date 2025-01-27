@@ -18,7 +18,7 @@
         <shimmer:SfShimmer.CustomView>
             <VerticalStackLayout Spacing="15">
                 <BoxView
-                    CornerRadius="48"
+                    CornerRadius="48"   
                     HeightRequest="24"
                     HorizontalOptions="Start"
                     Style="{StaticResource ShimmerCustomViewStyle}"
