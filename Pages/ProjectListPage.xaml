@@ -31,26 +31,19 @@
                 ColumnDefinitions="*, Auto"
                 HorizontalOptions="Fill"
                 VerticalOptions="Center">
-                <Picker
-                    x:Name="picker"
-                    Title="title"
+                <Entry
+                    x:Name="entry"
                     Grid.Column="0"
                     Margin="5,0,0,0"
                     BackgroundColor="Transparent"
                     FontFamily="Roboto"
                     FontSize="10"
                     HorizontalOptions="StartAndExpand"
+                    Placeholder="Search"
+                    PlaceholderColor="#838383"
                     TextColor="#838383"
                     VerticalOptions="Center"
-                    WidthRequest="150">
-                    <Picker.Items>
-                        <x:String>Unit</x:String>
-                        <x:String>kg</x:String>
-                        <x:String>lb</x:String>
-                        <x:String>lt</x:String>
-                        <x:String>oz</x:String>
-                    </Picker.Items>
-                </Picker>
+                    WidthRequest="150" />
 
                 <Image
                     Grid.Column="1"
@@ -62,13 +55,13 @@
                     WidthRequest="10" />
             </Grid>
         </Grid>
-        
-        <CollectionView HorizontalScrollBarVisibility="Never" ItemsSource="{Binding Projects}">
+
+        <!--<CollectionView HorizontalScrollBarVisibility="Never" ItemsSource="{Binding Projects}">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout
-            HorizontalItemSpacing="15"
-            Orientation="Horizontal"
-            Span="3" />
+                    HorizontalItemSpacing="15"
+                    Orientation="Horizontal"
+                    Span="3" />
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Project">
@@ -79,7 +72,7 @@
                     </controls:ProjectCardView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-        </CollectionView>
+        </CollectionView>-->
 
     </Grid>
 </ContentPage>
