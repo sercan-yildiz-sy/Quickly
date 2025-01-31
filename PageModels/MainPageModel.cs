@@ -33,8 +33,6 @@ namespace Quicky.PageModels
         [ObservableProperty]
         bool _isRefreshing;
 
-        [ObservableProperty]
-        private string _today = DateTime.Now.ToString("dddd, MMM d");
 
         public bool HasCompletedTasks
             => Tasks?.Any(t => t.IsCompleted) ?? false;
@@ -171,5 +169,6 @@ namespace Quicky.PageModels
             Tasks = new(Tasks);
             await AppShell.DisplayToastAsync("All cleaned up!");
         }
+        
     }
 }
