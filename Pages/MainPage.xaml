@@ -57,7 +57,6 @@
                                 VerticalOptions="Center" />
 
                             <Label
-                                Text="Quicky Inventory"
                                 BackgroundColor="Transparent"
                                 FontFamily="LibreBaskerville-Bold"
                                 FontSize="25"
@@ -65,6 +64,7 @@
                                 HorizontalTextAlignment="Center"
                                 LineBreakMode="WordWrap"
                                 LineHeight="1.01"
+                                Text="Quicky Inventory"
                                 TextColor="#C0372F"
                                 WidthRequest="130" />
                         </Grid>
@@ -166,7 +166,10 @@
 
                     </HorizontalStackLayout>
 
-                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="65" Margin="-20">
+                    <HorizontalStackLayout
+                        Margin="-20"
+                        HorizontalOptions="Center"
+                        Spacing="65">
                         <Label
                             FontFamily="RobotoExtraBold"
                             FontSize="15"
