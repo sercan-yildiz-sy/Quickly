@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Quicky.Models;
 using SQLite;
 
-namespace Quicky.Data
+namespace Quicky.Services
 {
     public static class QuickyService
     {
@@ -23,11 +23,12 @@ namespace Quicky.Data
             await db.CreateTableAsync<Item>();
         }
 
-        public static async Task AddItem(string Name, float Quantity,  string Quantity_Type,  string Image, string Location)
+        public static async Task AddItem(int Id, string Name, float Quantity,  string Quantity_Type,  string Image, string Location)
         {
             await Init();
             var item = new Item
             {
+                Id = Id,
                 Name = Name,
                 Quantity = Quantity,
                 Quantity_Type = Quantity_Type,

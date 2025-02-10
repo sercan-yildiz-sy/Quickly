@@ -25,21 +25,21 @@ namespace Quicky.Models
 
         [RelayCommand]
         async Task AddItem() {
-            var Name = await App.Current.MainPage.DisplayPromptAsync("Name", "Name of coffee");
+            var Id = await App.Current.MainPage.DisplayPromptAsync("Id", "Id of item");
+            var Name = await App.Current.MainPage.DisplayPromptAsync("Name", "Name of item");
             var quantityString = await App.Current.MainPage.DisplayPromptAsync("Quantity", "Enter quantity (e.g., 1.5):");
             if (float.TryParse(quantityString, out float Quantity))
             {
             }
             else
             {
-                // Handle invalid input
                 await App.Current.MainPage.DisplayAlert("Invalid Input", "Please enter a valid number.", "OK");
             }
             var Quantity_Type = await App.Current.MainPage.DisplayPromptAsync("Roaster", "Roaster of coffee");
             var Image = await App.Current.MainPage.DisplayPromptAsync("Roaster", "Roaster of coffee");
             var Location = await App.Current.MainPage.DisplayPromptAsync("Roaster", "Roaster of coffee");
 
-            await QuickyService.AddItem(Name, Quantity, Quantity_Type, Image, Location);
+            await QuickyService.AddItem(Id, Name, Quantity, Quantity_Type, Image, Location);
             await Refresh();
         }
 
