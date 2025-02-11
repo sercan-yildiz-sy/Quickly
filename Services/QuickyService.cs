@@ -20,13 +20,13 @@ namespace Quicky.Services
 
             db = new SQLiteAsyncConnection(databasePath);
 
-            await db.CreateTableAsync<Item>();
+            await db.CreateTableAsync<Inventory>();
         }
 
-        public static async Task AddItem(int Id, string Name, float Quantity,  string Quantity_Type,  string Image, string Location)
+        public static async Task AddInventory(int Id, string Name, float Quantity,  string Quantity_Type,  string Image, string Location)
         {
             await Init();
-            var item = new Item
+            var item = new Inventory
             {
                 Id = Id,
                 Name = Name,
@@ -37,17 +37,17 @@ namespace Quicky.Services
             };
             await db.InsertAsync(item);
         }
-        public static async Task DeleteItem(int Id)
+        public static async Task DeleteInventory(int Id)
         {
             await Init();
 
-            await db.DeleteAsync<Item>(Id);
+            await db.DeleteAsync<Inventory>(Id);
         }
-        public static async Task<IEnumerable<Item>> GetItem()
+        public static async Task<IEnumerable<Inventory>> GetInventory()
         {
             await Init();
 
-            var item = await db.Table<Item>().ToListAsync();
+            var item = await db.Table<Inventory>().ToListAsync();
             return item;
         }
     }

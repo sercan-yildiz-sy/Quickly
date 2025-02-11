@@ -12,14 +12,14 @@ namespace Quicky.Models
 {
     public partial class MainPageModell: ObservableObject
     {
-        public ObservableCollection<Item> Item {  get; set; }
+        public ObservableCollection<Inventory> Inventory {  get; set; }
 
         [ObservableProperty]
         bool _isBusy;
 
         public MainPageModell() { 
         
-            Item = new ObservableCollection<Item>();
+            Inventory = new ObservableCollection<Inventory>();
 
         }
 
@@ -46,9 +46,9 @@ namespace Quicky.Models
        
 
         [RelayCommand]
-        async Task Remove(Item Item)
+        async Task Remove(Inventory Item)
         {
-            await QuickyService.DeleteItem(Item.Id);
+            await QuickyService.DeleteInventory(Item.Id);
             await Refresh();
         }
 
@@ -57,11 +57,11 @@ namespace Quicky.Models
         {
             IsBusy= true;
             await Task.Delay(2000);
-            Item.Clear();
-            var items = QuickyService.GetItem();
+            Models.Inventory.Clear();
+            var items = QuickyService.GetInventory();
 
-            foreach (var item in items) { 
-                Item.Add(item);
+            foreach (var item in items) {
+                Models.Inventory.Add(item);
             }
 
         }

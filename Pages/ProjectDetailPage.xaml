@@ -269,7 +269,7 @@
                     </Grid>
 
                 </HorizontalStackLayout>
-                
+
                 <BoxView BackgroundColor="Transparent" HeightRequest="15" />
                 <VerticalStackLayout HorizontalOptions="Center">
                     <Label
