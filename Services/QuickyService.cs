@@ -23,7 +23,7 @@ namespace Quicky.Services
             await db.CreateTableAsync<Inventory>();
         }
 
-        public static async Task AddInventory(int Id, string Name, float Quantity,  string Quantity_Type,  string Image, string Location)
+        public static async Task AddInventory(int Id, string Name, float Quantity, string Quantity_Type, string Image, string Location, string Category)
         {
             await Init();
             var item = new Inventory
@@ -33,7 +33,8 @@ namespace Quicky.Services
                 Quantity = Quantity,
                 Quantity_Type = Quantity_Type,
                 Image = Image,
-                Location = Location
+                Location = Location,
+                Category = Category
             };
             await db.InsertAsync(item);
         }

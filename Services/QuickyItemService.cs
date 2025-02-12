@@ -10,13 +10,13 @@ namespace Quicky.Services
 {
     public class QuickyItemService
     {
-        List<Item> ItemList;
+        List<Item> Items;
 
         public async Task<List<Item>> GetItems()
         {
             using var stream = await FileSystem.OpenAppPackageFileAsync("items.json");
-            var items = await JsonSerializer.DeserializeAsync<List<Item>>(stream);
-            return items ?? new List<Item>();
+            Items = await JsonSerializer.DeserializeAsync<List<Item>>(stream);
+            return Items;
         }
     }
 }
