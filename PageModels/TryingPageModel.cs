@@ -14,20 +14,22 @@ using Quicky.Services;
 
 namespace Quicky.PageModels
 {
-    public partial class TrialPageModel : ObservableObject
+    public partial class TryingPageModel : ObservableObject, IBaseClass
     {
         public ObservableCollection<Inventory> Inventory { get; set; }
-        public ObservableCollection<Item> Item { get; set; }
+
+        public ObservableCollection<Item> Items { get; set; }
 
         [ObservableProperty]
         bool _isBusy;
 
+        private readonly QuickyItemService _quickyItemService;
 
-        public TrialPageModel()
+        public TryingPageModel()
         {
-
             Inventory = new ObservableCollection<Inventory>();
-            Item = new ObservableCollection<Item>();
+            Items = new ObservableCollection<Item>();
+            _quickyItemService = new QuickyItemService();
 
         }
 
@@ -35,20 +37,19 @@ namespace Quicky.PageModels
         [RelayCommand]
         async Task GetItemAsync()
         {
-            if (IsBusy) {
+            if (IsBusy)
+            {
                 return;
             }
 
             try
             {
                 IsBusy = true;
-                var quickyItemService = new QuickyItemService();
-                var items = await quickyItemService.GetItems();
-                if (items.Count != 0)
-                    items.Clear();
+                var fetchedItems = await _quickyItemService.GetItems();
+                Items.Clear();
 
-                foreach (var item in items)
-                    Item.Add(item);
+                foreach (var item in fetchedItems)
+                    Items.Add(item);
 
             }
             catch (Exception ex)

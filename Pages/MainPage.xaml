@@ -121,10 +121,6 @@
                     </Grid>
 
 
-                    <BoxView
-                        Grid.Row="2"
-                        BackgroundColor="Transparent"
-                        HeightRequest="10" />
 
                     <CollectionView HorizontalScrollBarVisibility="Never" ItemsSource="{Binding Projects}">
                         <CollectionView.ItemsLayout>

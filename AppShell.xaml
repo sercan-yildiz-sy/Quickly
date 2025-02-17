@@ -20,6 +20,8 @@
             ContentTemplate="{DataTemplate pages:ManageMetaPage}"
             Icon="profile_page.png"
             Route="manage" />
+        <ShellContent Route="TryingPage" Title="Trying Page"  />
+
     </TabBar>
 
     <Shell.FlyoutFooter>
