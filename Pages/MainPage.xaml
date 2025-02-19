@@ -120,6 +120,7 @@
                         </Grid>
                     </Grid>
 
+                    <Button Clicked="GoToTryingPage_Clicked" Text="Go to Trying Page" />
 
 
                     <CollectionView HorizontalScrollBarVisibility="Never" ItemsSource="{Binding Projects}">

@@ -7,30 +7,24 @@
     xmlns:pageModels="clr-namespace:Quicky.PageModels"
     Title="TryingPage"
     x:DataType="pageModels:TryingPageModel">
+
     <VerticalStackLayout>
         <CollectionView ItemsSource="{Binding Items}">
             <CollectionView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="models:Item">
                     <Grid ColumnDefinitions="Auto, *">
-                        <Image
-                            Grid.Column="0"
-                            Aspect="AspectFill"
-                            HeightRequest="50"
-                            Source="{Binding Items.Count}"
-                            WidthRequest="50" />
+                        
 
                         <VerticalStackLayout Grid.Column="1" Padding="10">
                             <Label
                                 FontAttributes="Bold"
                                 FontSize="20"
-                                Text="{Binding Items.Count}" />
+                                Text="{Binding Name}" />
                             <Label
                                 FontSize="16"
-                                Text="{Binding Items.Count}"
-                                TextColor="Gray" />
+                                Text="{Binding Category}"  TextColor="Gray" />
                         </VerticalStackLayout>
                     </Grid>
-
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

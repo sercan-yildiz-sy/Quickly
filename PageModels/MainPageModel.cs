@@ -47,6 +47,7 @@ namespace Quicky.PageModels
             _seedDataService = seedDataService;
         }
 
+
         private async Task LoadData()
         {
             try

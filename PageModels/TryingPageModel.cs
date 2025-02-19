@@ -18,7 +18,10 @@ namespace Quicky.PageModels
     {
         public ObservableCollection<Inventory> Inventory { get; set; }
 
-        public ObservableCollection<Item> Items { get; set; }
+        
+
+        [ObservableProperty]
+        ObservableCollection<Item> _items = new();
 
         [ObservableProperty]
         bool _isBusy;
@@ -46,11 +49,11 @@ namespace Quicky.PageModels
             {
                 IsBusy = true;
                 var fetchedItems = await _quickyItemService.GetItems();
-                Items.Clear();
-
+                Items.Clear(); 
                 foreach (var item in fetchedItems)
+                {
                     Items.Add(item);
-
+                }
             }
             catch (Exception ex)
             {

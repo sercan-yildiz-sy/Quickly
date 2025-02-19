@@ -1,55 +1,55 @@
 {
   "Items": [
     {
-      "ID": "1",
+      "Id": 1,
       "Name": "Tomato",
       "Image": "tomato.jpg",
       "Category": "Produce"
     },
 
     {
-      "ID": "2",
+      "Id": 2,
       "Name": "Cucumber",
       "Image": "cucumber.jpg",
       "Category": "Produce"
     },
 
     {
-      "ID": "3",
+      "Id": 3,
       "Name": "Bread",
       "Image": "bread.jpg",
       "Category": "Pastry"
     },
     {
-      "ID": "4",
+      "Id": 4,
       "Name": "Milk",
       "Image": "milk.jpg",
       "Category": "Dairy"
     },
 
     {
-      "ID": "1",
+      "Id": 5,
       "Name": "Tomato",
       "Image": "tomato.jpg",
       "Category": "Produce"
     },
 
     {
-      "ID": "5",
+      "Id": 6,
       "Name": "Canned Beans",
       "Image": "canned_beans.jpg",
       "Category": "Canned Products"
     },
 
     {
-      "ID": "6",
+      "Id": 7,
       "Name": "Dry Beans",
       "Image": "dry_beans.jpg",
       "Category": "Dry Products"
     },
 
     {
-      "ID": "7",
+      "Id": 8,
       "Name": "Ground Beef",
       "Image": "ground_beef.jpg",
       "Category": "Meat"
