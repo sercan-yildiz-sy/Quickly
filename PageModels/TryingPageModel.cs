@@ -36,7 +36,7 @@ namespace Quicky.PageModels
 
 
         [RelayCommand]
-        async Task GetItemAsync()
+        public async Task GetItemAsync()
         {
             if (IsBusy)
             {

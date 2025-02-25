@@ -9,6 +9,8 @@
     x:DataType="pageModels:TryingPageModel">
 
     <VerticalStackLayout>
+
+        <Button Command="{Binding GetItemCommand}"></Button>
         <CollectionView ItemsSource="{Binding Items}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Item">
