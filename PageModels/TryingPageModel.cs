@@ -18,8 +18,6 @@ namespace Quicky.PageModels
     {
         public ObservableCollection<Inventory> Inventory { get; set; }
 
-        
-
         [ObservableProperty]
         ObservableCollection<Item> _items = new();
 
