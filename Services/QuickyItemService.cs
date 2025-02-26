@@ -11,7 +11,8 @@ namespace Quicky.Services
             try
             {
                 await using var stream = await FileSystem.OpenAppPackageFileAsync("items.json");
-                return await JsonSerializer.DeserializeAsync<List<Item>>(stream) ?? new List<Item>();
+                var itemJson = await JsonSerializer.DeserializeAsync<ItemJson>(stream);
+                return itemJson?.Items ?? new List<Item>();
             }
 
             catch (Exception ex)
