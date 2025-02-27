@@ -16,6 +16,6 @@ public partial class TryingPage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        await _model.GetItemAsync(); 
+        await _model.Refresh(); 
     }
 }

@@ -10,13 +10,12 @@
 
     <VerticalStackLayout>
 
-        <Button Command="{Binding GetItemCommand}"></Button>
+        <Button Command="{Binding ShowItemsCommand}" Text="Show Items"></Button>
         <CollectionView ItemsSource="{Binding Items}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Item">
                     <Grid ColumnDefinitions="Auto, *">
-
-                        <Image Grid.Column="0" BackgroundColor="Transparent" WidthRequest="50" HeightRequest="50" Source="{Binding Image}"></Image>
+                        
 
                         <VerticalStackLayout Grid.Column="1" Padding="10">
                             <Label

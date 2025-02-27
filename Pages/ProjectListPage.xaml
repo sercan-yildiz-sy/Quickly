@@ -57,15 +57,12 @@
             </Grid>
         </Grid>
 
-        <CollectionView VerticalScrollBarVisibility="Always" 
-                        ItemsSource="{Binding Projects}" 
-                        HorizontalOptions="Fill">
+        <CollectionView
+            HorizontalOptions="Fill"
+            ItemsSource="{Binding Projects}"
+            VerticalScrollBarVisibility="Always">
             <CollectionView.ItemsLayout>
-                <GridItemsLayout
-                    VerticalItemSpacing="30"
-                    Orientation="Vertical"
-                    
-                     />
+                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="30" />
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Project">

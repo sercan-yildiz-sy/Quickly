@@ -25,7 +25,11 @@ namespace Quicky.PageModels
         bool _isBusy;
 
         private readonly QuickyItemService _quickyItemService;
+        [ObservableProperty]
+        bool _isInventoryVisible = false;
 
+        [ObservableProperty]
+        bool _isItemsVisible = false;
         public TryingPageModel()
         {
             Inventory = new ObservableCollection<Inventory>();
@@ -64,12 +68,15 @@ namespace Quicky.PageModels
             }
         }
 
+
+
         [RelayCommand]
         async Task AddItem()
         {
             var quickyItemService = new QuickyItemService();
             var items = await quickyItemService.GetItems();
             var name = await App.Current.MainPage.DisplayPromptAsync("Name", "Name of the Item");
+
             var selectedItem = items.FirstOrDefault(item => item.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
 
             if (selectedItem == null)
@@ -106,7 +113,7 @@ namespace Quicky.PageModels
         }
 
         [RelayCommand]
-        async Task Refresh()
+        public async Task Refresh()
         {
             IsBusy = true;
             await Task.Delay(2000);
@@ -118,6 +125,22 @@ namespace Quicky.PageModels
                 Inventory.Add(item);
             }
 
+        }
+
+        [RelayCommand]
+        async Task ShowInventory()
+        {
+            IsInventoryVisible = true;
+            IsItemsVisible = false;
+            await Refresh(); // Load inventory from SQL
+        }
+
+        [RelayCommand]
+        async Task ShowItems()
+        {
+            IsItemsVisible = true;
+            IsInventoryVisible = false;
+            await GetItemAsync(); // Load items from JSON
         }
 
     }
