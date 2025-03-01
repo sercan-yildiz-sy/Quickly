@@ -83,6 +83,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\TryingPage2.xaml.cs">
+	    <DependentUpon>TryingPage2.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\TryingPage2.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\TryingPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

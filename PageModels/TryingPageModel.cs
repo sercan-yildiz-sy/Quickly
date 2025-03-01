@@ -24,7 +24,8 @@ namespace Quicky.PageModels
         [ObservableProperty]
         bool _isBusy;
 
-        private readonly QuickyItemService _quickyItemService;
+
+
         [ObservableProperty]
         bool _isInventoryVisible = false;
 
@@ -34,8 +35,7 @@ namespace Quicky.PageModels
         {
             Inventory = new ObservableCollection<Inventory>();
             Items = new ObservableCollection<Item>();
-            _quickyItemService = new QuickyItemService();
-
+            
         }
 
 
@@ -50,7 +50,7 @@ namespace Quicky.PageModels
             try
             {
                 IsBusy = true;
-                var fetchedItems = await _quickyItemService.GetItems();
+                var fetchedItems = await QuickyItemService.GetItems();
                 Items.Clear(); 
                 foreach (var item in fetchedItems)
                 {
@@ -70,11 +70,11 @@ namespace Quicky.PageModels
 
 
 
+
         [RelayCommand]
         async Task AddItem()
         {
-            var quickyItemService = new QuickyItemService();
-            var items = await quickyItemService.GetItems();
+            var items = await QuickyItemService.GetItems();
             var name = await App.Current.MainPage.DisplayPromptAsync("Name", "Name of the Item");
 
             var selectedItem = items.FirstOrDefault(item => item.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
@@ -98,7 +98,7 @@ namespace Quicky.PageModels
             var quantityType = await App.Current.MainPage.DisplayPromptAsync("Quantity Type", "Enter quantity type (e.g., kg, pcs):");
             var location = await App.Current.MainPage.DisplayPromptAsync("Location", "Enter storage location:");
 
-            await QuickyService.AddInventory(id, name, quantity, quantityType, image, location, category);
+            await QuickyService.AddInventory(id, name, image, quantity, quantityType, location, category);
             await Refresh();
 
         }
@@ -106,10 +106,27 @@ namespace Quicky.PageModels
 
 
         [RelayCommand]
-        async Task Remove(Inventory Item)
+        async Task DeleteItem(Inventory Item)
         {
             await QuickyService.DeleteInventory(Item.Id);
             await Refresh();
+        }
+
+        async Task UpdateItem(Inventory Item) {
+
+            var quantityString = await App.Current.MainPage.DisplayPromptAsync("Quantity", "Enter Quantity");
+            if (!float.TryParse(quantityString, out float quantity))
+            {
+                await App.Current.MainPage.DisplayAlert("Invalid Input", "Please enter a valid number.", "OK");
+                return;
+            }
+
+            var quantityType = await App.Current.MainPage.DisplayPromptAsync("Quantity Type", "Enter quantity type");
+            var location = await App.Current.MainPage.DisplayPromptAsync("Location", "Enter storage location:");
+
+            await QuickyService.UpdateInventory(Item.Id, quantity, quantityType, location);
+            await Refresh();
+
         }
 
         [RelayCommand]
@@ -143,5 +160,16 @@ namespace Quicky.PageModels
             await GetItemAsync(); // Load items from JSON
         }
 
+        [RelayCommand]
+        private async Task GoToDetails(Inventory selectedItem)
+        {
+            if (selectedItem != null)
+            {
+                await Shell.Current.GoToAsync(nameof(TryingPage2), new Dictionary<string, object>
+            {
+                { "SelectedItem", selectedItem }
+            });
+            }
+        }
     }
 }

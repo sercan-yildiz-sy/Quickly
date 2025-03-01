@@ -3,9 +3,9 @@ using Quicky.Models;
 
 namespace Quicky.Services
 {
-    public class QuickyItemService
+    public static class QuickyItemService
     {
-        public async Task<List<Item>> GetItems()
+        public static async Task<List<Item>> GetItems()
         {
 
             try

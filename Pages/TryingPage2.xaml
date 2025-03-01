@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Quicky.Pages.NewPage1"
+             xmlns:models="clr-namespace:Quicky.Models"
+             xmlns:pageModels="clr-namespace:Quicky.PageModels"
+             Title="TryingPage2"
+             x:DataType="pageModels:TryingPageModel">
+
+
+    <Grid>
+
+
+        <VerticalStackLayout Padding="{StaticResource LayoutPadding}" Spacing="{StaticResource LayoutSpacing}">
+            <BoxView BackgroundColor="Transparent" HeightRequest="15" />
+
+            <Grid RowDefinitions="Auto, *, Auto">
+                <Button
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    BackgroundColor="#F3F3F3"
+                    HorizontalOptions="Start"
+                    ImageSource="back_icon.png"
+                    IsEnabled="True"
+                    ZIndex="1" />
+                <Grid>
+
+                    <Image
+                        Aspect="AspectFit"
+                        HeightRequest="35"
+                        HorizontalOptions="Center"
+                        Source="background_logo.png"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        BackgroundColor="Transparent"
+                        FontFamily="LibreBaskerville-Bold"
+                        FontSize="25"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        LineBreakMode="WordWrap"
+                        LineHeight="1.01"
+                        Text="Quicky Item Details"
+                        TextColor="#C0372F"
+                        WidthRequest="160" />
+                </Grid>
+
+                <BoxView
+                    Grid.Row="2"
+                    BackgroundColor="Transparent"
+                    HeightRequest="15" />
+            </Grid>
+
+            <VerticalStackLayout Padding="{StaticResource LayoutPadding}" Spacing="{StaticResource LayoutSpacing}">
+                <Image>
+                    <Image.Source>
+                        <FontImageSource
+                            FontFamily="{x:Static fonts:FluentUI.FontFamily}"
+                            Glyph="{Binding Image}"
+                            Size="228"
+                            Color="{AppThemeBinding Light={StaticResource DarkOnLightBackground},
+                                                    Dark={StaticResource LightOnDarkBackground}}" />
+                    </Image.Source>
+                </Image>
+
+                <BoxView BackgroundColor="Transparent" HeightRequest="20" />
+
+                <Label
+                    FontFamily="LibreBaskerville-Regular"
+                    FontSize="15"
+                    HorizontalOptions="Center"
+                    Text="{Binding }"
+                    TextColor="#000000" />
+
+                <BoxView BackgroundColor="Transparent" HeightRequest="15" />
+
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                    <Label
+                        FontFamily="RobotoExtraBold"
+                        FontSize="15"
+                        Text="Qty."
+                        TextColor="#5F5F5F"
+                        VerticalOptions="Center" />
+                    <Grid>
+                        <Border
+                            Background="#FFFFFF"
+                            HeightRequest="25"
+                            HorizontalOptions="StartAndExpand"
+                            Stroke="#D9D9D9"
+                            StrokeShape="RoundRectangle 8,8,8,8"
+                            StrokeThickness="1.2"
+                            VerticalOptions="FillAndExpand"
+                            WidthRequest="55" />
+                        <Label
+                            BackgroundColor="Transparent"
+                            FontFamily="Roboto"
+                            FontSize="10"
+                            HorizontalOptions="Center"
+                            Text="number"
+                            TextColor="#838383"
+                            VerticalOptions="Center" />
+                    </Grid>
+
+                    <Grid ColumnSpacing="40">
+                        <Border
+                            Background="#FFFFFF"
+                            HeightRequest="25"
+                            HorizontalOptions="StartAndExpand"
+                            Stroke="#18000000"
+                            StrokeShape="RoundRectangle 10,10,10,10"
+                            StrokeThickness="1.2"
+                            VerticalOptions="FillAndExpand"
+                            WidthRequest="55" />
+
+                        <Grid
+                            ColumnDefinitions="*, Auto"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Center">
+
+                            <Picker
+                                x:Name="picker"
+                                Title="{Binding Category}"
+                                Margin="4,0,0,0"
+                                BackgroundColor="Transparent"
+                                FontFamily="Roboto"
+                                FontSize="10"
+                                HorizontalOptions="StartAndExpand"
+                                TextColor="#838383"
+                                VerticalOptions="Center">
+                                <Picker.Items>
+                                    <x:String>Unit</x:String>
+                                    <x:String>kg</x:String>
+                                    <x:String>lb</x:String>
+                                    <x:String>lt</x:String>
+                                    <x:String>oz</x:String>
+                                </Picker.Items>
+                            </Picker>
+
+                            <Image
+                                Grid.Column="0"
+                                Margin="0,0,5,0"
+                                HeightRequest="10"
+                                HorizontalOptions="End"
+                                Source="dropdown_menu.png"
+                                VerticalOptions="Center"
+                                WidthRequest="10" />
+                        </Grid>
+                    </Grid>
+
+
+                </HorizontalStackLayout>
+                <BoxView BackgroundColor="Transparent" HeightRequest="0" />
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                    <Label
+                        FontFamily="RobotoExtraBold"
+                        FontSize="15"
+                        Text="Stored in:"
+                        TextColor="#5F5F5F"
+                        VerticalOptions="Center" />
+
+                    <Grid ColumnSpacing="40">
+                        <Border
+                            Background="#FFFFFF"
+                            HeightRequest="29"
+                            HorizontalOptions="StartAndExpand"
+                            Stroke="#18000000"
+                            StrokeShape="RoundRectangle 10,10,10,10"
+                            StrokeThickness="1.2"
+                            VerticalOptions="FillAndExpand"
+                            WidthRequest="100" />
+
+                        <Grid
+                            ColumnDefinitions="*, Auto"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Center">
+
+                            <Picker
+                                x:Name="picker2"
+                                Title="{Binding Category}"
+                                Margin="4,0,0,0"
+                                BackgroundColor="Transparent"
+                                FontFamily="Roboto"
+                                FontSize="10"
+                                HorizontalOptions="Start"
+                                TextColor="#838383"
+                                VerticalOptions="Center">
+                                <Picker.Items>
+                                    <x:String>Pantry</x:String>
+                                    <x:String>Fridge</x:String>
+                                    <x:String>Freezer</x:String>
+                                </Picker.Items>
+                            </Picker>
+
+                            <Image
+                                Grid.Column="0"
+                                Margin="0,0,5,0"
+                                HeightRequest="10"
+                                HorizontalOptions="End"
+                                Source="dropdown_menu.png"
+                                VerticalOptions="Center"
+                                WidthRequest="10" />
+                        </Grid>
+                    </Grid>
+
+                </HorizontalStackLayout>
+
+                <BoxView BackgroundColor="Transparent" HeightRequest="15" />
+                <VerticalStackLayout HorizontalOptions="Center">
+                    <Label
+                        FontFamily="RobotoExtraBold"
+                        FontSize="15"
+                        HorizontalOptions="Center"
+                        Text="Category:"
+                        TextColor="#5F5F5F"
+                        VerticalOptions="Center" />
+
+                    <Grid ColumnSpacing="40">
+                        <Border
+                            Background="#FFFFFF"
+                            HeightRequest="35"
+                            HorizontalOptions="StartAndExpand"
+                            Stroke="#18000000"
+                            StrokeShape="RoundRectangle 10,10,10,10"
+                            StrokeThickness="1.2"
+                            VerticalOptions="FillAndExpand"
+                            WidthRequest="174" />
+
+                        <Grid
+                            ColumnDefinitions="*, Auto"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Center">
+
+                            <Picker
+                                x:Name="picker3"
+                                Title="{Binding Category}"
+                                Margin="4,0,0,0"
+                                BackgroundColor="Transparent"
+                                FontFamily="Roboto"
+                                FontSize="10"
+                                HorizontalOptions="StartAndExpand"
+                                TextColor="#838383"
+                                VerticalOptions="Center">
+                                <Picker.Items>
+                                    <x:String>All Items</x:String>
+                                    <x:String>Produce</x:String>
+                                    <x:String>Meat</x:String>
+                                    <x:String>Dry Food</x:String>
+                                    <x:String>Canned Food</x:String>
+                                    <x:String>Others</x:String>
+                                </Picker.Items>
+                            </Picker>
+
+                            <Image
+                                Grid.Column="0"
+                                Margin="0,0,5,0"
+                                HeightRequest="10"
+                                HorizontalOptions="End"
+                                Source="dropdown_menu.png"
+                                VerticalOptions="Center"
+                                WidthRequest="10" />
+                        </Grid>
+                    </Grid>
+
+
+                </VerticalStackLayout>
+
+                <BoxView BackgroundColor="Transparent" HeightRequest="45" />
+
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="40">
+
+                    <ImageButton
+                        BackgroundColor="Transparent"
+                        HeightRequest="51"
+                        Source="add_to_list_icon.png"
+                        WidthRequest="51" />
+                    <ImageButton
+                        BackgroundColor="Transparent"
+                        HeightRequest="51"
+                        Source="favorite_icon.png"
+                        WidthRequest="51" />
+                </HorizontalStackLayout>
+
+
+
+
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </Grid>
+
+</ContentPage>

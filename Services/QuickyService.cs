@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using Quicky.Models;
+﻿using Quicky.Models;
 using SQLite;
 
 namespace Quicky.Services
@@ -19,37 +13,73 @@ namespace Quicky.Services
             var databasePath = Path.Combine(FileSystem.AppDataDirectory, "MyData.db");
 
             db = new SQLiteAsyncConnection(databasePath);
-
             await db.CreateTableAsync<Inventory>();
         }
 
-        public static async Task AddInventory(int Id, string Name, float Quantity, string Quantity_Type, string Image, string Location, string Category)
+
+        public static async Task AddInventory(int ItemId, string Name, string Image, float Quantity, string Quantity_Type, string Category, string Location)
         {
             await Init();
+            
             var item = new Inventory
             {
-                Id = Id,
+                ItemId = ItemId,
                 Name = Name,
+                Image = Image,
                 Quantity = Quantity,
                 Quantity_Type = Quantity_Type,
-                Image = Image,
-                Location = Location,
-                Category = Category
-            };
+                Category = Category,
+                Location = Location
+                };
             await db.InsertAsync(item);
+            
+           
         }
+
         public static async Task DeleteInventory(int Id)
         {
+            
             await Init();
-
             await db.DeleteAsync<Inventory>(Id);
         }
-        public static async Task<IEnumerable<Inventory>> GetInventory()
+
+        public static async Task<IEnumerable<Inventory>> GetInventory(string Location = "All")
+        {
+
+            await Init();
+            if (Location == "All")
+            {
+                return await db.Table<Inventory>().ToListAsync();
+            }
+            else
+            {
+                return await db.Table<Inventory>().Where(i  => i.Location == Location).ToListAsync();
+            }
+
+        }
+
+        public static async Task UpdateInventory(int Id, float Quantity, string Quantity_Type, string Location)
         {
             await Init();
+            var item = await db.FindAsync<Inventory>(Id);
+            if (item != null)
+            {
+                item.Quantity = Quantity;
+                item.Quantity_Type = Quantity_Type;
+                item.Location = Location;
+                await db.UpdateAsync(item);
+             }
 
-            var item = await db.Table<Inventory>().ToListAsync();
-            return item;
+         }
+
+        public static async Task<Inventory> GetInventoryItem(int Id)
+        {
+            await Init();
+            return await db.FindAsync<Inventory>(Id);
         }
-    }
+            
+    } 
 }
+
+
+
