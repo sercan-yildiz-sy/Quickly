@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Quicky.Pages.NewPage1"
+             x:Class="Quicky.Pages.TryingPage2"
              xmlns:models="clr-namespace:Quicky.Models"
              xmlns:pageModels="clr-namespace:Quicky.PageModels"
              Title="TryingPage2"
-             x:DataType="pageModels:TryingPageModel">
+             x:DataType="pageModels:TryingPage2PageModel">
 
 
     <Grid>
@@ -52,15 +52,8 @@
             </Grid>
 
             <VerticalStackLayout Padding="{StaticResource LayoutPadding}" Spacing="{StaticResource LayoutSpacing}">
-                <Image>
-                    <Image.Source>
-                        <FontImageSource
-                            FontFamily="{x:Static fonts:FluentUI.FontFamily}"
-                            Glyph="{Binding Image}"
-                            Size="228"
-                            Color="{AppThemeBinding Light={StaticResource DarkOnLightBackground},
-                                                    Dark={StaticResource LightOnDarkBackground}}" />
-                    </Image.Source>
+                <Image Source="{Binding InventoryItem.Image}">
+                    
                 </Image>
 
                 <BoxView BackgroundColor="Transparent" HeightRequest="20" />
@@ -69,7 +62,7 @@
                     FontFamily="LibreBaskerville-Regular"
                     FontSize="15"
                     HorizontalOptions="Center"
-                    Text="{Binding }"
+                    Text="{Binding InventoryItem.Name}"
                     TextColor="#000000" />
 
                 <BoxView BackgroundColor="Transparent" HeightRequest="15" />
@@ -119,7 +112,7 @@
 
                             <Picker
                                 x:Name="picker"
-                                Title="{Binding Category}"
+                                Title="{Binding InventoryItem.Quantity_Type}"
                                 Margin="4,0,0,0"
                                 BackgroundColor="Transparent"
                                 FontFamily="Roboto"
@@ -176,7 +169,7 @@
 
                             <Picker
                                 x:Name="picker2"
-                                Title="{Binding Category}"
+                                Title="{Binding InventoryItem.Location}"
                                 Margin="4,0,0,0"
                                 BackgroundColor="Transparent"
                                 FontFamily="Roboto"
@@ -232,7 +225,7 @@
 
                             <Picker
                                 x:Name="picker3"
-                                Title="{Binding Category}"
+                                Title="{Binding InventoryItem.Category}"
                                 Margin="4,0,0,0"
                                 BackgroundColor="Transparent"
                                 FontFamily="Roboto"

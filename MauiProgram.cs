@@ -50,10 +50,11 @@ namespace Quicky
             builder.Services.AddSingleton<MainPageModel>();
             builder.Services.AddSingleton<ProjectListPageModel>();
             builder.Services.AddSingleton<ManageMetaPageModel>();
-            builder.Services.AddSingleton<TryingPageModel>();
 
-            builder.Services.AddTransient<QuickyItemService>();
+            builder.Services.AddTransient<TryingPage>();
             builder.Services.AddTransient<TryingPageModel>();
+            builder.Services.AddTransient<TryingPage2>();
+            builder.Services.AddTransient<TryingPage2PageModel>();
 
             builder.Services.AddTransientWithShellRoute<ProjectDetailPage, ProjectDetailPageModel>("project");
             builder.Services.AddTransientWithShellRoute<TaskDetailPage, TaskDetailPageModel>("task");

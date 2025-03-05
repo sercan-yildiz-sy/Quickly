@@ -24,7 +24,8 @@ namespace Quicky.PageModels
         [ObservableProperty]
         bool _isBusy;
 
-
+        [ObservableProperty]
+        Inventory _selectedInventoryItem;
 
         [ObservableProperty]
         bool _isInventoryVisible = false;
@@ -161,14 +162,25 @@ namespace Quicky.PageModels
         }
 
         [RelayCommand]
-        private async Task GoToDetails(Inventory selectedItem)
+        private async Task GoToDetails(Inventory selectedItem) // Accept Inventory directly
         {
             if (selectedItem != null)
             {
                 await Shell.Current.GoToAsync(nameof(TryingPage2), new Dictionary<string, object>
+                {
+                    { "SelectedItem", selectedItem }
+                });
+            }
+        }
+        [RelayCommand]
+        public async Task SelectionChangedCommand(Inventory selectedItem)
+        {
+            if (selectedItem != null)
             {
-                { "SelectedItem", selectedItem }
-            });
+                await Shell.Current.GoToAsync(nameof(TryingPage2), new Dictionary<string, object>
+                {
+                    { "SelectedItem", selectedItem }
+                });
             }
         }
     }
