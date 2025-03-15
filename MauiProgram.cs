@@ -56,6 +56,8 @@ namespace Quicky
             builder.Services.AddTransient<TryingPage2>();
             builder.Services.AddTransient<TryingPage2PageModel>();
 
+
+
             builder.Services.AddTransientWithShellRoute<ProjectDetailPage, ProjectDetailPageModel>("project");
             builder.Services.AddTransientWithShellRoute<TaskDetailPage, TaskDetailPageModel>("task");
 

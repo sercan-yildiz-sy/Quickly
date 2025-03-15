@@ -162,26 +162,16 @@ namespace Quicky.PageModels
         }
 
         [RelayCommand]
-        private async Task GoToDetails(Inventory selectedItem) // Accept Inventory directly
+        async Task GoToDetailsAsync(Inventory inventory)
         {
-            if (selectedItem != null)
-            {
-                await Shell.Current.GoToAsync(nameof(TryingPage2), new Dictionary<string, object>
+            if (inventory == null) 
+                return;
+
+            await Shell.Current.GoToAsync($"{nameof(TryingPage2)}", true, new Dictionary<string, object>
                 {
-                    { "SelectedItem", selectedItem }
+                    { "Inventory", inventory }
                 });
-            }
         }
-        [RelayCommand]
-        public async Task SelectionChangedCommand(Inventory selectedItem)
-        {
-            if (selectedItem != null)
-            {
-                await Shell.Current.GoToAsync(nameof(TryingPage2), new Dictionary<string, object>
-                {
-                    { "SelectedItem", selectedItem }
-                });
-            }
-        }
+
     }
 }

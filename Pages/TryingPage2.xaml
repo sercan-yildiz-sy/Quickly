@@ -52,7 +52,7 @@
             </Grid>
 
             <VerticalStackLayout Padding="{StaticResource LayoutPadding}" Spacing="{StaticResource LayoutSpacing}">
-                <Image Source="{Binding InventoryItem.Image}">
+                <Image Source="{Binding inventory.Image}">
                     
                 </Image>
 
@@ -62,7 +62,7 @@
                     FontFamily="LibreBaskerville-Regular"
                     FontSize="15"
                     HorizontalOptions="Center"
-                    Text="{Binding InventoryItem.Name}"
+                    Text="{Binding inventory.Name}"
                     TextColor="#000000" />
 
                 <BoxView BackgroundColor="Transparent" HeightRequest="15" />
@@ -89,7 +89,7 @@
                             FontFamily="Roboto"
                             FontSize="10"
                             HorizontalOptions="Center"
-                            Text="number"
+                            Text="{Binding inventory.Quantity}"
                             TextColor="#838383"
                             VerticalOptions="Center" />
                     </Grid>
@@ -112,7 +112,7 @@
 
                             <Picker
                                 x:Name="picker"
-                                Title="{Binding InventoryItem.Quantity_Type}"
+                                Title="{Binding inventory.Quantity_Type}"
                                 Margin="4,0,0,0"
                                 BackgroundColor="Transparent"
                                 FontFamily="Roboto"
@@ -169,7 +169,7 @@
 
                             <Picker
                                 x:Name="picker2"
-                                Title="{Binding InventoryItem.Location}"
+                                Title="{Binding inventory.Location}"
                                 Margin="4,0,0,0"
                                 BackgroundColor="Transparent"
                                 FontFamily="Roboto"
@@ -225,7 +225,7 @@
 
                             <Picker
                                 x:Name="picker3"
-                                Title="{Binding InventoryItem.Category}"
+                                Title="{Binding inventory.Category}"
                                 Margin="4,0,0,0"
                                 BackgroundColor="Transparent"
                                 FontFamily="Roboto"
