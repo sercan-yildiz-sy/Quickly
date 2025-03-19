@@ -5,11 +5,13 @@ namespace Quicky.Pages;
 
 public partial class TryingPage2 : ContentPage
 {
-    private readonly TryingPage2PageModel _model;
-    public TryingPage2(TryingPage2PageModel model)
+    private readonly TryingPage2PageModel _viewModel;
+
+    public TryingPage2(TryingPage2PageModel viewModel)
     {
         InitializeComponent();
-        BindingContext = _model = model;
+        _viewModel = viewModel;
+        BindingContext = _viewModel;  
     }
 
     protected override void OnNavigatedTo(NavigatedToEventArgs args)

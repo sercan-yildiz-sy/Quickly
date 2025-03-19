@@ -22,6 +22,9 @@ namespace Quicky.PageModels
         ObservableCollection<Item> _items = new();
 
         [ObservableProperty]
+        bool _isRefreshing;
+
+        [ObservableProperty]
         bool _isBusy;
 
         [ObservableProperty]
@@ -167,10 +170,7 @@ namespace Quicky.PageModels
             if (inventory == null) 
                 return;
 
-            await Shell.Current.GoToAsync($"{nameof(TryingPage2)}", true, new Dictionary<string, object>
-                {
-                    { "Inventory", inventory }
-                });
+            Shell.Current.GoToAsync($"TryingPage2?id={inventory.Id}");
         }
 
     }

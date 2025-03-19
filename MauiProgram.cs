@@ -15,7 +15,7 @@ namespace Quicky
                 .ConfigureSyncfusionToolkit()
                 .ConfigureMauiHandlers(handlers =>
                 {
-                    Microsoft.Maui.Handlers.PickerHandler.Mapper.AppendToMapping(nameof(Entry), (handler, view) =>
+                    Microsoft.Maui.Handlers.PickerHandler.Mapper.AppendToMapping(nameof(Picker), (handler, view) =>
                     {
 #if ANDROID
                         handler.PlatformView.BackgroundTintList =
@@ -51,10 +51,13 @@ namespace Quicky
             builder.Services.AddSingleton<ProjectListPageModel>();
             builder.Services.AddSingleton<ManageMetaPageModel>();
 
+            //builder.Services.AddSingleton<TryingPage2PageModel>();
+            //builder.Services.AddTransient<TryingPage2>();
+
             builder.Services.AddTransient<TryingPage>();
             builder.Services.AddTransient<TryingPageModel>();
-            builder.Services.AddTransient<TryingPage2>();
-            builder.Services.AddTransient<TryingPage2PageModel>();
+
+            builder.Services.AddTransientWithShellRoute<TryingPage2, TryingPage2PageModel>("TryingPage2");
 
 
 

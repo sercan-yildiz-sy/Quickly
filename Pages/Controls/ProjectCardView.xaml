@@ -8,12 +8,12 @@
     xmlns:models="clr-namespace:Quicky.Models"
     xmlns:pageModels="clr-namespace:Quicky.PageModels"
     xmlns:shimmer="clr-namespace:Syncfusion.Maui.Toolkit.Shimmer;assembly=Syncfusion.Maui.Toolkit"
-    x:DataType="models:Project"
+    x:DataType="models:Inventory"
     Background="Transparent"
     Style="{StaticResource CardStyle}">
     <shimmer:SfShimmer
         BackgroundColor="Transparent"
-        IsActive="{Binding IsBusy, Source={RelativeSource AncestorType={x:Type pageModels:MainPageModel}}, x:DataType=pageModels:IProjectTaskPageModel}"
+        IsActive="{Binding IsBusy, Source={RelativeSource AncestorType={x:Type pageModels:TryingPageModel}}, x:DataType=pageModels:TryingPageModel}"
         VerticalOptions="FillAndExpand">
         <shimmer:SfShimmer.CustomView>
             <VerticalStackLayout Spacing="15">
@@ -38,16 +38,8 @@
                     Grid.Column="0"
                     Aspect="Center"
                     HorizontalOptions="Start"
-                    VerticalOptions="Center">
-                    <Image.Source>
-                        <FontImageSource
-                            FontFamily="{x:Static fonts:FluentUI.FontFamily}"
-                            Glyph="{Binding Icon}"
-                            Size="{StaticResource IconSize}"
-                            Color="{AppThemeBinding Light={StaticResource DarkOnLightBackground},
-                                                    Dark={StaticResource LightOnDarkBackground}}" />
-                    </Image.Source>
-                </Image>
+                    VerticalOptions="Center"
+                    Source="{Binding Image}"/>
                 <Grid
                     Grid.Column="1"
                     ColumnDefinitions="*, *"
@@ -92,7 +84,7 @@
                                 FontFamily="Roboto"
                                 FontSize="8"
                                 HorizontalOptions="Center"
-                                Text="{Binding ID}"
+                                Text="{Binding Quantity}"
                                 TextColor="#838383"
                                 VerticalOptions="Center" />
                         </Grid>
@@ -111,7 +103,7 @@
                                 FontFamily="Roboto"
                                 FontSize="8"
                                 HorizontalOptions="Center"
-                                Text="{Binding Name}"
+                                Text="{Binding Quantity_Type}"
                                 TextColor="#838383"
                                 VerticalOptions="Center" />
                         </Grid>

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Quicky.Pages.TryingPage2"
-             xmlns:models="clr-namespace:Quicky.Models"
-             xmlns:pageModels="clr-namespace:Quicky.PageModels"
-             Title="TryingPage2"
-             x:DataType="pageModels:TryingPage2PageModel">
+<ContentPage
+    x:Class="Quicky.Pages.TryingPage2"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:Quicky.Models"
+    xmlns:pageModels="clr-namespace:Quicky.PageModels"
+    Title="TryingPage2"
+    x:DataType="pageModels:TryingPage2PageModel">
 
 
     <Grid>
-
 
         <VerticalStackLayout Padding="{StaticResource LayoutPadding}" Spacing="{StaticResource LayoutSpacing}">
             <BoxView BackgroundColor="Transparent" HeightRequest="15" />
@@ -52,9 +52,7 @@
             </Grid>
 
             <VerticalStackLayout Padding="{StaticResource LayoutPadding}" Spacing="{StaticResource LayoutSpacing}">
-                <Image Source="{Binding inventory.Image}">
-                    
-                </Image>
+                <Image Source="{Binding Inventory.Image}" />
 
                 <BoxView BackgroundColor="Transparent" HeightRequest="20" />
 
@@ -62,7 +60,7 @@
                     FontFamily="LibreBaskerville-Regular"
                     FontSize="15"
                     HorizontalOptions="Center"
-                    Text="{Binding inventory.Name}"
+                    Text="{Binding Inventory.Name}"
                     TextColor="#000000" />
 
                 <BoxView BackgroundColor="Transparent" HeightRequest="15" />
@@ -89,7 +87,7 @@
                             FontFamily="Roboto"
                             FontSize="10"
                             HorizontalOptions="Center"
-                            Text="{Binding inventory.Quantity}"
+                            Text="{Binding Inventory.Quantity}"
                             TextColor="#838383"
                             VerticalOptions="Center" />
                     </Grid>
@@ -112,7 +110,7 @@
 
                             <Picker
                                 x:Name="picker"
-                                Title="{Binding inventory.Quantity_Type}"
+                                Title="{Binding Inventory.Quantity_Type}"
                                 Margin="4,0,0,0"
                                 BackgroundColor="Transparent"
                                 FontFamily="Roboto"
@@ -169,7 +167,7 @@
 
                             <Picker
                                 x:Name="picker2"
-                                Title="{Binding inventory.Location}"
+                                Title="{Binding Inventory.Location}"
                                 Margin="4,0,0,0"
                                 BackgroundColor="Transparent"
                                 FontFamily="Roboto"
@@ -225,7 +223,7 @@
 
                             <Picker
                                 x:Name="picker3"
-                                Title="{Binding inventory.Category}"
+                                Title="{Binding Inventory.Category}"
                                 Margin="4,0,0,0"
                                 BackgroundColor="Transparent"
                                 FontFamily="Roboto"

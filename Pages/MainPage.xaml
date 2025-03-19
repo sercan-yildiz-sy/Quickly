@@ -8,22 +8,11 @@
     xmlns:pageModels="clr-namespace:Quicky.PageModels"
     xmlns:pullToRefresh="clr-namespace:Syncfusion.Maui.Toolkit.PullToRefresh;assembly=Syncfusion.Maui.Toolkit"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    x:DataType="pageModels:MainPageModel"
+    x:DataType="pageModels:TryingPageModel"
     BackgroundColor="#F3F3F3"
     Shell.NavBarIsVisible="False"
     Shell.TabBarIsVisible="True">
 
-
-
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Command="{Binding ToolbarItemCommand}" />
-    </ContentPage.ToolbarItems>
-
-    <ContentPage.Behaviors>
-        <toolkit:EventToCommandBehavior Command="{Binding NavigatedToCommand}" EventName="NavigatedTo" />
-        <toolkit:EventToCommandBehavior Command="{Binding NavigatedFromCommand}" EventName="NavigatedFrom" />
-        <toolkit:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
-    </ContentPage.Behaviors>
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -123,7 +112,7 @@
                     <Button Clicked="GoToTryingPage_Clicked" Text="Go to Trying Page" />
 
 
-                    <CollectionView HorizontalScrollBarVisibility="Never" ItemsSource="{Binding Projects}">
+                    <CollectionView HorizontalScrollBarVisibility="Never" ItemsSource="{Binding Inventory}">
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout
                                 HorizontalItemSpacing="15"
@@ -131,10 +120,10 @@
                                 Span="3" />
                         </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="models:Project">
+                            <DataTemplate x:DataType="models:Inventory">
                                 <controls:ProjectCardView HeightRequest="100" WidthRequest="160">
                                     <controls:ProjectCardView.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding NavigateToProjectCommand, Source={RelativeSource AncestorType={x:Type pageModels:MainPageModel}}, x:DataType=pageModels:MainPageModel}" CommandParameter="{Binding .}" />
+                                        <TapGestureRecognizer Command="{Binding GoToDetailsCommand, Source={RelativeSource AncestorType={x:Type pageModels:TryingPageModel}}, x:DataType=pageModels:TryingPageModel}" CommandParameter="{Binding .}" />
                                     </controls:ProjectCardView.GestureRecognizers>
                                 </controls:ProjectCardView>
                             </DataTemplate>

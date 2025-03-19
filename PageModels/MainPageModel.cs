@@ -130,7 +130,6 @@ namespace Quicky.PageModels
                 _dataLoaded = true;
                 await Refresh();
             }
-            // This means we are being navigated to
             else if (!_isNavigatedTo)
             {
                 await Refresh();
