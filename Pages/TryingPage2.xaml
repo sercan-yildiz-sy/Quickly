@@ -6,7 +6,9 @@
     xmlns:models="clr-namespace:Quicky.Models"
     xmlns:pageModels="clr-namespace:Quicky.PageModels"
     Title="TryingPage2"
-    x:DataType="pageModels:TryingPage2PageModel">
+    x:DataType="pageModels:TryingPage2PageModel"
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarIsVisible="True">
 
 
     <Grid>
@@ -52,7 +54,13 @@
             </Grid>
 
             <VerticalStackLayout Padding="{StaticResource LayoutPadding}" Spacing="{StaticResource LayoutSpacing}">
-                <Image Source="{Binding Inventory.Image}" />
+
+                <Image
+                    HeightRequest="230"
+                    HorizontalOptions="Fill"
+                    Source="{Binding Inventory.Image}"
+                    VerticalOptions="Fill"
+                    WidthRequest="230" />
 
                 <BoxView BackgroundColor="Transparent" HeightRequest="20" />
 

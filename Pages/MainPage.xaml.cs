@@ -13,10 +13,6 @@ namespace Quicky.Pages
             InitializeComponent();
             BindingContext = _model = model;
         }
-        private async void GoToTryingPage_Clicked(object sender, EventArgs e)
-        {
-            await Shell.Current.GoToAsync(($"//TryingPage"));
-        }
         protected override async void OnAppearing()
         {
             base.OnAppearing();

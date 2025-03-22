@@ -14,11 +14,7 @@
     Shell.TabBarIsVisible="True">
 
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
+    
 
     <Grid>
 
@@ -108,9 +104,6 @@
                                 WidthRequest="20" />
                         </Grid>
                     </Grid>
-
-                    <Button Clicked="GoToTryingPage_Clicked" Text="Go to Trying Page" />
-
 
                     <CollectionView HorizontalScrollBarVisibility="Never" ItemsSource="{Binding Inventory}">
                         <CollectionView.ItemsLayout>

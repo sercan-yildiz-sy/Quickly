@@ -36,10 +36,12 @@
             <Grid ColumnDefinitions="Auto,*">
                 <Image
                     Grid.Column="0"
-                    Aspect="Center"
+                    Aspect="AspectFit"
+                    HeightRequest="70"
                     HorizontalOptions="Start"
+                    Source="{Binding Image}"
                     VerticalOptions="Center"
-                    Source="{Binding Image}"/>
+                    WidthRequest="64" />
                 <Grid
                     Grid.Column="1"
                     ColumnDefinitions="*, *"

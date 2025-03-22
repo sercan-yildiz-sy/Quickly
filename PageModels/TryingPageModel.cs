@@ -137,7 +137,8 @@ namespace Quicky.PageModels
         public async Task Refresh()
         {
             IsBusy = true;
-            await Task.Delay(2000);
+            IsRefreshing = true;
+            await Task.Delay(200);
             Inventory.Clear();
             var items = await QuickyService.GetInventory();
 
@@ -146,18 +147,14 @@ namespace Quicky.PageModels
                 Inventory.Add(item);
             }
             IsBusy = false;
+            IsRefreshing = false;
 
         }
 
 
         [RelayCommand]
-        async Task GoToDetailsAsync(Inventory inventory)
-        {
-            if (inventory == null) 
-                return;
-
-            Shell.Current.GoToAsync($"TryingPage2?id={inventory.Id}");
-        }
+        private Task GoToDetailsAsync(Inventory inventory)
+            => Shell.Current.GoToAsync($"TryingPage2?id={inventory.Id}");
 
     }
 }
