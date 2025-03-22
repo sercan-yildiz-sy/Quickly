@@ -145,24 +145,10 @@ namespace Quicky.PageModels
             {
                 Inventory.Add(item);
             }
+            IsBusy = false;
 
         }
 
-        [RelayCommand]
-        async Task ShowInventory()
-        {
-            IsInventoryVisible = true;
-            IsItemsVisible = false;
-            await Refresh(); // Load inventory from SQL
-        }
-
-        [RelayCommand]
-        async Task ShowItems()
-        {
-            IsItemsVisible = true;
-            IsInventoryVisible = false;
-            await GetItemAsync(); // Load items from JSON
-        }
 
         [RelayCommand]
         async Task GoToDetailsAsync(Inventory inventory)
