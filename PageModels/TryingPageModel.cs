@@ -16,10 +16,9 @@ namespace Quicky.PageModels
 {
     public partial class TryingPageModel : ObservableObject, IBaseClass
     {
-        public ObservableCollection<Inventory> Inventory { get; set; }
+        public ObservableCollection<Inventory> Inventory { get; set; } = new();
 
-        [ObservableProperty]
-        ObservableCollection<Item> _items = new();
+        public ObservableCollection<Item> Items { get; set; } = new();
 
         [ObservableProperty]
         bool _isRefreshing;
@@ -30,16 +29,8 @@ namespace Quicky.PageModels
         [ObservableProperty]
         Inventory _selectedInventoryItem;
 
-        [ObservableProperty]
-        bool _isInventoryVisible = false;
-
-        [ObservableProperty]
-        bool _isItemsVisible = false;
         public TryingPageModel()
         {
-            Inventory = new ObservableCollection<Inventory>();
-            Items = new ObservableCollection<Item>();
-            
         }
 
 
@@ -54,7 +45,7 @@ namespace Quicky.PageModels
             try
             {
                 IsBusy = true;
-                var fetchedItems = await QuickyItemService.GetItems();
+                var fetchedItems = await QuickyItemService.GetItems().ConfigureAwait(false);
                 Items.Clear(); 
                 foreach (var item in fetchedItems)
                 {
@@ -78,7 +69,7 @@ namespace Quicky.PageModels
         [RelayCommand]
         async Task AddItem()
         {
-            var items = await QuickyItemService.GetItems();
+            var items = await QuickyItemService.GetItems().ConfigureAwait(false);
             var name = await App.Current.MainPage.DisplayPromptAsync("Name", "Name of the Item");
 
             var selectedItem = items.FirstOrDefault(item => item.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
@@ -102,8 +93,8 @@ namespace Quicky.PageModels
             var quantityType = await App.Current.MainPage.DisplayPromptAsync("Quantity Type", "Enter quantity type (e.g., kg, pcs):");
             var location = await App.Current.MainPage.DisplayPromptAsync("Location", "Enter storage location:");
 
-            await QuickyService.AddInventory(id, name, image, quantity, quantityType, location, category);
-            await Refresh();
+            await QuickyService.AddInventory(id, name, image, quantity, quantityType, location, category).ConfigureAwait(false);
+            await Refresh().ConfigureAwait(false);
 
         }
 
@@ -112,8 +103,8 @@ namespace Quicky.PageModels
         [RelayCommand]
         async Task DeleteItem(Inventory Item)
         {
-            await QuickyService.DeleteInventory(Item.Id);
-            await Refresh();
+            await QuickyService.DeleteInventory(Item.Id).ConfigureAwait(false);
+            await Refresh().ConfigureAwait(false);
         }
 
         async Task UpdateItem(Inventory Item) {
@@ -128,8 +119,8 @@ namespace Quicky.PageModels
             var quantityType = await App.Current.MainPage.DisplayPromptAsync("Quantity Type", "Enter quantity type");
             var location = await App.Current.MainPage.DisplayPromptAsync("Location", "Enter storage location:");
 
-            await QuickyService.UpdateInventory(Item.Id, quantity, quantityType, location);
-            await Refresh();
+            await QuickyService.UpdateInventory(Item.Id, quantity, quantityType, location).ConfigureAwait(false);
+            await Refresh().ConfigureAwait(false);
 
         }
 
@@ -138,9 +129,9 @@ namespace Quicky.PageModels
         {
             IsBusy = true;
             IsRefreshing = true;
-            await Task.Delay(200);
+            await Task.Delay(200).ConfigureAwait(false);
             Inventory.Clear();
-            var items = await QuickyService.GetInventory();
+            var items = await QuickyService.GetInventory().ConfigureAwait(false);
 
             foreach (var item in items)
             {
@@ -151,6 +142,12 @@ namespace Quicky.PageModels
 
         }
 
+
+        [RelayCommand]
+        private async Task GoBackAsync()
+        {
+            await Shell.Current.GoToAsync("..");
+        }
 
         [RelayCommand]
         private Task GoToDetailsAsync(Inventory inventory)

@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Quicky.Models;
 using Quicky.Services;
 using System.Threading.Tasks;
@@ -25,6 +26,7 @@ namespace Quicky.PageModels
             }
         }
 
+        [RelayCommand]
         private async Task LoadInventory(int id)
         {
             IsBusy = true;
@@ -40,6 +42,11 @@ namespace Quicky.PageModels
             {
                 IsBusy = false;
             }
+        }
+        [RelayCommand]
+        private async Task GoBackAsync()
+        {
+            await Shell.Current.GoToAsync("..");
         }
     }
 }

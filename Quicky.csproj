@@ -83,6 +83,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\ItemAddingPage.xaml.cs">
+	    <DependentUpon>ItemAddingPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\TryingPage2.xaml.cs">
 	    <DependentUpon>TryingPage2.xaml</DependentUpon>
 	  </Compile>

@@ -18,6 +18,7 @@
 
             <Grid RowDefinitions="Auto, *, Auto">
                 <Button
+                    Command="{Binding GoBackCommand}"
                     Grid.Row="0"
                     Grid.Column="0"
                     BackgroundColor="#F3F3F3"

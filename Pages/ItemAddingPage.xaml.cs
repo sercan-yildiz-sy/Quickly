@@ -6,10 +6,11 @@ namespace Quicky.Pages
 {
     public partial class ProjectListPage : ContentPage
     {
-        public ProjectListPage(ProjectListPageModel model)
+        private readonly ItemAddingPageModel _model;
+        public ProjectListPage(ItemAddingPageModel model)
         {
             InitializeComponent();
-            BindingContext = model;
+            BindingContext = _model = model;
         }
         void OnEntryTextChanged(object sender, TextChangedEventArgs e)
         {
@@ -20,6 +21,12 @@ namespace Quicky.Pages
         void OnEntryCompleted(object sender, EventArgs e)
         {
             string text = ((Entry)sender).Text;
+        }
+        
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            await _model.Refresh();
         }
     }
 }

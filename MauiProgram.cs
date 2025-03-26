@@ -48,7 +48,7 @@ namespace Quicky
             builder.Services.AddSingleton<SeedDataService>();
             builder.Services.AddSingleton<ModalErrorHandler>();
             builder.Services.AddSingleton<MainPageModel>();
-            builder.Services.AddSingleton<ProjectListPageModel>();
+            builder.Services.AddSingleton<ItemAddingPageModel>();
             builder.Services.AddSingleton<ManageMetaPageModel>();
 
             //builder.Services.AddSingleton<TryingPage2PageModel>();
