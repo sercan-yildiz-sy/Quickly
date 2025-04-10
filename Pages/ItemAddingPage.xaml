@@ -19,47 +19,46 @@
             Padding="10"
             HorizontalOptions="Center"
             VerticalOptions="Start">
-            <Border
-                Grid.Row="0"
-                Background="White"
+            <Grid
+                Padding="0,0,10,0"
+                BackgroundColor="White"
+                ColumnDefinitions="*, Auto"
                 HeightRequest="32"
-                Stroke="#18000000"
-                StrokeShape="RoundRectangle 10"
-                StrokeThickness="2"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
                 WidthRequest="180">
-                
-                <Grid>
-                    <Entry
-                        x:Name="entry"
-                        Margin="5,0,0,0"
-                        BackgroundColor="Transparent"
-                        FontFamily="Roboto"
-                        FontSize="10"
-                        Placeholder="Search"
-                        PlaceholderColor="#838383"
-                        TextColor="#838383"
-                        VerticalOptions="Center"
-                        WidthRequest="150" />
-                    <Image
-                        Margin="0,0,10,0"
-                        HeightRequest="50"
-                        HorizontalOptions="End"
-                        Source="search_icon.png"
-                        VerticalOptions="Center"
-                        WidthRequest="50"
-                        ZIndex="1" />
-                </Grid>
-            </Border>
+                <Entry
+                    x:Name="entry"
+                    Margin="5,0,0,0"
+                    BackgroundColor="Transparent"
+                    FontFamily="Roboto"
+                    FontSize="10"
+                    HorizontalOptions="FillAndExpand"
+                    Placeholder="Search"
+                    PlaceholderColor="#838383"
+                    Text="{Binding SearchText, Mode=TwoWay}"
+                    TextColor="#838383"
+                    VerticalOptions="Center" />
+                <Image
+                    HeightRequest="20"
+                    HorizontalOptions="End"
+                    Source="search_icon.png"
+                    VerticalOptions="Center"
+                    WidthRequest="20" />
+            </Grid>
         </StackLayout>
 
 
         <CollectionView
             Grid.Row="1"
             HorizontalOptions="Fill"
-            ItemsSource="{Binding Items}"
+            ItemsSource="{Binding Suggestions}"
             VerticalScrollBarVisibility="Never">
             <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="30" Span="2"/>
+                <GridItemsLayout
+                    Orientation="Vertical"
+                    Span="2"
+                    VerticalItemSpacing="30" />
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Item">
@@ -68,23 +67,22 @@
                             Grid.Column="0"
                             Aspect="AspectFit"
                             HeightRequest="100"
-                            
                             HorizontalOptions="Start"
                             Source="{Binding Image}"
                             VerticalOptions="Center"
                             WidthRequest="100" />
                         <Label
-                                Grid.Column="1"
-                                Grid.ColumnSpan="2"
-                                FontFamily="LibreBaskerville-Regular"
-                                FontSize="12"
-                                HorizontalOptions="Start"
-                                LineBreakMode="WordWrap"
-                                LineHeight="0.8"
-                                MaxLines="2"
-                                Text="{Binding Name}"
-                                TextColor="#000000"
-                                VerticalOptions="Center" />
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            FontFamily="LibreBaskerville-Regular"
+                            FontSize="12"
+                            HorizontalOptions="Start"
+                            LineBreakMode="WordWrap"
+                            LineHeight="0.8"
+                            MaxLines="2"
+                            Text="{Binding Name}"
+                            TextColor="#000000"
+                            VerticalOptions="Center" />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

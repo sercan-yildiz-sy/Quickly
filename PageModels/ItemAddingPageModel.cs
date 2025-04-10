@@ -1,5 +1,7 @@
 #nullable disable
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Quicky.Data;
@@ -11,19 +13,53 @@ namespace Quicky.PageModels
     public partial class ItemAddingPageModel : ObservableObject, IBaseClass
     {
         [ObservableProperty]
-        bool _isBusy;
-
-        public ObservableCollection<Item> Items{ get; set; } = new();
+        private bool _isBusy;
 
         [ObservableProperty]
-        bool _isRefreshing;
+        private string _searchText;
+
+        [ObservableProperty]
+        private ObservableCollection<Item> _suggestions;
+
+        public ObservableCollection<Item> Items { get; set; } = new();
+
+        [ObservableProperty]
+        private bool _isRefreshing;
 
         public ItemAddingPageModel()
         {
+            Suggestions = new ObservableCollection<Item>();
+        }
+
+        partial void OnSearchTextChanged(string value)
+        {
+            SearchItemsCommand.Execute(null);
         }
 
         [RelayCommand]
-        public async Task AdditemAsync()
+        private async Task SearchItemsAsync()
+        {
+            if (SearchText?.Length >= 3)
+            {
+                var items = await QuickyItemService.GetItems().ConfigureAwait(false);
+                var filteredItems = items.Where(i => i.Name.Contains(SearchText, StringComparison.OrdinalIgnoreCase)).ToList();
+                Suggestions = new ObservableCollection<Item>(filteredItems);
+            }
+            else
+            {
+                Suggestions.Clear();
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        [RelayCommand]
+        public async Task AddItemAsync()
         {
             if (IsBusy)
             {
@@ -44,8 +80,7 @@ namespace Quicky.PageModels
             }
         }
 
-
-        public async Task Refresh()
+        public async Task RefreshAsync()
         {
             IsBusy = true;
             IsRefreshing = true;
@@ -59,14 +94,8 @@ namespace Quicky.PageModels
             }
             IsBusy = false;
             IsRefreshing = false;
-
         }
-        
 
-        
-        
-
-        
         [RelayCommand]
         public async Task AddInventoryAsync()
         {
