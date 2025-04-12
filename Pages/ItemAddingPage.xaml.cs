@@ -26,7 +26,7 @@ namespace Quicky.Pages
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            await _model.Refresh();
+            await _model.RefreshAsync();
         }
     }
 }
