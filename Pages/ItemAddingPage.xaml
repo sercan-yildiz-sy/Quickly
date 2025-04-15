@@ -19,7 +19,12 @@
             Padding="10"
             HorizontalOptions="Center"
             VerticalOptions="Start">
-            <Grid
+            <Border
+                WidthRequest="180"
+                HeightRequest="32"
+                Stroke="#00000012"
+                StrokeThickness="3">
+                <Grid
                 Padding="0,0,10,0"
                 BackgroundColor="White"
                 ColumnDefinitions="*, Auto"
@@ -28,24 +33,27 @@
                 VerticalOptions="Center"
                 WidthRequest="180">
                 <Entry
-                    x:Name="entry"
+                    x:Name="Entry"
                     Margin="5,0,0,0"
                     BackgroundColor="Transparent"
                     FontFamily="Roboto"
                     FontSize="10"
-                    HorizontalOptions="FillAndExpand"
                     Placeholder="Search"
                     PlaceholderColor="#838383"
                     Text="{Binding SearchText, Mode=TwoWay}"
                     TextColor="#838383"
-                    VerticalOptions="Center" />
+                    VerticalOptions="Center"
+                    WidthRequest="150" 
+                    />
+
                 <Image
-                    HeightRequest="20"
+                    HeightRequest="13"
                     HorizontalOptions="End"
                     Source="search_icon.png"
                     VerticalOptions="Center"
-                    WidthRequest="20" />
+                    WidthRequest="13" />
             </Grid>
+            </Border>
         </StackLayout>
 
 
@@ -53,7 +61,8 @@
             Grid.Row="1"
             HorizontalOptions="Fill"
             ItemsSource="{Binding Suggestions}"
-            VerticalScrollBarVisibility="Never">
+            VerticalScrollBarVisibility="Never"
+            Margin="20,0,20,0">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout
                     Orientation="Vertical"
@@ -62,14 +71,14 @@
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Item">
-                    <Grid ColumnDefinitions="Auto,*">
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="20">
                         <Image
                             Grid.Column="0"
                             Aspect="AspectFit"
                             HeightRequest="100"
-                            HorizontalOptions="Start"
+                            HorizontalOptions="Center"
                             Source="{Binding Image}"
-                            VerticalOptions="Center"
+                            VerticalOptions="End"
                             WidthRequest="100" />
                         <Label
                             Grid.Column="1"

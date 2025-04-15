@@ -16,7 +16,7 @@ namespace Quicky.Pages
         {
             string oldText = e.OldTextValue;
             string newText = e.NewTextValue;
-            string myText = entry.Text;
+            string myText = Entry.Text;
         }
         void OnEntryCompleted(object sender, EventArgs e)
         {

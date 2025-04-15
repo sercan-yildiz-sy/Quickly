@@ -22,6 +22,13 @@ namespace Quicky
             Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
 #endif
                     });
+                    Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(Entry), (handler, view) =>
+                    {
+#if ANDROID
+                        handler.PlatformView.BackgroundTintList =
+            Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
+#endif
+                    });
                 })
                 .ConfigureFonts(fonts =>
                 {
