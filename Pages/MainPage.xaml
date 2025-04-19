@@ -14,7 +14,7 @@
     Shell.TabBarIsVisible="True">
 
 
-    
+
 
     <Grid>
 
@@ -25,10 +25,10 @@
 
                     <Grid RowDefinitions="Auto, *, Auto">
                         <Button
-                            Command="{Binding GoBackCommand}"
                             Grid.Row="0"
                             Grid.Column="0"
                             BackgroundColor="#F3F3F3"
+                            Command="{Binding GoBackCommand}"
                             HorizontalOptions="Start"
                             ImageSource="back_icon.png"
                             IsEnabled="True"
@@ -59,6 +59,45 @@
                             BackgroundColor="Transparent"
                             HeightRequest="20" />
                     </Grid>
+                    <Label
+                        FontFamily="LibreBaskerville-Regular"
+                        FontSize="15"
+                        HorizontalOptions="Center"
+                        Text="Category"
+                        TextColor="#000000" />
+                    <HorizontalStackLayout
+                        Padding="25"
+                        HorizontalOptions="Center"
+                        Spacing="55">
+                        <ImageButton BackgroundColor="Transparent" Source="pantry_icon.png" />
+                        <ImageButton BackgroundColor="Transparent" Source="fridge_icon.png" />
+                        <ImageButton BackgroundColor="Transparent" Source="freezer_icon.png" />
+
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout
+                        Margin="-20"
+                        HorizontalOptions="Center"
+                        Spacing="65">
+                        <Label
+                            FontFamily="RobotoExtraBold"
+                            FontSize="15"
+                            Text="Pantry"
+                            TextColor="#5F5F5F" />
+                        <Label
+                            FontFamily="RobotoExtraBold"
+                            FontSize="15"
+                            Text="Fridge"
+                            TextColor="#5F5F5F" />
+                        <Label
+                            FontFamily="RobotoExtraBold"
+                            FontSize="15"
+                            Text="Freezer"
+                            TextColor="#5F5F5F" />
+
+                    </HorizontalStackLayout>
+                    <BoxView BackgroundColor="Transparent" HeightRequest="50" />
+
                     <Grid>
                         <Border
                             Background="#FFFFFF"
@@ -111,11 +150,11 @@
                             <GridItemsLayout
                                 HorizontalItemSpacing="15"
                                 Orientation="Horizontal"
-                                Span="3" />
+                                Span="4" />
                         </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="models:Inventory">
-                                <controls:ProjectCardView HeightRequest="100" WidthRequest="160">
+                                <controls:ProjectCardView HeightRequest="100" WidthRequest="165">
                                     <controls:ProjectCardView.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding GoToDetailsCommand, Source={RelativeSource AncestorType={x:Type pageModels:TryingPageModel}}, x:DataType=pageModels:TryingPageModel}" CommandParameter="{Binding .}" />
                                     </controls:ProjectCardView.GestureRecognizers>
@@ -129,44 +168,7 @@
                         BackgroundColor="Transparent"
                         HeightRequest="10" />
 
-                    <Label
-                        FontFamily="LibreBaskerville-Regular"
-                        FontSize="15"
-                        HorizontalOptions="Center"
-                        Text="Category"
-                        TextColor="#000000" />
 
-                    <HorizontalStackLayout
-                        Padding="25"
-                        HorizontalOptions="Center"
-                        Spacing="55">
-                        <ImageButton BackgroundColor="Transparent" Source="pantry_icon.png" />
-                        <ImageButton BackgroundColor="Transparent" Source="fridge_icon.png" />
-                        <ImageButton BackgroundColor="Transparent" Source="freezer_icon.png" />
-
-                    </HorizontalStackLayout>
-
-                    <HorizontalStackLayout
-                        Margin="-20"
-                        HorizontalOptions="Center"
-                        Spacing="65">
-                        <Label
-                            FontFamily="RobotoExtraBold"
-                            FontSize="15"
-                            Text="Pantry"
-                            TextColor="#5F5F5F" />
-                        <Label
-                            FontFamily="RobotoExtraBold"
-                            FontSize="15"
-                            Text="Fridge"
-                            TextColor="#5F5F5F" />
-                        <Label
-                            FontFamily="RobotoExtraBold"
-                            FontSize="15"
-                            Text="Freezer"
-                            TextColor="#5F5F5F" />
-
-                    </HorizontalStackLayout>
 
                 </VerticalStackLayout>
             </pullToRefresh:SfPullToRefresh.PullableContent>

@@ -33,17 +33,28 @@
             </VerticalStackLayout>
         </shimmer:SfShimmer.CustomView>
         <shimmer:SfShimmer.Content>
-            <Grid ColumnDefinitions="Auto,*">
-                <Image
+            <Grid ColumnDefinitions="Auto, Auto ,*">
+                <Border
                     Grid.Column="0"
-                    Aspect="AspectFit"
                     HeightRequest="70"
-                    HorizontalOptions="Start"
-                    Source="{Binding Image}"
-                    VerticalOptions="Center"
-                    WidthRequest="64" />
-                <Grid
+                    StrokeShape="RoundRectangle, 15,15,15,15"
+                    WidthRequest="64">
+                    <Image
+                        Grid.Column="0"
+                        Aspect="AspectFill"
+                        HeightRequest="70"
+                        HorizontalOptions="Fill"
+                        Source="{Binding Image}"
+                        VerticalOptions="Fill"
+                        WidthRequest="64" />
+                </Border>
+                <BoxView
                     Grid.Column="1"
+                    BackgroundColor="Transparent"
+                    WidthRequest="5" />
+
+                <Grid
+                    Grid.Column="2"
                     ColumnDefinitions="*, *"
                     HorizontalOptions="FillAndExpand"
                     RowDefinitions="*, Auto, *">
@@ -75,7 +86,7 @@
                         <Grid>
                             <Border
                                 Background="#FFFFFF"
-                                HeightRequest="15"
+                                HeightRequest="18"
                                 HorizontalOptions="StartAndExpand"
                                 Stroke="#D9D9D9"
                                 StrokeShape="RoundRectangle 8,8,8,8"
@@ -90,7 +101,7 @@
                                 TextColor="#838383"
                                 VerticalOptions="Center" />
                         </Grid>
-
+                        <BoxView BackgroundColor="Transparent" WidthRequest="5" />
                         <Grid>
                             <Border
                                 Background="#FFFFFF"
@@ -100,7 +111,7 @@
                                 StrokeShape="RoundRectangle 8,8,8,8"
                                 StrokeThickness="1.2"
                                 VerticalOptions="FillAndExpand"
-                                WidthRequest="35" />
+                                WidthRequest="25" />
                             <Label
                                 FontFamily="Roboto"
                                 FontSize="8"

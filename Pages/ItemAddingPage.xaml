@@ -14,55 +14,59 @@
 
 
 
-    <Grid RowDefinitions="Auto, Auto">
+    <Grid RowDefinitions="Auto, Auto, Auto">
         <StackLayout
             Padding="10"
             HorizontalOptions="Center"
             VerticalOptions="Start">
             <Border
-                WidthRequest="180"
                 HeightRequest="32"
                 Stroke="#00000012"
-                StrokeThickness="3">
-                <Grid
-                Padding="0,0,10,0"
-                BackgroundColor="White"
-                ColumnDefinitions="*, Auto"
-                HeightRequest="32"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
+                StrokeShape="RoundRectangle, 10,10,10,10"
+                StrokeThickness="3"
                 WidthRequest="180">
-                <Entry
-                    x:Name="Entry"
-                    Margin="5,0,0,0"
-                    BackgroundColor="Transparent"
-                    FontFamily="Roboto"
-                    FontSize="10"
-                    Placeholder="Search"
-                    PlaceholderColor="#838383"
-                    Text="{Binding SearchText, Mode=TwoWay}"
-                    TextColor="#838383"
+                <Grid
+                    Padding="0,0,10,0"
+                    BackgroundColor="White"
+                    ColumnDefinitions="*, Auto"
+                    HeightRequest="32"
+                    HorizontalOptions="Center"
                     VerticalOptions="Center"
-                    WidthRequest="150" 
-                    />
+                    WidthRequest="180">
+                    <Entry
+                        x:Name="Entry"
+                        Margin="5,0,0,0"
+                        BackgroundColor="Transparent"
+                        FontFamily="Roboto"
+                        FontSize="10"
+                        Placeholder="Search"
+                        PlaceholderColor="#838383"
+                        Text="{Binding SearchText, Mode=TwoWay}"
+                        TextColor="#838383"
+                        VerticalOptions="Center"
+                        WidthRequest="150" />
 
-                <Image
-                    HeightRequest="13"
-                    HorizontalOptions="End"
-                    Source="search_icon.png"
-                    VerticalOptions="Center"
-                    WidthRequest="13" />
-            </Grid>
+                    <Image
+                        HeightRequest="13"
+                        HorizontalOptions="End"
+                        Source="search_icon.png"
+                        VerticalOptions="Center"
+                        WidthRequest="13" />
+                </Grid>
             </Border>
         </StackLayout>
 
+        <BoxView
+            Grid.Row="1"
+            BackgroundColor="Transparent"
+            HeightRequest="20" />
 
         <CollectionView
-            Grid.Row="1"
+            Grid.Row="2"
+            Margin="20,0,20,0"
             HorizontalOptions="Fill"
             ItemsSource="{Binding Suggestions}"
-            VerticalScrollBarVisibility="Never"
-            Margin="20,0,20,0">
+            VerticalScrollBarVisibility="Never">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout
                     Orientation="Vertical"
@@ -71,21 +75,30 @@
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Item">
-                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="20">
-                        <Image
-                            Grid.Column="0"
-                            Aspect="AspectFit"
-                            HeightRequest="100"
-                            HorizontalOptions="Center"
-                            Source="{Binding Image}"
-                            VerticalOptions="End"
-                            WidthRequest="100" />
+                    <Grid RowDefinitions="Auto, Auto, *">
+                        <Border
+                            HeightRequest="140"
+                            StrokeShape="RoundRectangle, 15,15,15,15"
+                            WidthRequest="140">
+                            <Image
+                                Grid.Row="0"
+                                Aspect="AspectFill"
+                                HeightRequest="140"
+                                HorizontalOptions="Center"
+                                Source="{Binding Image}"
+                                VerticalOptions="Center"
+                                WidthRequest="140" />
+                        </Border>
+                        <BoxView
+                            Grid.Row="1"
+                            BackgroundColor="Transparent"
+                            HeightRequest="10" />
                         <Label
-                            Grid.Column="1"
-                            Grid.ColumnSpan="2"
+                            Grid.Row="2"
+                            Grid.RowSpan="2"
                             FontFamily="LibreBaskerville-Regular"
                             FontSize="12"
-                            HorizontalOptions="Start"
+                            HorizontalOptions="Center"
                             LineBreakMode="WordWrap"
                             LineHeight="0.8"
                             MaxLines="2"

@@ -97,9 +97,10 @@ namespace Quicky.PageModels
         }
 
         [RelayCommand]
-        public async Task AddInventoryAsync()
+        public async Task AddInventoryAsync(Item item)
         {
-            await Shell.Current.GoToAsync($"TryingPage2");
+            /// create a new inventory item that will be added to the inventory with necessary fields as 0 then push it
+            await Shell.Current.GoToAsync($"TryingPage2?id={item.Id}"); ;
         }
     }
 }
