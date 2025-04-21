@@ -17,7 +17,7 @@ namespace Quicky.Services
         }
 
 
-        public static async Task AddInventory(int ItemId, string Name, string Image, float Quantity, string Quantity_Type, string Category, string Location)
+        public static async Task<Inventory> AddInventory(int ItemId, string Name, string Image, float Quantity, string Quantity_Type, string Category, string Location)
         {
             await Init();
             
@@ -32,8 +32,8 @@ namespace Quicky.Services
                 Location = Location
                 };
             await db.InsertAsync(item);
-            
-           
+
+            return item;
         }
 
         public static async Task DeleteInventory(int Id)

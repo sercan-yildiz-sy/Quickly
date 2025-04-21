@@ -4,10 +4,10 @@ using Quicky.PageModels;
 namespace Quicky.Pages
 
 {
-    public partial class ProjectListPage : ContentPage
+    public partial class ItemAddingPage : ContentPage
     {
         private readonly ItemAddingPageModel _model;
-        public ProjectListPage(ItemAddingPageModel model)
+        public ItemAddingPage(ItemAddingPageModel model)
         {
             InitializeComponent();
             BindingContext = _model = model;

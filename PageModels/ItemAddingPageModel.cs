@@ -99,8 +99,41 @@ namespace Quicky.PageModels
         [RelayCommand]
         public async Task AddInventoryAsync(Item item)
         {
-            /// create a new inventory item that will be added to the inventory with necessary fields as 0 then push it
-            await Shell.Current.GoToAsync($"TryingPage2?id={item.Id}"); ;
+            if (item == null)
+            {
+                await Shell.Current.DisplayAlert("Error!", "Item is null", "OK");
+                return;
+            }
+
+            try
+            {
+                IsBusy = true;
+
+                var inventoryItems = await QuickyService.GetInventory().ConfigureAwait(false);
+                var existingItem = inventoryItems.FirstOrDefault(i => i.Name == item.Name);
+                if (existingItem != null)
+                {
+                    
+                    await GoToDetailsAsync(existingItem).ConfigureAwait(true);
+                }
+                else
+                {
+                    var newInventory = await QuickyService.AddInventory(item.Id, item.Name, item.Image, 0, "kg", item.Category, "All").ConfigureAwait(false);
+                    await GoToDetailsAsync(newInventory).ConfigureAwait(true);
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error: {ex.Message}");
+                await Shell.Current.DisplayAlert("Error!", "Unable to add item", "OK");
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
+        [RelayCommand]
+        private Task GoToDetailsAsync(Inventory inventory)
+            => Shell.Current.GoToAsync($"TryingPage2?id={2}");
     }
 }

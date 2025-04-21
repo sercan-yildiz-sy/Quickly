@@ -33,16 +33,23 @@ namespace Quicky.PageModels
             try
             {
                 Inventory = await QuickyService.GetInventoryItem(id);
+                if (Inventory == null)
+                {
+                    System.Diagnostics.Debug.WriteLine($"No inventory item found with Id: {id}");
+                    await Shell.Current.DisplayAlert("Error!", "Inventory item not found", "OK");
+                }
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"Error loading inventory: {ex.Message}");
+                await Shell.Current.DisplayAlert("Error!", "Failed to load inventory", "OK");
             }
             finally
             {
                 IsBusy = false;
             }
         }
+
         [RelayCommand]
         private async Task GoBackAsync()
         {

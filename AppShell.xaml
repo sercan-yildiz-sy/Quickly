@@ -13,9 +13,10 @@
             Icon="main_page.png"
             Route="main" />
         <ShellContent
-            ContentTemplate="{DataTemplate pages:ProjectListPage}"
+            ContentTemplate="{DataTemplate pages:ItemAddingPage}"
             Icon="add_page.png"
-            Route="projects" />
+            Route="item_adding" />
+        
         <ShellContent
             ContentTemplate="{DataTemplate pages:ManageMetaPage}"
             Icon="profile_page.png"

@@ -87,7 +87,12 @@
                                 HorizontalOptions="Center"
                                 Source="{Binding Image}"
                                 VerticalOptions="Center"
-                                WidthRequest="140" />
+                                WidthRequest="140">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding AddInventoryCommand, Source={RelativeSource AncestorType={x:Type pageModels:ItemAddingPageModel}}, x:DataType=pageModels:ItemAddingPageModel}" CommandParameter="{Binding .}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+
                         </Border>
                         <BoxView
                             Grid.Row="1"
