@@ -12,17 +12,7 @@ namespace Quicky.Pages
             InitializeComponent();
             BindingContext = _model = model;
         }
-        void OnEntryTextChanged(object sender, TextChangedEventArgs e)
-        {
-            string oldText = e.OldTextValue;
-            string newText = e.NewTextValue;
-            string myText = Entry.Text;
-        }
-        void OnEntryCompleted(object sender, EventArgs e)
-        {
-            string text = ((Entry)sender).Text;
-        }
-        
+    
         protected override async void OnAppearing()
         {
             base.OnAppearing();

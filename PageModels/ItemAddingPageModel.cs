@@ -1,6 +1,7 @@
 #nullable disable
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -113,7 +114,6 @@ namespace Quicky.PageModels
                 var existingItem = inventoryItems.FirstOrDefault(i => i.Name == item.Name);
                 if (existingItem != null)
                 {
-                    
                     await GoToDetailsAsync(existingItem).ConfigureAwait(true);
                 }
                 else
@@ -124,7 +124,7 @@ namespace Quicky.PageModels
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Error: {ex.Message}");
+                Debug.WriteLine($"Error: {ex.Message}");
                 await Shell.Current.DisplayAlert("Error!", "Unable to add item", "OK");
             }
             finally
@@ -132,8 +132,9 @@ namespace Quicky.PageModels
                 IsBusy = false;
             }
         }
+
         [RelayCommand]
         private Task GoToDetailsAsync(Inventory inventory)
-            => Shell.Current.GoToAsync($"TryingPage2?id={2}");
+            => Shell.Current.GoToAsync($"TryingPage2?id={inventory.Id}");
     }
 }

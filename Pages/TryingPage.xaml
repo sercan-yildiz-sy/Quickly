@@ -8,7 +8,6 @@
     x:DataType="pageModels:TryingPageModel">
 
     <VerticalStackLayout>
-        <Button Command="{Binding ShowItemsCommand}" Text="Show Items" />
         <CollectionView HorizontalScrollBarVisibility="Never" ItemsSource="{Binding Inventory}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Inventory">

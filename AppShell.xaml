@@ -16,7 +16,7 @@
             ContentTemplate="{DataTemplate pages:ItemAddingPage}"
             Icon="add_page.png"
             Route="item_adding" />
-        
+
         <ShellContent
             ContentTemplate="{DataTemplate pages:ManageMetaPage}"
             Icon="profile_page.png"
