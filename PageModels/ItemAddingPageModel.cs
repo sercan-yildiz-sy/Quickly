@@ -114,17 +114,10 @@ namespace Quicky.PageModels
                 IsBusy = true;
 
                 var inventoryItems = await QuickyService.GetInventory().ConfigureAwait(false);
-                Debug.WriteLine("Inventory Items:");
-                foreach (var inventory in inventoryItems)
-                {
-                    Debug.WriteLine($"Id: {inventory.Id}, Name: {inventory.Name}");
-                }
-                Debug.WriteLine($"Item Name: {item.Name}");
 
                 var existingItem = inventoryItems.FirstOrDefault(i => i.Name == item.Name);
                 if (existingItem != null)
                 {
-                    Debug.WriteLine($"Existing Item Found: Id: {existingItem.Id}, Name: {existingItem.Name}");
                     await MainThread.InvokeOnMainThreadAsync(async () =>
                     {
                         await GoToDetailsAsync(existingItem).ConfigureAwait(false);
