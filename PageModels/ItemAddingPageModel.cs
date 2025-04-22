@@ -102,7 +102,10 @@ namespace Quicky.PageModels
         {
             if (item == null)
             {
-                await Shell.Current.DisplayAlert("Error!", "Item is null", "OK");
+                await MainThread.InvokeOnMainThreadAsync(async () =>
+                {
+                    await Shell.Current.DisplayAlert("Error!", "Item is null", "OK");
+                });
                 return;
             }
 
@@ -111,21 +114,38 @@ namespace Quicky.PageModels
                 IsBusy = true;
 
                 var inventoryItems = await QuickyService.GetInventory().ConfigureAwait(false);
+                Debug.WriteLine("Inventory Items:");
+                foreach (var inventory in inventoryItems)
+                {
+                    Debug.WriteLine($"Id: {inventory.Id}, Name: {inventory.Name}");
+                }
+                Debug.WriteLine($"Item Name: {item.Name}");
+
                 var existingItem = inventoryItems.FirstOrDefault(i => i.Name == item.Name);
                 if (existingItem != null)
                 {
-                    await GoToDetailsAsync(existingItem).ConfigureAwait(true);
+                    Debug.WriteLine($"Existing Item Found: Id: {existingItem.Id}, Name: {existingItem.Name}");
+                    await MainThread.InvokeOnMainThreadAsync(async () =>
+                    {
+                        await GoToDetailsAsync(existingItem).ConfigureAwait(false);
+                    });
                 }
                 else
                 {
                     var newInventory = await QuickyService.AddInventory(item.Id, item.Name, item.Image, 0, "kg", item.Category, "All").ConfigureAwait(false);
-                    await GoToDetailsAsync(newInventory).ConfigureAwait(true);
+                    await MainThread.InvokeOnMainThreadAsync(async () =>
+                    {
+                        await GoToDetailsAsync(newInventory).ConfigureAwait(false);
+                    });
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"Error: {ex.Message}");
-                await Shell.Current.DisplayAlert("Error!", "Unable to add item", "OK");
+                await MainThread.InvokeOnMainThreadAsync(async () =>
+                {
+                    await Shell.Current.DisplayAlert("Error!", "Unable to add item", "OK");
+                });
             }
             finally
             {
@@ -133,8 +153,11 @@ namespace Quicky.PageModels
             }
         }
 
+
+
         [RelayCommand]
         private Task GoToDetailsAsync(Inventory inventory)
-            => Shell.Current.GoToAsync($"TryingPage2?id={inventory.Id}");
+             => Shell.Current.GoToAsync($"TryingPage2?id={inventory.Id}");
+
     }
 }

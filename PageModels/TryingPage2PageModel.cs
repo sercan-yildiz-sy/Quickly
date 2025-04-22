@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using Quicky.Models;
 using Quicky.Services;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace Quicky.PageModels
@@ -35,13 +36,13 @@ namespace Quicky.PageModels
                 Inventory = await QuickyService.GetInventoryItem(id);
                 if (Inventory == null)
                 {
-                    System.Diagnostics.Debug.WriteLine($"No inventory item found with Id: {id}");
+                    Debug.WriteLine($"No inventory item found with Id: {id}");
                     await Shell.Current.DisplayAlert("Error!", "Inventory item not found", "OK");
                 }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Error loading inventory: {ex.Message}");
+                Debug.WriteLine($"Error loading inventory: {ex.Message}");
                 await Shell.Current.DisplayAlert("Error!", "Failed to load inventory", "OK");
             }
             finally
@@ -49,6 +50,7 @@ namespace Quicky.PageModels
                 IsBusy = false;
             }
         }
+
 
         [RelayCommand]
         private async Task GoBackAsync()
