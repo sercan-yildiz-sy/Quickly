@@ -114,6 +114,7 @@ namespace Quicky.PageModels
                 IsBusy = true;
 
                 var inventoryItems = await QuickyService.GetInventory().ConfigureAwait(false);
+                
 
                 var existingItem = inventoryItems.FirstOrDefault(i => i.Name == item.Name);
                 if (existingItem != null)
@@ -145,6 +146,8 @@ namespace Quicky.PageModels
                 IsBusy = false;
             }
         }
+
+
 
 
 

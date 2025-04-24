@@ -14,7 +14,6 @@
     <Grid>
 
         <VerticalStackLayout Padding="{StaticResource LayoutPadding}" Spacing="{StaticResource LayoutSpacing}">
-            <BoxView BackgroundColor="Transparent" HeightRequest="15" />
 
             <Grid RowDefinitions="Auto, *, Auto">
                 <Button
@@ -55,13 +54,18 @@
             </Grid>
 
             <VerticalStackLayout Padding="{StaticResource LayoutPadding}" Spacing="{StaticResource LayoutSpacing}">
-
-                <Image
+                <Border
+                    BackgroundColor="Transparent"
+                    StrokeShape="RoundRectangle 14,14,14,14"
+                    WidthRequest="230"
+                    HeightRequest="230">
+                    <Image
                     HeightRequest="230"
                     HorizontalOptions="Fill"
                     Source="{Binding Inventory.Image}"
                     VerticalOptions="Fill"
                     WidthRequest="230" />
+                </Border>
 
                 <BoxView BackgroundColor="Transparent" HeightRequest="20" />
 
