@@ -51,6 +51,24 @@ namespace Quicky.PageModels
             }
         }
 
+        private async Task UpdateInventory(float quantity, string quantityType, string location)
+        {
+            IsBusy = true;
+            try
+            {
+                await QuickyService.UpdateInventory(InventoryId, quantity, quantityType, location);
+                await Shell.Current.DisplayAlert("Success!", "Inventory updated successfully", "OK");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error updating inventory: {ex.Message}");
+                await Shell.Current.DisplayAlert("Error!", "Failed to update inventory", "OK");
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
 
         [RelayCommand]
         private async Task GoBackAsync()

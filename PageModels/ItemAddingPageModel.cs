@@ -59,27 +59,6 @@ namespace Quicky.PageModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        [RelayCommand]
-        public async Task AddItemAsync()
-        {
-            if (IsBusy)
-            {
-                return;
-            }
-            try
-            {
-                IsBusy = true;
-                await QuickyItemService.GetItems().ConfigureAwait(false);
-            }
-            catch
-            {
-                await Shell.Current.DisplayAlert("Error!", "Unable to get items", "OK");
-            }
-            finally
-            {
-                IsBusy = false;
-            }
-        }
 
         public async Task RefreshAsync()
         {

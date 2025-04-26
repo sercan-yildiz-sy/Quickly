@@ -95,7 +95,8 @@
                             StrokeThickness="1.2"
                             VerticalOptions="FillAndExpand"
                             WidthRequest="55" />
-                        <Label
+                        <Entry
+                            x:Name="Quantity_Entry"
                             BackgroundColor="Transparent"
                             FontFamily="Roboto"
                             FontSize="10"
@@ -122,7 +123,7 @@
                             VerticalOptions="Center">
 
                             <Picker
-                                x:Name="picker"
+                                x:Name="Type_Picker"
                                 Title="{Binding Inventory.Quantity_Type}"
                                 Margin="4,0,0,0"
                                 BackgroundColor="Transparent"
@@ -179,7 +180,7 @@
                             VerticalOptions="Center">
 
                             <Picker
-                                x:Name="picker2"
+                                x:Name="Location_Picker"
                                 Title="{Binding Inventory.Location}"
                                 Margin="4,0,0,0"
                                 BackgroundColor="Transparent"
@@ -235,7 +236,7 @@
                             VerticalOptions="Center">
 
                             <Picker
-                                x:Name="picker3"
+                                x:Name="Category_Picker"
                                 Title="{Binding Inventory.Category}"
                                 Margin="4,0,0,0"
                                 BackgroundColor="Transparent"
