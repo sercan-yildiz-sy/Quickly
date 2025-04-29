@@ -26,6 +26,8 @@ namespace Quicky.PageModels
                 LoadInventory(value);
             }
         }
+        [ObservableProperty]
+        private float _quantity;
 
         [RelayCommand]
         private async Task LoadInventory(int id)
@@ -39,6 +41,10 @@ namespace Quicky.PageModels
                     Debug.WriteLine($"No inventory item found with Id: {id}");
                     await Shell.Current.DisplayAlert("Error!", "Inventory item not found", "OK");
                 }
+                else
+                {
+                    Debug.WriteLine($"Loaded Inventory: Id={Inventory.Id}, Quantity={Inventory.Quantity}");
+                }
             }
             catch (Exception ex)
             {
@@ -51,12 +57,17 @@ namespace Quicky.PageModels
             }
         }
 
-        private async Task UpdateInventory(float quantity, string quantityType, string location)
+
+
+
+        [RelayCommand]
+        private async Task UpdateInventoryAsync()
         {
             IsBusy = true;
             try
             {
-                await QuickyService.UpdateInventory(InventoryId, quantity, quantityType, location);
+                Debug.WriteLine($"Updating Inventory: Id={InventoryId}, Quantity={Inventory.Quantity}");
+                await QuickyService.UpdateInventory(InventoryId, Inventory.Quantity, "kg", "Fridge");
                 await Shell.Current.DisplayAlert("Success!", "Inventory updated successfully", "OK");
             }
             catch (Exception ex)
@@ -69,6 +80,14 @@ namespace Quicky.PageModels
                 IsBusy = false;
             }
         }
+
+
+        partial void OnQuantityChanged(float value)
+        {
+            Debug.WriteLine($"Quantity changed: {value}");
+        }
+
+
 
         [RelayCommand]
         private async Task GoBackAsync()

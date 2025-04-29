@@ -101,7 +101,7 @@
                             FontFamily="Roboto"
                             FontSize="10"
                             HorizontalOptions="Center"
-                            Text="{Binding Inventory.Quantity}"
+                            Text="{Binding Inventory.Quantity, Mode=TwoWay}"
                             TextColor="#838383"
                             VerticalOptions="Center" />
                     </Grid>
@@ -270,6 +270,11 @@
                 </VerticalStackLayout>
 
                 <BoxView BackgroundColor="Transparent" HeightRequest="45" />
+                <Button
+    Text="Save"
+    Command="{Binding UpdateInventoryCommand}"
+    HorizontalOptions="Center"
+    VerticalOptions="End" />
 
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="40">
 

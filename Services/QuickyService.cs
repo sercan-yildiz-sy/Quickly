@@ -1,4 +1,5 @@
-﻿using Quicky.Models;
+﻿using System.Diagnostics;
+using Quicky.Models;
 using SQLite;
 
 namespace Quicky.Services
@@ -67,10 +68,23 @@ namespace Quicky.Services
                 item.Quantity = Quantity;
                 item.Quantity_Type = Quantity_Type;
                 item.Location = Location;
-                await db.UpdateAsync(item);
-             }
+                Debug.WriteLine($"Updating Inventory: Id={Id}, Quantity={Quantity}, Quantity_Type={Quantity_Type}, Location={Location}");
+                try
+                {
+                    await db.UpdateAsync(item);
+                    Debug.WriteLine("Inventory updated successfully.");
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error updating inventory: {ex.Message}");
+                }
+            }
+            else
+            {
+                Debug.WriteLine($"Inventory item with Id={Id} not found.");
+            }
+        }
 
-         }
 
         public static async Task<Inventory> GetInventoryItem(int Id)
         {
