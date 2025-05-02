@@ -14,7 +14,7 @@ namespace Quicky.PageModels
         public bool _isBusy;
 
         [ObservableProperty]
-        public Inventory _inventory;
+        public Inventory _inventory = new Inventory();
 
         private int _inventoryId;
         public int InventoryId
