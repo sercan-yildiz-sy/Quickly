@@ -1,7 +1,7 @@
 using System.Diagnostics;
-using Quicky.Models;
-using Quicky.PageModels;
-namespace Quicky.Pages
+using Quickly.Models;
+using Quickly.PageModels;
+namespace Quickly.Pages
 
 {
     public partial class ItemAddingPage : ContentPage

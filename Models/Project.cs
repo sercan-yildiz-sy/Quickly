@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace Quicky.Models
+namespace Quickly.Models
 {
     public class Project
     {

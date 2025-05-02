@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace Quicky
+namespace Quickly
 {
     [Application]
     public class MainApplication : MauiApplication

@@ -1,7 +1,7 @@
 using System.Windows.Input;
-using Quicky.Models;
+using Quickly.Models;
 
-namespace Quicky.Pages.Controls
+namespace Quickly.Pages.Controls
 {
     public partial class TaskView
     {

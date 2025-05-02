@@ -1,9 +1,9 @@
 ﻿using System.Text.Json;
-using Quicky.Models;
+using Quickly.Models;
 
-namespace Quicky.Services
+namespace Quickly.Services
 {
-    public static class QuickyItemService
+    public static class QuicklyItemService
     {
         public static async Task<List<Item>> GetItems()
         {

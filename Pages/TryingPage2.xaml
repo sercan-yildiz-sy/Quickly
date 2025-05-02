@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="Quicky.Pages.TryingPage2"
+    x:Class="Quickly.Pages.TryingPage2"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:models="clr-namespace:Quicky.Models"
-    xmlns:pageModels="clr-namespace:Quicky.PageModels"
+    xmlns:models="clr-namespace:Quickly.Models"
+    xmlns:pageModels="clr-namespace:Quickly.PageModels"
     Title="TryingPage2"
     x:DataType="pageModels:TryingPage2PageModel"
     Shell.NavBarIsVisible="False"
@@ -17,10 +17,10 @@
 
             <Grid RowDefinitions="Auto, *, Auto">
                 <Button
-                    Command="{Binding GoBackCommand}"
                     Grid.Row="0"
                     Grid.Column="0"
                     BackgroundColor="#F3F3F3"
+                    Command="{Binding GoBackCommand}"
                     HorizontalOptions="Start"
                     ImageSource="back_icon.png"
                     IsEnabled="True"
@@ -42,7 +42,7 @@
                         HorizontalTextAlignment="Center"
                         LineBreakMode="WordWrap"
                         LineHeight="1.01"
-                        Text="Quicky Item Details"
+                        Text="Quickly Item Details"
                         TextColor="#C0372F"
                         WidthRequest="160" />
                 </Grid>
@@ -56,15 +56,15 @@
             <VerticalStackLayout Padding="{StaticResource LayoutPadding}" Spacing="{StaticResource LayoutSpacing}">
                 <Border
                     BackgroundColor="Transparent"
-                    StrokeShape="RoundRectangle 14,14,14,14"
-                    WidthRequest="230"
-                    HeightRequest="230">
-                    <Image
                     HeightRequest="230"
-                    HorizontalOptions="Fill"
-                    Source="{Binding Inventory.Image}"
-                    VerticalOptions="Fill"
-                    WidthRequest="230" />
+                    StrokeShape="RoundRectangle 14,14,14,14"
+                    WidthRequest="230">
+                    <Image
+                        HeightRequest="230"
+                        HorizontalOptions="Fill"
+                        Source="{Binding Inventory.Image}"
+                        VerticalOptions="Fill"
+                        WidthRequest="230" />
                 </Border>
 
                 <BoxView BackgroundColor="Transparent" HeightRequest="20" />
@@ -271,10 +271,10 @@
 
                 <BoxView BackgroundColor="Transparent" HeightRequest="45" />
                 <Button
-    Text="Save"
-    Command="{Binding UpdateInventoryCommand}"
-    HorizontalOptions="Center"
-    VerticalOptions="End" />
+                    Command="{Binding UpdateInventoryCommand}"
+                    HorizontalOptions="Center"
+                    Text="Save"
+                    VerticalOptions="End" />
 
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="40">
 

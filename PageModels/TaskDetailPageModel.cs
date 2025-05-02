@@ -1,10 +1,10 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Quicky.Data;
-using Quicky.Models;
-using Quicky.Services;
+using Quickly.Data;
+using Quickly.Models;
+using Quickly.Services;
 
-namespace Quicky.PageModels
+namespace Quickly.PageModels
 {
     public partial class TaskDetailPageModel : ObservableObject, IQueryAttributable
     {

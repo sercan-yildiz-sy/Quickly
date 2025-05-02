@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics;
-using Quicky.Models;
+using Quickly.Models;
 using SQLite;
 
-namespace Quicky.Services
+namespace Quickly.Services
 {
-    public static class QuickyService
+    public static class QuicklyService
     {
         static SQLiteAsyncConnection db;
         static async Task Init() {

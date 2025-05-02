@@ -5,11 +5,11 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Quicky.Data;
-using Quicky.Models;
-using Quicky.Services;
+using Quickly.Data;
+using Quickly.Models;
+using Quickly.Services;
 
-namespace Quicky.PageModels
+namespace Quickly.PageModels
 {
     public partial class ItemAddingPageModel : ObservableObject, IBaseClass
     {
@@ -42,7 +42,7 @@ namespace Quicky.PageModels
         {
             if (SearchText?.Length >= 3)
             {
-                var items = await QuickyItemService.GetItems().ConfigureAwait(false);
+                var items = await QuicklyItemService.GetItems().ConfigureAwait(false);
                 var filteredItems = items.Where(i => i.Name.Contains(SearchText, StringComparison.OrdinalIgnoreCase)).ToList();
                 Suggestions = new ObservableCollection<Item>(filteredItems);
             }
@@ -66,7 +66,7 @@ namespace Quicky.PageModels
             IsRefreshing = true;
             await Task.Delay(200).ConfigureAwait(false);
             Items.Clear();
-            var items = await QuickyItemService.GetItems().ConfigureAwait(false);
+            var items = await QuicklyItemService.GetItems().ConfigureAwait(false);
 
             foreach (var item in items)
             {
@@ -92,7 +92,7 @@ namespace Quicky.PageModels
             {
                 IsBusy = true;
 
-                var inventoryItems = await QuickyService.GetInventory().ConfigureAwait(false);
+                var inventoryItems = await QuicklyService.GetInventory().ConfigureAwait(false);
                 
 
                 var existingItem = inventoryItems.FirstOrDefault(i => i.Name == item.Name);
@@ -105,7 +105,7 @@ namespace Quicky.PageModels
                 }
                 else
                 {
-                    var newInventory = await QuickyService.AddInventory(item.Id, item.Name, item.Image, 0, "kg", item.Category, "All").ConfigureAwait(false);
+                    var newInventory = await QuicklyService.AddInventory(item.Id, item.Name, item.Image, 0, "kg", item.Category, "All").ConfigureAwait(false);
                     await MainThread.InvokeOnMainThreadAsync(async () =>
                     {
                         await GoToDetailsAsync(newInventory).ConfigureAwait(false);

@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
 using CommunityToolkit.Maui.Core.Extensions;
 
-namespace Quicky.Models
+namespace Quickly.Models
 {
     public class Tag
     {

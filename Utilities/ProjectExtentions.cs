@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
-using Quicky.Models;
+using Quickly.Models;
 
-namespace Quicky.Utilities
+namespace Quickly.Utilities
 {
     /// <summary>
     /// Project Model Extentions

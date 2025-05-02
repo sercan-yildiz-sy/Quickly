@@ -2,7 +2,7 @@
 using CommunityToolkit.Maui.Core;
 using Font = Microsoft.Maui.Font;
 
-namespace Quicky
+namespace Quickly
 {
     public partial class AppShell : Shell
     {

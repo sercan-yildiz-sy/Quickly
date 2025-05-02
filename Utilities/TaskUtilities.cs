@@ -1,6 +1,6 @@
-using Quicky.Services;
+using Quickly.Services;
 
-namespace Quicky.Utilities
+namespace Quickly.Utilities
 {
     /// <summary>
     /// Task Utilities.

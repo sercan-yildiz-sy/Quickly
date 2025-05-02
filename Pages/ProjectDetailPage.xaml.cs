@@ -1,6 +1,6 @@
-using Quicky.Models;
+using Quickly.Models;
 
-namespace Quicky.Pages
+namespace Quickly.Pages
 {
     public partial class ProjectDetailPage : ContentPage
     {

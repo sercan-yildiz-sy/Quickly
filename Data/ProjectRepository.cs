@@ -1,8 +1,8 @@
 using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Logging;
-using Quicky.Models;
+using Quickly.Models;
 
-namespace Quicky.Data
+namespace Quickly.Data
 {
     /// <summary>
     /// Repository class for managing projects in the database.

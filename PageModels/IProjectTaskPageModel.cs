@@ -1,7 +1,7 @@
 using CommunityToolkit.Mvvm.Input;
-using Quicky.Models;
+using Quickly.Models;
 
-namespace Quicky.PageModels
+namespace Quickly.PageModels
 {
     public interface IProjectTaskPageModel
     {

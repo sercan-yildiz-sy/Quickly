@@ -1,9 +1,9 @@
 using System.Diagnostics;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Quicky.Models;
+using Quickly.Models;
 
-namespace Quicky.PageModels
+namespace Quickly.PageModels
 {
     public partial class MainPageModel : ObservableObject, IProjectTaskPageModel
     {

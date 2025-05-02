@@ -1,4 +1,4 @@
-namespace Quicky.Services
+namespace Quickly.Services
 {
     /// <summary>
     /// Modal Error Handler.

@@ -1,8 +1,8 @@
 using Microsoft.Maui.Controls;
-using Quicky.Models;
-using Quicky.PageModels;
+using Quickly.Models;
+using Quickly.PageModels;
 
-namespace Quicky.Pages;
+namespace Quickly.Pages;
 
 public partial class TryingPage : ContentPage
 {

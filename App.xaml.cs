@@ -1,4 +1,4 @@
-﻿namespace Quicky
+﻿namespace Quickly
 {
     public partial class App : Application
     {

@@ -1,4 +1,4 @@
-namespace Quicky.Pages
+namespace Quickly.Pages
 {
     public partial class ManageMetaPage : ContentPage
     {

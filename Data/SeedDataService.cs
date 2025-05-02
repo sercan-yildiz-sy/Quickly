@@ -1,9 +1,9 @@
 using System.Diagnostics;
 using System.Text.Json;
 using Microsoft.Extensions.Logging;
-using Quicky.Models;
+using Quickly.Models;
 
-namespace Quicky.Data
+namespace Quickly.Data
 {
     public class SeedDataService
     {

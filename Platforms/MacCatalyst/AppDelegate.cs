@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace Quicky
+namespace Quickly
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate

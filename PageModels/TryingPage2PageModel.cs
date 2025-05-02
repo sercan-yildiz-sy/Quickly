@@ -1,11 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Quicky.Models;
-using Quicky.Services;
+using Quickly.Models;
+using Quickly.Services;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace Quicky.PageModels
+namespace Quickly.PageModels
 {
     [QueryProperty(nameof(InventoryId), "id")] 
     public partial class TryingPage2PageModel : ObservableObject, IBaseClass
@@ -35,7 +35,7 @@ namespace Quicky.PageModels
             IsBusy = true;
             try
             {
-                Inventory = await QuickyService.GetInventoryItem(id);
+                Inventory = await QuicklyService.GetInventoryItem(id);
                 if (Inventory == null)
                 {
                     Debug.WriteLine($"No inventory item found with Id: {id}");
@@ -67,7 +67,7 @@ namespace Quicky.PageModels
             try
             {
                 Debug.WriteLine($"Updating Inventory: Id={InventoryId}, Quantity={Inventory.Quantity}");
-                await QuickyService.UpdateInventory(InventoryId, Inventory.Quantity, "kg", "Fridge");
+                await QuicklyService.UpdateInventory(InventoryId, Inventory.Quantity, "kg", "Fridge");
                 await Shell.Current.DisplayAlert("Success!", "Inventory updated successfully", "OK");
             }
             catch (Exception ex)

@@ -1,7 +1,7 @@
-using Quicky.Models;
+using Quickly.Models;
 using System.Text.Json;
 
-namespace Quicky.Pages;
+namespace Quickly.Pages;
 
 public partial class TryingPage2 : ContentPage
 {

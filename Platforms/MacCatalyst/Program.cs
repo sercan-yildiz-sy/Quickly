@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace Quicky
+namespace Quickly
 {
     public class Program
     {

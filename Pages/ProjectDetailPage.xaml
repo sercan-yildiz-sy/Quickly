@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="Quicky.Pages.ProjectDetailPage"
+    x:Class="Quickly.Pages.ProjectDetailPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:Quicky.Pages.Controls"
+    xmlns:controls="clr-namespace:Quickly.Pages.Controls"
     xmlns:fonts="clr-namespace:Fonts"
-    xmlns:models="clr-namespace:Quicky.Models"
-    xmlns:pageModels="clr-namespace:Quicky.PageModels"
-    xmlns:pages="clr-namespace:Quicky.Pages"
+    xmlns:models="clr-namespace:Quickly.Models"
+    xmlns:pageModels="clr-namespace:Quickly.PageModels"
+    xmlns:pages="clr-namespace:Quickly.Pages"
     xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.TextInputLayout;assembly=Syncfusion.Maui.Toolkit"
     x:DataType="pageModels:ProjectDetailPageModel"
     BackgroundColor="#F3F3F3"
@@ -106,7 +106,7 @@
                         HorizontalTextAlignment="Center"
                         LineBreakMode="WordWrap"
                         LineHeight="1.01"
-                        Text="Quicky Item Details"
+                        Text="Quickly Item Details"
                         TextColor="#C0372F"
                         WidthRequest="160" />
                 </Grid>

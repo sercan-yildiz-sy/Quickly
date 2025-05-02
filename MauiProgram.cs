@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Syncfusion.Maui.Toolkit.Hosting;
 
-namespace Quicky
+namespace Quickly
 {
     public static class MauiProgram
     {

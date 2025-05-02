@@ -1,6 +1,6 @@
 global using Fonts;
-global using Quicky.Data;
-global using Quicky.PageModels;
-global using Quicky.Pages;
-global using Quicky.Services;
-global using Quicky.Utilities;
+global using Quickly.Data;
+global using Quickly.PageModels;
+global using Quickly.Pages;
+global using Quickly.Services;
+global using Quickly.Utilities;

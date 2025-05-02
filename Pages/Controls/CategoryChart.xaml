@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Border xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-        xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
-        xmlns:controls="clr-namespace:Quicky.Pages.Controls" 
-        xmlns:shimmer="clr-namespace:Syncfusion.Maui.Toolkit.Shimmer;assembly=Syncfusion.Maui.Toolkit"
-        xmlns:pageModels="clr-namespace:Quicky.PageModels"
-        x:Class="Quicky.Pages.Controls.CategoryChart"
-        HeightRequest="{OnIdiom 300, Phone=200}"
-        Margin="0, 12"
-        Style="{StaticResource CardStyle}"
-        x:DataType="pageModels:MainPageModel">
+<Border
+    x:Class="Quickly.Pages.Controls.CategoryChart"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
+    xmlns:controls="clr-namespace:Quickly.Pages.Controls"
+    xmlns:pageModels="clr-namespace:Quickly.PageModels"
+    xmlns:shimmer="clr-namespace:Syncfusion.Maui.Toolkit.Shimmer;assembly=Syncfusion.Maui.Toolkit"
+    Margin="0,12"
+    x:DataType="pageModels:MainPageModel"
+    HeightRequest="{OnIdiom 300,
+                            Phone=200}"
+    Style="{StaticResource CardStyle}">
     <shimmer:SfShimmer
         BackgroundColor="Transparent"
-        VerticalOptions="FillAndExpand"
-        IsActive ="{Binding IsBusy}">
+        IsActive="{Binding IsBusy}"
+        VerticalOptions="FillAndExpand">
         <shimmer:SfShimmer.CustomView>
             <Grid>
-                <BoxView 
+                <BoxView
                     CornerRadius="12"
-                    VerticalOptions="FillAndExpand"
-                    Style="{StaticResource ShimmerCustomViewStyle}"/>
+                    Style="{StaticResource ShimmerCustomViewStyle}"
+                    VerticalOptions="FillAndExpand" />
             </Grid>
         </shimmer:SfShimmer.CustomView>
         <shimmer:SfShimmer.Content>
@@ -27,24 +29,24 @@
                 <chart:SfCircularChart.Legend>
                     <controls:LegendExt Placement="Right">
                         <chart:ChartLegend.LabelStyle>
-                            <chart:ChartLegendLabelStyle 
-                                TextColor="{AppThemeBinding 
-                                Light={StaticResource DarkOnLightBackground},
-                                Dark={StaticResource LightOnDarkBackground}}" 
-                                Margin="5" 
-                                FontSize="18" />
+                            <chart:ChartLegendLabelStyle
+                                Margin="5"
+                                FontSize="18"
+                                TextColor="{AppThemeBinding Light={StaticResource DarkOnLightBackground},
+                                                            Dark={StaticResource LightOnDarkBackground}}" />
                         </chart:ChartLegend.LabelStyle>
                     </controls:LegendExt>
                 </chart:SfCircularChart.Legend>
-                <chart:RadialBarSeries 
+                <chart:RadialBarSeries
+                    CapStyle="BothCurve"
+                    EnableTooltip="True"
                     ItemsSource="{Binding TodoCategoryData}"
                     PaletteBrushes="{Binding TodoCategoryColors}"
-                    XBindingPath="Title"
-                    YBindingPath="Count" 
                     ShowDataLabels="True"
-                    EnableTooltip="True" 
-                    TrackFill="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}"
-                    CapStyle = "BothCurve"/>
+                    TrackFill="{AppThemeBinding Light={StaticResource LightBackground},
+                                                Dark={StaticResource DarkBackground}}"
+                    XBindingPath="Title"
+                    YBindingPath="Count" />
             </chart:SfCircularChart>
         </shimmer:SfShimmer.Content>
     </shimmer:SfShimmer>

@@ -1,5 +1,5 @@
 using System.Text.Json.Serialization;
-using Quicky.Models;
+using Quickly.Models;
 
 [JsonSerializable(typeof(Project))]
 [JsonSerializable(typeof(ProjectTask))]

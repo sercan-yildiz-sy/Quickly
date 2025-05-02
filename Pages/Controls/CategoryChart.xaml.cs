@@ -1,4 +1,4 @@
-namespace Quicky.Pages.Controls
+namespace Quickly.Pages.Controls
 {
     public partial class CategoryChart
     {

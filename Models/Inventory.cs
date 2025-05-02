@@ -1,6 +1,6 @@
 using SQLite;
 
-namespace Quicky.Models;
+namespace Quickly.Models;
 
 public class Inventory
 {

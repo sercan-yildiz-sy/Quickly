@@ -1,6 +1,6 @@
 using Syncfusion.Maui.Toolkit.Charts;
 
-namespace Quicky.Pages.Controls
+namespace Quickly.Pages.Controls
 {
     public class LegendExt : ChartLegend
     {

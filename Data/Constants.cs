@@ -1,4 +1,4 @@
-namespace Quicky.Data
+namespace Quickly.Data
 {
     public static class Constants
     {
