@@ -123,23 +123,19 @@
                             VerticalOptions="Center">
 
                             <Picker
-                                x:Name="Type_Picker"
-                                Title="{Binding Inventory.Quantity_Type}"
+                                x:Name="QuantityType_Picker"
+                                Title="{Binding Inventory.Quantity_Type, Mode=TwoWay}"
                                 Margin="4,0,0,0"
                                 BackgroundColor="Transparent"
                                 FontFamily="Roboto"
                                 FontSize="10"
                                 HorizontalOptions="StartAndExpand"
+                                ItemsSource="{Binding QuantityTypes}"
+                                SelectedItem="{Binding Inventory.Quantity_Type, Mode=TwoWay}"
                                 TextColor="#838383"
-                                VerticalOptions="Center">
-                                <Picker.Items>
-                                    <x:String>Unit</x:String>
-                                    <x:String>kg</x:String>
-                                    <x:String>lb</x:String>
-                                    <x:String>lt</x:String>
-                                    <x:String>oz</x:String>
-                                </Picker.Items>
-                            </Picker>
+                                VerticalOptions="Center" />
+
+
 
                             <Image
                                 Grid.Column="0"
@@ -181,20 +177,16 @@
 
                             <Picker
                                 x:Name="Location_Picker"
-                                Title="{Binding Inventory.Location}"
+                                Title="{Binding Inventory.Location, Mode=TwoWay}"
                                 Margin="4,0,0,0"
                                 BackgroundColor="Transparent"
                                 FontFamily="Roboto"
                                 FontSize="10"
                                 HorizontalOptions="Start"
+                                ItemsSource="{Binding Locations}"
+                                SelectedItem="{Binding Inventory.Location, Mode=TwoWay}"
                                 TextColor="#838383"
-                                VerticalOptions="Center">
-                                <Picker.Items>
-                                    <x:String>Pantry</x:String>
-                                    <x:String>Fridge</x:String>
-                                    <x:String>Freezer</x:String>
-                                </Picker.Items>
-                            </Picker>
+                                VerticalOptions="Center" />
 
                             <Image
                                 Grid.Column="0"
@@ -237,23 +229,16 @@
 
                             <Picker
                                 x:Name="Category_Picker"
-                                Title="{Binding Inventory.Category}"
+                                Title="{Binding Inventory.Category, Mode=TwoWay}"
                                 Margin="4,0,0,0"
                                 BackgroundColor="Transparent"
                                 FontFamily="Roboto"
                                 FontSize="10"
                                 HorizontalOptions="StartAndExpand"
+                                ItemsSource="{Binding Categories}"
+                                SelectedItem="{Binding Inventory.Category, Mode=TwoWay}"
                                 TextColor="#838383"
-                                VerticalOptions="Center">
-                                <Picker.Items>
-                                    <x:String>All Items</x:String>
-                                    <x:String>Produce</x:String>
-                                    <x:String>Meat</x:String>
-                                    <x:String>Dry Food</x:String>
-                                    <x:String>Canned Food</x:String>
-                                    <x:String>Others</x:String>
-                                </Picker.Items>
-                            </Picker>
+                                VerticalOptions="Center" />
 
                             <Image
                                 Grid.Column="0"
@@ -274,6 +259,11 @@
                     Command="{Binding UpdateInventoryCommand}"
                     HorizontalOptions="Center"
                     Text="Save"
+                    VerticalOptions="End" />
+                <Button
+                    Command="{Binding DeleteInventoryCommand}"
+                    HorizontalOptions="Center"
+                    Text="Delete"
                     VerticalOptions="End" />
 
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="40">

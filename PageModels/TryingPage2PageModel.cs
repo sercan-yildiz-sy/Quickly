@@ -23,11 +23,48 @@ namespace Quickly.PageModels
             set
             {
                 _inventoryId = value;
-                LoadInventory(value);
+                _ = LoadInventory(value);
             }
         }
         [ObservableProperty]
+        private List<string> _quantityTypes = new List<string> { "Unit", "kg", "lb", "lt", "oz" };
+
+        [ObservableProperty]
+        private List<string> _locations = new List<string> { "Pantry", "Fridge", "Freezer" };
+
+        [ObservableProperty]
+        private List<string> _categories = new List<string> { "All Items", "Produce", "Meat", "Dry Food", "Canned Food", "Others" };
+
+
+        [ObservableProperty]
         private float _quantity;
+
+        [ObservableProperty]
+        private string _quantityType;
+
+        [ObservableProperty]
+        private string _location;
+
+        [ObservableProperty]
+        private string _category;
+
+        partial void OnQuantityChanged(float value)
+        {
+            Debug.WriteLine($"Quantity changed: {value}");
+        }
+
+        partial void OnQuantityTypeChanged(string value)
+        {
+            Debug.WriteLine($"Category changed: {value}");
+        }
+        partial void OnLocationChanged(string value)
+        {
+            Debug.WriteLine($"Location changed: {value}");
+        }
+        partial void OnCategoryChanged(string value)
+        {
+            Debug.WriteLine($"Quantity Type changed: {value}");
+        }
 
         [RelayCommand]
         private async Task LoadInventory(int id)
@@ -66,8 +103,8 @@ namespace Quickly.PageModels
             IsBusy = true;
             try
             {
-                Debug.WriteLine($"Updating Inventory: Id={InventoryId}, Quantity={Inventory.Quantity}");
-                await QuicklyService.UpdateInventory(InventoryId, Inventory.Quantity, "kg", "Fridge");
+                Debug.WriteLine($"Updating Inventory: Id={InventoryId}, Quantity={Inventory.Quantity}, Quantity_type= {Inventory.Quantity_Type}, Location = {Inventory.Location}, Category = {Inventory.Category}");
+                await QuicklyService.UpdateInventory(InventoryId, Inventory.Quantity, Inventory.Quantity_Type, Inventory.Location);
                 await Shell.Current.DisplayAlert("Success!", "Inventory updated successfully", "OK");
             }
             catch (Exception ex)
@@ -78,15 +115,30 @@ namespace Quickly.PageModels
             finally
             {
                 IsBusy = false;
+                await GoBackAsync();
             }
         }
 
-
-        partial void OnQuantityChanged(float value)
+        [RelayCommand]
+        private async Task DeleteInventoryAsync()
         {
-            Debug.WriteLine($"Quantity changed: {value}");
+            IsBusy = true;
+            try
+            {
+                await QuicklyService.DeleteInventory(InventoryId);
+                await Shell.Current.DisplayAlert("Success!", "Inventory deleted successfully", "OK");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error deleting inventory: {ex.Message}");
+                await Shell.Current.DisplayAlert("Error!", "Failed to delete inventory", "OK");
+            }
+            finally
+            {
+                IsBusy = false;
+                await GoBackAsync();
+            }
         }
-
 
 
         [RelayCommand]
