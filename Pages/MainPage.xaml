@@ -69,9 +69,9 @@
                         Padding="25"
                         HorizontalOptions="Center"
                         Spacing="55">
-                        <ImageButton BackgroundColor="Transparent" Source="pantry_icon.png" />
-                        <ImageButton BackgroundColor="Transparent" Source="fridge_icon.png" />
-                        <ImageButton BackgroundColor="Transparent" Source="freezer_icon.png" />
+                        <ImageButton BackgroundColor="Transparent" Source="pantry_icon.png"  Command="{Binding PantryItemsCommand}"/>
+                        <ImageButton BackgroundColor="Transparent" Source="fridge_icon.png" Command="{Binding FridgeItemsCommand}"/>
+                        <ImageButton BackgroundColor="Transparent" Source="freezer_icon.png" Command="{Binding FreezerItemsCommand}"/>
 
                     </HorizontalStackLayout>
 
@@ -115,10 +115,12 @@
                             VerticalOptions="Center">
 
                             <Picker
-                                x:Name="picker"
+                                x:Name="CategoryPicker"
                                 Title="All Items"
                                 Margin="15,5,0,0"
                                 BackgroundColor="Transparent"
+                                SelectedItem="{Binding Category, Mode=TwoWay}"
+                                ItemsSource="{Binding Categories}"
                                 FontFamily="Roboto"
                                 FontSize="10"
                                 HorizontalOptions="FillAndExpand"

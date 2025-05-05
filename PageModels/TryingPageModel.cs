@@ -33,29 +33,58 @@ namespace Quickly.PageModels
         {
         }
 
+        [ObservableProperty]
+        private string _category;
+
+        partial void OnCategoryChanged(string value)
+        {
+            Debug.WriteLine($"Category changed: {value}");
+            UpdateInventoryByCategory(value);
+        }
+
+        private async Task UpdateInventoryByCategory(string category)
+        {
+            if (string.IsNullOrEmpty(category) || category == "All Items")
+            {
+
+                await Refresh().ConfigureAwait(false);
+            }
+
+            else
+            {
+                try
+                {
+                    IsBusy = true;
+                    
+                }
+            }
+        }
+
+
+
 
         [RelayCommand]
-        public async Task GetItemAsync()
+        public async Task PantryItemsAsync()
         {
             if (IsBusy)
             {
                 return;
             }
-
             try
             {
                 IsBusy = true;
-                var fetchedItems = await QuicklyItemService.GetItems().ConfigureAwait(false);
-                Items.Clear(); 
-                foreach (var item in fetchedItems)
+                var items = await QuicklyService.GetInventory("Pantry").ConfigureAwait(false);
+                Inventory.Clear();
+                foreach (var item in items)
                 {
-                    Items.Add(item);
+                    Inventory.Add(item);
                 }
+               
             }
+
             catch (Exception ex)
             {
-                Debug.WriteLine($"Unable to get items: {ex.Message}");
-                await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
+                Debug.WriteLine($"Error loading inventory: {ex.Message}");
             }
             finally
             {
@@ -63,64 +92,58 @@ namespace Quickly.PageModels
             }
         }
 
-
-
-
         [RelayCommand]
-        async Task AddItem()
+        public async Task FridgeItemsAsync()
         {
-            var items = await QuicklyItemService.GetItems().ConfigureAwait(false);
-            var name = await App.Current.MainPage.DisplayPromptAsync("Name", "Name of the Item");
-
-            var selectedItem = items.FirstOrDefault(item => item.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
-
-            if (selectedItem == null)
+            if (IsBusy)
             {
-                await App.Current.MainPage.DisplayAlert("Not Found", "Item not found", "OK");
                 return;
             }
-
-            var id = selectedItem.Id;
-            var image = selectedItem.Image;
-            var category = selectedItem.Category;
-            var quantityString = await App.Current.MainPage.DisplayPromptAsync("Quantity", "Enter quantity (e.g., 1.5):");
-            if (!float.TryParse(quantityString, out float quantity))
+            try
             {
-                await App.Current.MainPage.DisplayAlert("Invalid Input", "Please enter a valid number.", "OK");
-                return;
+                IsBusy = true;
+                var items = await QuicklyService.GetInventory("Fridge").ConfigureAwait(false);
+                Inventory.Clear();
+                foreach (var item in items)
+                {
+                    Inventory.Add(item);
+                }
             }
-
-            var quantityType = await App.Current.MainPage.DisplayPromptAsync("Quantity Type", "Enter quantity type (e.g., kg, pcs):");
-            var location = await App.Current.MainPage.DisplayPromptAsync("Location", "Enter storage location:");
-
-            await QuicklyService.AddInventory(id, name, image, quantity, quantityType, location, category).ConfigureAwait(false);
-            await Refresh().ConfigureAwait(false);
-
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error loading inventory: {ex.Message}");
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
 
-
-
         [RelayCommand]
-        async Task DeleteItem(Inventory Item)
+        public async Task FreezerItemsAsync()
         {
-            await QuicklyService.DeleteInventory(Item.Id).ConfigureAwait(false);
-            await Refresh().ConfigureAwait(false);
-        }
-
-        async Task UpdateItem(Inventory Item) {
-
-            var quantityString = await App.Current.MainPage.DisplayPromptAsync("Quantity", "Enter Quantity");
-            if (!float.TryParse(quantityString, out float quantity))
+            if (IsBusy)
             {
-                await App.Current.MainPage.DisplayAlert("Invalid Input", "Please enter a valid number.", "OK");
                 return;
             }
-
-            var quantityType = await App.Current.MainPage.DisplayPromptAsync("Quantity Type", "Enter quantity type");
-            var location = await App.Current.MainPage.DisplayPromptAsync("Location", "Enter storage location:");
-
-            await QuicklyService.UpdateInventory(Item.Id, quantity, quantityType, location).ConfigureAwait(false);
-            await Refresh().ConfigureAwait(false);
+            try
+            {
+                IsBusy = true;
+                var items = await QuicklyService.GetInventory("Freezer").ConfigureAwait(false);
+                Inventory.Clear();
+                foreach (var item in items)
+                {
+                    Inventory.Add(item);
+                }
+            }
+            catch (Exception ex) 
+            {
+                Debug.WriteLine($"Error loading inventory: {ex.Message}");
+            }
+            finally
+            {
+                IsBusy = false;
+            }
 
         }
 

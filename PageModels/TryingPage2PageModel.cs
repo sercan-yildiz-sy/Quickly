@@ -55,7 +55,7 @@ namespace Quickly.PageModels
 
         partial void OnQuantityTypeChanged(string value)
         {
-            Debug.WriteLine($"Category changed: {value}");
+            Debug.WriteLine($"Quantity Type changed: {value}");
         }
         partial void OnLocationChanged(string value)
         {
@@ -63,7 +63,7 @@ namespace Quickly.PageModels
         }
         partial void OnCategoryChanged(string value)
         {
-            Debug.WriteLine($"Quantity Type changed: {value}");
+            Debug.WriteLine($"Category changed: {value}");
         }
 
         [RelayCommand]
@@ -144,6 +144,10 @@ namespace Quickly.PageModels
         [RelayCommand]
         private async Task GoBackAsync()
         {
+            if (Inventory.Quantity == 0)
+            {
+                await QuicklyService.DeleteInventory(InventoryId);
+            }
             await Shell.Current.GoToAsync("..");
         }
     }
