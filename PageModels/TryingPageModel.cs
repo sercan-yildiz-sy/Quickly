@@ -28,38 +28,66 @@ namespace Quickly.PageModels
 
         [ObservableProperty]
         Inventory _selectedInventoryItem;
+        
+        [ObservableProperty]
+        private List<string> _categories = new List<string> { "All Items", "Produce", "Meat", "Dry Food", "Canned Food", "Others" };
+
 
         public TryingPageModel()
         {
         }
 
         [ObservableProperty]
-        private string _category;
+        private string category = "All Items";
 
+        private string location = "All";
         partial void OnCategoryChanged(string value)
         {
             Debug.WriteLine($"Category changed: {value}");
-            UpdateInventoryByCategory(value);
+            category = value;
+            CurrentInventory(category);
         }
 
-        private async Task UpdateInventoryByCategory(string category)
-        {
-            if (string.IsNullOrEmpty(category) || category == "All Items")
-            {
 
-                await Refresh().ConfigureAwait(false);
+        private async Task CurrentInventory(string category)
+        {
+            if (IsBusy)
+            {
+                return;
             }
 
-            else
+            try
             {
-                try
+                IsBusy = true;
+                var items = await QuicklyService.GetInventory(location).ConfigureAwait(false);
+                Inventory.Clear();
+                if (category == "All Items" || String.IsNullOrEmpty(category))
                 {
-                    IsBusy = true;
-                    
+                    foreach (var item in items)
+                    {
+                        Inventory.Add(item);
+                    }
+                }
+                else
+                {
+                    foreach (var item in items)
+                    {
+                        if (item.Category == category)
+                        {
+                            Inventory.Add(item);
+                        }
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error loading inventory: {ex.Message}");
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
-
 
 
 
@@ -72,13 +100,8 @@ namespace Quickly.PageModels
             }
             try
             {
-                IsBusy = true;
-                var items = await QuicklyService.GetInventory("Pantry").ConfigureAwait(false);
-                Inventory.Clear();
-                foreach (var item in items)
-                {
-                    Inventory.Add(item);
-                }
+                location = "Pantry";
+                await CurrentInventory(category).ConfigureAwait(false);
                
             }
 
@@ -101,13 +124,8 @@ namespace Quickly.PageModels
             }
             try
             {
-                IsBusy = true;
-                var items = await QuicklyService.GetInventory("Fridge").ConfigureAwait(false);
-                Inventory.Clear();
-                foreach (var item in items)
-                {
-                    Inventory.Add(item);
-                }
+                location = "Fridge";
+                await CurrentInventory(category).ConfigureAwait(false);
             }
             catch (Exception ex)
             {
@@ -128,13 +146,8 @@ namespace Quickly.PageModels
             }
             try
             {
-                IsBusy = true;
-                var items = await QuicklyService.GetInventory("Freezer").ConfigureAwait(false);
-                Inventory.Clear();
-                foreach (var item in items)
-                {
-                    Inventory.Add(item);
-                }
+                location = "Freezer";
+                await CurrentInventory(category).ConfigureAwait(false);
             }
             catch (Exception ex) 
             {
@@ -153,13 +166,7 @@ namespace Quickly.PageModels
             IsBusy = true;
             IsRefreshing = true;
             await Task.Delay(200).ConfigureAwait(false);
-            Inventory.Clear();
-            var items = await QuicklyService.GetInventory().ConfigureAwait(false);
-
-            foreach (var item in items)
-            {
-                Inventory.Add(item);
-            }
+            await CurrentInventory(category).ConfigureAwait(false);
             IsBusy = false;
             IsRefreshing = false;
 

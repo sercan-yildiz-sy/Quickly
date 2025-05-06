@@ -126,14 +126,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 TextColor="#838383"
                                 VerticalOptions="Center">
-                                <Picker.Items>
-                                    <x:String>All Items</x:String>
-                                    <x:String>Produce</x:String>
-                                    <x:String>Meat</x:String>
-                                    <x:String>Dry Foods</x:String>
-                                    <x:String>Canned Foods</x:String>
-                                    <x:String>Others</x:String>
-                                </Picker.Items>
+                                
                             </Picker>
 
                             <Image
