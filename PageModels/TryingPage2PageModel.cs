@@ -26,6 +26,7 @@ namespace Quickly.PageModels
                 _ = LoadInventory(value);
             }
         }
+
         [ObservableProperty]
         private List<string> _quantityTypes = new List<string> { "Unit", "kg", "lb", "lt", "oz" };
 

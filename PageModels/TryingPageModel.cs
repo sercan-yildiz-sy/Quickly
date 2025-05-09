@@ -65,7 +65,10 @@ namespace Quickly.PageModels
                 {
                     foreach (var item in items)
                     {
-                        Inventory.Add(item);
+                        if (item.Quantity > 0)
+                        {
+                            Inventory.Add(item);
+                        }
                     }
                 }
                 else
@@ -74,7 +77,8 @@ namespace Quickly.PageModels
                     {
                         if (item.Category == category)
                         {
-                            Inventory.Add(item);
+                            if (item.Quantity > 0)
+                                Inventory.Add(item);
                         }
                     }
                 }
@@ -163,14 +167,34 @@ namespace Quickly.PageModels
         [RelayCommand]
         public async Task Refresh()
         {
+            Debug.WriteLine("Refreshing inventory...");
             IsBusy = true;
             IsRefreshing = true;
-            await Task.Delay(200).ConfigureAwait(false);
-            await CurrentInventory(category).ConfigureAwait(false);
-            IsBusy = false;
-            IsRefreshing = false;
 
+            try
+            {
+                var items = await QuicklyService.GetInventory(location).ConfigureAwait(false);
+
+                Inventory.Clear();
+                foreach (var item in items)
+                {
+                    if (item.Quantity > 0)
+                        Inventory.Add(item);
+                }
+
+                Debug.WriteLine($"Inventory refreshed. Total items: {Inventory.Count}");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error refreshing inventory: {ex.Message}");
+            }
+            finally
+            {
+                IsBusy = false;
+                IsRefreshing = false;
+            }
         }
+
 
 
         [RelayCommand]

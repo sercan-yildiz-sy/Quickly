@@ -67,6 +67,7 @@
                         WidthRequest="230" />
                 </Border>
 
+
                 <BoxView BackgroundColor="Transparent" HeightRequest="20" />
 
                 <Label
@@ -201,72 +202,44 @@
 
                 </HorizontalStackLayout>
 
-                <BoxView BackgroundColor="Transparent" HeightRequest="15" />
-                <VerticalStackLayout HorizontalOptions="Center">
-                    <Label
-                        FontFamily="RobotoExtraBold"
-                        FontSize="15"
-                        HorizontalOptions="Center"
-                        Text="Category:"
-                        TextColor="#5F5F5F"
-                        VerticalOptions="Center" />
 
-                    <Grid ColumnSpacing="40">
-                        <Border
-                            Background="#FFFFFF"
-                            HeightRequest="35"
-                            HorizontalOptions="StartAndExpand"
-                            Stroke="#18000000"
-                            StrokeShape="RoundRectangle 10,10,10,10"
-                            StrokeThickness="1.2"
-                            VerticalOptions="FillAndExpand"
-                            WidthRequest="174" />
-
-                        <Grid
-                            ColumnDefinitions="*, Auto"
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="Center">
-
-                            <Picker
-                                x:Name="Category_Picker"
-                                Title="{Binding Inventory.Category, Mode=TwoWay}"
-                                Margin="4,0,0,0"
-                                BackgroundColor="Transparent"
-                                FontFamily="Roboto"
-                                FontSize="10"
-                                HorizontalOptions="StartAndExpand"
-                                ItemsSource="{Binding Categories}"
-                                SelectedItem="{Binding Inventory.Category, Mode=TwoWay}"
-                                TextColor="#838383"
-                                VerticalOptions="Center" />
-
-                            <Image
-                                Grid.Column="0"
-                                Margin="0,0,5,0"
-                                HeightRequest="10"
-                                HorizontalOptions="End"
-                                Source="dropdown_menu.png"
-                                VerticalOptions="Center"
-                                WidthRequest="10" />
-                        </Grid>
-                    </Grid>
-
-
-                </VerticalStackLayout>
 
                 <BoxView BackgroundColor="Transparent" HeightRequest="45" />
                 <Button
+                    Background="#FFFFFF"
+                    BorderColor="#C0372F"
+                    BorderWidth="0.8"
                     Command="{Binding UpdateInventoryCommand}"
+                    CornerRadius="10"
                     HorizontalOptions="Center"
                     Text="Save"
-                    VerticalOptions="End" />
+                    TextColor="#C0372F"
+                    VerticalOptions="End"
+                    WidthRequest="175" />
                 <Button
+                    BackgroundColor="#C0372F"
+                    BorderWidth="0.8"
                     Command="{Binding DeleteInventoryCommand}"
+                    CornerRadius="10"
+                    HorizontalOptions="Center"
+                    Text="Cancel"
+                    TextColor="#FFFFFF"
+                    VerticalOptions="End"
+                    WidthRequest="175" />
+                <Button
+                    Background="#FFFFFF"
+                    BorderColor="#C0372F"
+                    BorderWidth="0.8"
+                    Command="{Binding DeleteInventoryCommand}"
+                    CornerRadius="10"
                     HorizontalOptions="Center"
                     Text="Delete"
-                    VerticalOptions="End" />
+                    TextColor="#C0372F"
+                    VerticalOptions="End"
+                    WidthRequest="175" />
 
-                <HorizontalStackLayout HorizontalOptions="Center" Spacing="40">
+
+                <!--<HorizontalStackLayout HorizontalOptions="Center" Spacing="40">
 
                     <ImageButton
                         BackgroundColor="Transparent"
@@ -278,7 +251,7 @@
                         HeightRequest="51"
                         Source="favorite_icon.png"
                         WidthRequest="51" />
-                </HorizontalStackLayout>
+                </HorizontalStackLayout>-->
 
 
 
