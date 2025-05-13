@@ -6,14 +6,12 @@
       "Image": "tomato.jpg",
       "Category": "Produce"
     },
-
     {
       "Id": 2,
       "Name": "Cucumber",
       "Image": "cucumber.jpg",
       "Category": "Produce"
     },
-
     {
       "Id": 3,
       "Name": "Bread",
@@ -26,26 +24,431 @@
       "Image": "milk.jpg",
       "Category": "Dairy"
     },
-
     {
       "Id": 5,
       "Name": "Canned Beans",
       "Image": "canned_beans.jpg",
       "Category": "Canned Products"
     },
-
     {
       "Id": 6,
       "Name": "Dry Beans",
       "Image": "dry_beans.jpg",
       "Category": "Dry Products"
     },
-
     {
       "Id": 7,
       "Name": "Ground Beef",
       "Image": "ground_beef.jpg",
       "Category": "Meat"
+    },
+    {
+      "Id": 8,
+      "Name": "Eggs",
+      "Image": "eggs.jpg",
+      "Category": "Dairy"
+    },
+    {
+      "Id": 9,
+      "Name": "Butter",
+      "Image": "butter.jpg",
+      "Category": "Dairy"
+    },
+    {
+      "Id": 10,
+      "Name": "Cheddar Cheese",
+      "Image": "cheddar_cheese.jpg",
+      "Category": "Dairy"
+    },
+    {
+      "Id": 11,
+      "Name": "Carrots",
+      "Image": "carrots.jpg",
+      "Category": "Produce"
+    },
+    {
+      "Id": 12,
+      "Name": "Potatoes",
+      "Image": "potatoes.jpg",
+      "Category": "Produce"
+    },
+    {
+      "Id": 13,
+      "Name": "Onions",
+      "Image": "onions.jpg",
+      "Category": "Produce"
+    },
+    {
+      "Id": 14,
+      "Name": "Garlic",
+      "Image": "garlic.jpg",
+      "Category": "Produce"
+    },
+    {
+      "Id": 15,
+      "Name": "Frozen Peas",
+      "Image": "frozen_peas.jpg",
+      "Category": "Frozen Products"
+    },
+    {
+      "Id": 16,
+      "Name": "Frozen Corn",
+      "Image": "frozen_corn.jpg",
+      "Category": "Frozen Products"
+    },
+    {
+      "Id": 17,
+      "Name": "Frozen Spinach",
+      "Image": "frozen_spinach.jpg",
+      "Category": "Frozen Products"
+    },
+    {
+      "Id": 18,
+      "Name": "Frozen Pizza",
+      "Image": "frozen_pizza.jpg",
+      "Category": "Frozen Products"
+    },
+    {
+      "Id": 19,
+      "Name": "Frozen Chicken Nuggets",
+      "Image": "frozen_nuggets.jpg",
+      "Category": "Frozen Products"
+    },
+    {
+      "Id": 20,
+      "Name": "Frozen Fish Fillets",
+      "Image": "frozen_fish.jpg",
+      "Category": "Seafood"
+    },
+    {
+      "Id": 21,
+      "Name": "Frozen Berries",
+      "Image": "frozen_berries.jpg",
+      "Category": "Frozen Products"
+    },
+    {
+      "Id": 22,
+      "Name": "Rice",
+      "Image": "rice.jpg",
+      "Category": "Dry Products"
+    },
+    {
+      "Id": 23,
+      "Name": "Pasta",
+      "Image": "pasta.jpg",
+      "Category": "Dry Products"
+    },
+    {
+      "Id": 24,
+      "Name": "Lentils",
+      "Image": "lentils.jpg",
+      "Category": "Dry Products"
+    },
+    {
+      "Id": 25,
+      "Name": "Oats",
+      "Image": "oats.jpg",
+      "Category": "Dry Products"
+    },
+    {
+      "Id": 26,
+      "Name": "Flour",
+      "Image": "flour.jpg",
+      "Category": "Baking"
+    },
+    {
+      "Id": 27,
+      "Name": "Sugar",
+      "Image": "sugar.jpg",
+      "Category": "Baking"
+    },
+    {
+      "Id": 28,
+      "Name": "Salt",
+      "Image": "salt.jpg",
+      "Category": "Baking"
+    },
+    {
+      "Id": 29,
+      "Name": "Yeast",
+      "Image": "yeast.jpg",
+      "Category": "Baking"
+    },
+    {
+      "Id": 30,
+      "Name": "Cornmeal",
+      "Image": "cornmeal.jpg",
+      "Category": "Baking"
+    },
+    {
+      "Id": 31,
+      "Name": "Canned Tuna",
+      "Image": "canned_tuna.jpg",
+      "Category": "Seafood"
+    },
+    {
+      "Id": 32,
+      "Name": "Canned Corn",
+      "Image": "canned_corn.jpg",
+      "Category": "Canned Products"
+    },
+    {
+      "Id": 33,
+      "Name": "Canned Tomatoes",
+      "Image": "canned_tomatoes.jpg",
+      "Category": "Canned Products"
+    },
+    {
+      "Id": 34,
+      "Name": "Canned Soup",
+      "Image": "canned_soup.jpg",
+      "Category": "Canned Products"
+    },
+    {
+      "Id": 35,
+      "Name": "Tomato Paste",
+      "Image": "tomato_paste.jpg",
+      "Category": "Canned Products"
+    },
+    {
+      "Id": 36,
+      "Name": "Canned Coconut Milk",
+      "Image": "canned_coconut_milk.jpg",
+      "Category": "Canned Products"
+    },
+    {
+      "Id": 37,
+      "Name": "Peanut Butter",
+      "Image": "peanut_butter.jpg",
+      "Category": "Condiments"
+    },
+    {
+      "Id": 38,
+      "Name": "Jam",
+      "Image": "jam.jpg",
+      "Category": "Condiments"
+    },
+    {
+      "Id": 39,
+      "Name": "Pickles",
+      "Image": "pickles.jpg",
+      "Category": "Condiments"
+    },
+    {
+      "Id": 40,
+      "Name": "Mustard",
+      "Image": "mustard.jpg",
+      "Category": "Condiments"
+    },
+    {
+      "Id": 41,
+      "Name": "Mayonnaise",
+      "Image": "mayonnaise.jpg",
+      "Category": "Condiments"
+    },
+    {
+      "Id": 42,
+      "Name": "Ketchup",
+      "Image": "ketchup.jpg",
+      "Category": "Condiments"
+    },
+    {
+      "Id": 43,
+      "Name": "Soy Sauce",
+      "Image": "soy_sauce.jpg",
+      "Category": "Condiments"
+    },
+    {
+      "Id": 44,
+      "Name": "Hot Sauce",
+      "Image": "hot_sauce.jpg",
+      "Category": "Condiments"
+    },
+    {
+      "Id": 45,
+      "Name": "Honey",
+      "Image": "honey.jpg",
+      "Category": "Condiments"
+    },
+    {
+      "Id": 46,
+      "Name": "Maple Syrup",
+      "Image": "maple_syrup.jpg",
+      "Category": "Condiments"
+    },
+    {
+      "Id": 47,
+      "Name": "Tortillas",
+      "Image": "tortillas.jpg",
+      "Category": "Pastry"
+    },
+    {
+      "Id": 48,
+      "Name": "Tofu",
+      "Image": "tofu.jpg",
+      "Category": "Plant-Based"
+    },
+    {
+      "Id": 49,
+      "Name": "Cream Cheese",
+      "Image": "cream_cheese.jpg",
+      "Category": "Dairy"
+    },
+    {
+      "Id": 50,
+      "Name": "Chicken Breast",
+      "Image": "chicken_breast.jpg",
+      "Category": "Meat"
+    },
+    {
+      "Id": 51,
+      "Name": "Pork Chops",
+      "Image": "pork_chops.jpg",
+      "Category": "Meat"
+    },
+    {
+      "Id": 52,
+      "Name": "Sausage",
+      "Image": "sausage.jpg",
+      "Category": "Meat"
+    },
+    {
+      "Id": 53,
+      "Name": "Bacon",
+      "Image": "bacon.jpg",
+      "Category": "Meat"
+    },
+    {
+      "Id": 54,
+      "Name": "Parmesan Cheese",
+      "Image": "parmesan.jpg",
+      "Category": "Dairy"
+    },
+    {
+      "Id": 55,
+      "Name": "Green Beans",
+      "Image": "green_beans.jpg",
+      "Category": "Produce"
+    },
+    {
+      "Id": 56,
+      "Name": "Bell Peppers",
+      "Image": "bell_peppers.jpg",
+      "Category": "Produce"
+    },
+    {
+      "Id": 57,
+      "Name": "Zucchini",
+      "Image": "zucchini.jpg",
+      "Category": "Produce"
+    },
+    {
+      "Id": 58,
+      "Name": "Mushrooms",
+      "Image": "mushrooms.jpg",
+      "Category": "Produce"
+    },
+    {
+      "Id": 59,
+      "Name": "Snack Bars",
+      "Image": "snack_bars.jpg",
+      "Category": "Snacks"
+    },
+    {
+      "Id": 60,
+      "Name": "Crackers",
+      "Image": "crackers.jpg",
+      "Category": "Snacks"
+    },
+    {
+      "Id": 61,
+      "Name": "Popcorn Kernels",
+      "Image": "popcorn.jpg",
+      "Category": "Snacks"
+    },
+    {
+      "Id": 62,
+      "Name": "Nuts",
+      "Image": "nuts.jpg",
+      "Category": "Snacks"
+    },
+    {
+      "Id": 63,
+      "Name": "Trail Mix",
+      "Image": "trail_mix.jpg",
+      "Category": "Snacks"
+    },
+    {
+      "Id": 64,
+      "Name": "Chips",
+      "Image": "chips.jpg",
+      "Category": "Snacks"
+    },
+    {
+      "Id": 65,
+      "Name": "Granola",
+      "Image": "granola.jpg",
+      "Category": "Snacks"
+    },
+    {
+      "Id": 66,
+      "Name": "Raisins",
+      "Image": "raisins.jpg",
+      "Category": "Snacks"
+    },
+    {
+      "Id": 67,
+      "Name": "Cereal",
+      "Image": "cereal.jpg",
+      "Category": "Dry Products"
+    },
+    {
+      "Id": 68,
+      "Name": "Instant Noodles",
+      "Image": "instant_noodles.jpg",
+      "Category": "Dry Products"
+    },
+    {
+      "Id": 69,
+      "Name": "Cocoa Powder",
+      "Image": "cocoa_powder.jpg",
+      "Category": "Baking"
+    },
+    {
+      "Id": 70,
+      "Name": "Vanilla Extract",
+      "Image": "vanilla_extract.jpg",
+      "Category": "Baking"
+    },
+    {
+      "Id": 71,
+      "Name": "Evaporated Milk",
+      "Image": "evaporated_milk.jpg",
+      "Category": "Canned Products"
+    },
+    {
+      "Id": 72,
+      "Name": "Condensed Milk",
+      "Image": "condensed_milk.jpg",
+      "Category": "Canned Products"
+    },
+    {
+      "Id": 73,
+      "Name": "Apple Juice",
+      "Image": "apple_juice.jpg",
+      "Category": "Beverages"
+    },
+    {
+      "Id": 74,
+      "Name": "Orange Juice",
+      "Image": "orange_juice.jpg",
+      "Category": "Beverages"
+    },
+    {
+      "Id": 75,
+      "Name": "Sparkling Water",
+      "Image": "sparkling_water.jpg",
+      "Category": "Beverages"
     }
   ]
 }

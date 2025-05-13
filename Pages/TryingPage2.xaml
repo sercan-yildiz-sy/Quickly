@@ -50,7 +50,7 @@
                 <BoxView
                     Grid.Row="2"
                     BackgroundColor="Transparent"
-                    HeightRequest="15" />
+                    HeightRequest="30" />
             </Grid>
 
             <VerticalStackLayout Padding="{StaticResource LayoutPadding}" Spacing="{StaticResource LayoutSpacing}">
@@ -204,27 +204,21 @@
 
 
 
-                <BoxView BackgroundColor="Transparent" HeightRequest="45" />
-                <Button
-                    Background="#FFFFFF"
-                    BorderColor="#C0372F"
-                    BorderWidth="0.8"
-                    Command="{Binding UpdateInventoryCommand}"
-                    CornerRadius="10"
-                    HorizontalOptions="Center"
-                    Text="Save"
-                    TextColor="#C0372F"
-                    VerticalOptions="End"
-                    WidthRequest="175" />
+                <BoxView BackgroundColor="Transparent" HeightRequest="120" />
+
                 <Button
                     BackgroundColor="#C0372F"
                     BorderWidth="0.8"
-                    Command="{Binding DeleteInventoryCommand}"
+                    Command="{Binding UpdateInventoryCommand}"
                     CornerRadius="10"
+                    FontFamily="Roboto-ExtraBold"
+                    FontSize="15"
                     HorizontalOptions="Center"
-                    Text="Cancel"
+                    MinimumHeightRequest="20"
+                    HeightRequest="37"
+                    Text="Save"
                     TextColor="#FFFFFF"
-                    VerticalOptions="End"
+                    VerticalOptions="Center"
                     WidthRequest="175" />
                 <Button
                     Background="#FFFFFF"
@@ -232,10 +226,14 @@
                     BorderWidth="0.8"
                     Command="{Binding DeleteInventoryCommand}"
                     CornerRadius="10"
+                    FontFamily="Roboto-ExtraBold"
+                    FontSize="15"
                     HorizontalOptions="Center"
+                    MinimumHeightRequest="10"
+                    HeightRequest="37"
                     Text="Delete"
                     TextColor="#C0372F"
-                    VerticalOptions="End"
+                    VerticalOptions="Center"
                     WidthRequest="175" />
 
 
