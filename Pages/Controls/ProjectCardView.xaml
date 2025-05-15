@@ -46,7 +46,7 @@
                         HorizontalOptions="Fill"
                         Source="{Binding Image}"
                         VerticalOptions="Fill"
-                        WidthRequest="64" />
+                        WidthRequest="70" />
                 </Border>
                 <BoxView
                     Grid.Column="1"

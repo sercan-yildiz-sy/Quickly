@@ -61,7 +61,7 @@
                     WidthRequest="230">
                     <Image
                         HeightRequest="230"
-                        HorizontalOptions="Fill"
+                        Aspect="AspectFill"
                         Source="{Binding Inventory.Image}"
                         VerticalOptions="Fill"
                         WidthRequest="230" />
