@@ -1,8 +1,8 @@
 namespace Quickly.Pages
 {
-    public partial class TaskDetailPage : ContentPage
+    public partial class ProfilePage : ContentPage
     {
-        public TaskDetailPage(TaskDetailPageModel model)
+        public ProfilePage(ProfilePageModel model)
         {
             InitializeComponent();
             BindingContext = model;

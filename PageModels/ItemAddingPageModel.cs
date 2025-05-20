@@ -105,7 +105,7 @@ namespace Quickly.PageModels
                 }
                 else
                 {
-                    var newInventory = await QuicklyService.AddInventory(item.Id, item.Name, item.Image, 0, "kg", item.Category, "All").ConfigureAwait(false);
+                    var newInventory = await QuicklyService.AddInventory(item.Id, item.Name, item.Image, 0, "kg", item.Category, "Pantry").ConfigureAwait(false);
                     await MainThread.InvokeOnMainThreadAsync(async () =>
                     {
                         await GoToDetailsAsync(newInventory).ConfigureAwait(false);

@@ -60,8 +60,8 @@
                     StrokeShape="RoundRectangle 14,14,14,14"
                     WidthRequest="230">
                     <Image
-                        HeightRequest="230"
                         Aspect="AspectFill"
+                        HeightRequest="230"
                         Source="{Binding Inventory.Image}"
                         VerticalOptions="Fill"
                         WidthRequest="230" />
@@ -213,9 +213,9 @@
                     CornerRadius="10"
                     FontFamily="Roboto-ExtraBold"
                     FontSize="15"
+                    HeightRequest="37"
                     HorizontalOptions="Center"
                     MinimumHeightRequest="20"
-                    HeightRequest="37"
                     Text="Save"
                     TextColor="#FFFFFF"
                     VerticalOptions="Center"
@@ -228,9 +228,9 @@
                     CornerRadius="10"
                     FontFamily="Roboto-ExtraBold"
                     FontSize="15"
+                    HeightRequest="37"
                     HorizontalOptions="Center"
                     MinimumHeightRequest="10"
-                    HeightRequest="37"
                     Text="Delete"
                     TextColor="#C0372F"
                     VerticalOptions="Center"

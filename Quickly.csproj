@@ -53,7 +53,8 @@
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
+    <MauiImage Include="Resources\Images\Items\*" />
+    <MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -86,6 +87,9 @@
 	  <Compile Update="Pages\ItemAddingPage.xaml.cs">
 	    <DependentUpon>ItemAddingPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Pages\ProfilePage.xaml.cs">
+	    <DependentUpon>ProfilePage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\TryingPage2.xaml.cs">
 	    <DependentUpon>TryingPage2.xaml</DependentUpon>
 	  </Compile>
@@ -93,9 +97,6 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Pages\TryingPage2.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\TryingPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

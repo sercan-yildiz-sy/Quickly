@@ -69,9 +69,18 @@
                         Padding="25"
                         HorizontalOptions="Center"
                         Spacing="55">
-                        <ImageButton BackgroundColor="Transparent" Source="pantry_icon.png"  Command="{Binding PantryItemsCommand}"/>
-                        <ImageButton BackgroundColor="Transparent" Source="fridge_icon.png" Command="{Binding FridgeItemsCommand}"/>
-                        <ImageButton BackgroundColor="Transparent" Source="freezer_icon.png" Command="{Binding FreezerItemsCommand}"/>
+                        <ImageButton
+                            BackgroundColor="Transparent"
+                            Command="{Binding PantryItemsCommand}"
+                            Source="pantry_icon.png" />
+                        <ImageButton
+                            BackgroundColor="Transparent"
+                            Command="{Binding FridgeItemsCommand}"
+                            Source="fridge_icon.png" />
+                        <ImageButton
+                            BackgroundColor="Transparent"
+                            Command="{Binding FreezerItemsCommand}"
+                            Source="freezer_icon.png" />
 
                     </HorizontalStackLayout>
 
@@ -119,15 +128,13 @@
                                 Title="All Items"
                                 Margin="15,5,0,0"
                                 BackgroundColor="Transparent"
-                                SelectedItem="{Binding Category, Mode=TwoWay}"
-                                ItemsSource="{Binding Categories}"
                                 FontFamily="Roboto"
                                 FontSize="10"
                                 HorizontalOptions="FillAndExpand"
+                                ItemsSource="{Binding Categories}"
+                                SelectedItem="{Binding Category, Mode=TwoWay}"
                                 TextColor="#838383"
-                                VerticalOptions="Center">
-                                
-                            </Picker>
+                                VerticalOptions="Center" />
 
                             <Image
                                 Grid.Column="1"

@@ -18,10 +18,9 @@
             Route="item_adding" />
 
         <ShellContent
-            ContentTemplate="{DataTemplate pages:ManageMetaPage}"
+            ContentTemplate="{DataTemplate pages:ProfilePage}"
             Icon="profile_page.png"
-            Route="manage" />
-        <ShellContent ContentTemplate="{DataTemplate pages:TryingPage}" Route="TryingPage" />
+            Route="profile" />
     </TabBar>
 
     <Shell.FlyoutFooter>

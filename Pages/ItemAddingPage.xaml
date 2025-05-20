@@ -13,12 +13,13 @@
     BackgroundColor="#F3F3F3">
 
 
-
-    <Grid RowDefinitions="Auto, Auto, Auto, Auto">
-
-        <Grid>
-
+    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto">
+        <BoxView
+            BackgroundColor="Transparent"
+            HeightRequest="15"/>
+        <Grid Grid.Row="1">
             <Image
+                
                 Aspect="AspectFit"
                 HeightRequest="35"
                 HorizontalOptions="Center"
@@ -39,7 +40,7 @@
         </Grid>
 
         <StackLayout
-            Grid.Row="1"
+            Grid.Row="2"
             Padding="10"
             HorizontalOptions="Center"
             VerticalOptions="Start">
@@ -81,12 +82,12 @@
         </StackLayout>
 
         <BoxView
-            Grid.Row="2"
+            Grid.Row="3"
             BackgroundColor="Transparent"
             HeightRequest="20" />
 
         <CollectionView
-            Grid.Row="3"
+            Grid.Row="4"
             Margin="20,0,20,0"
             HorizontalOptions="Fill"
             ItemsSource="{Binding Suggestions}"
