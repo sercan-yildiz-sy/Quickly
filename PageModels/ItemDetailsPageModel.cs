@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Quickly.PageModels
 {
     [QueryProperty(nameof(InventoryId), "id")] 
-    public partial class TryingPage2PageModel : ObservableObject, IBaseClass
+    public partial class ItemDetailsPageModel : ObservableObject, IBaseClass
     {
         [ObservableProperty]
         public bool _isBusy;

@@ -14,7 +14,7 @@ using Quickly.Services;
 
 namespace Quickly.PageModels
 {
-    public partial class TryingPageModel : ObservableObject, IBaseClass
+    public partial class MainPageModel : ObservableObject, IBaseClass
     {
         public ObservableCollection<Inventory> Inventory { get; set; } = new();
 
@@ -33,7 +33,7 @@ namespace Quickly.PageModels
         private List<string> _categories = new List<string> { "All Items", "Produce", "Meat", "Dry Food", "Canned Food", "Others" };
 
 
-        public TryingPageModel()
+        public MainPageModel()
         {
         }
 
@@ -170,6 +170,7 @@ namespace Quickly.PageModels
             Debug.WriteLine("Refreshing inventory...");
             IsBusy = true;
             IsRefreshing = true;
+            
 
             try
             {
@@ -205,7 +206,7 @@ namespace Quickly.PageModels
 
         [RelayCommand]
         private Task GoToDetailsAsync(Inventory inventory)
-            => Shell.Current.GoToAsync($"TryingPage2?id={inventory.Id}");
+            => Shell.Current.GoToAsync($"ItemDetailsPage?id={inventory.Id}");
 
     }
 }

@@ -50,13 +50,14 @@ namespace Quickly
 
             builder.Services.AddSingleton<ItemAddingPageModel>();
             builder.Services.AddSingleton<ProfilePageModel>();
-
             //builder.Services.AddSingleton<TryingPage2PageModel>();
             //builder.Services.AddTransient<TryingPage2>();
 
-            builder.Services.AddTransient<TryingPageModel>();
+            builder.Services.AddTransient<ItemDetailsPageModel>();
+            builder.Services.AddTransient<ItemDetailsPage>();
+            builder.Services.AddTransient<MainPageModel>();
 
-            builder.Services.AddTransientWithShellRoute<TryingPage2, TryingPage2PageModel>("TryingPage2");
+            builder.Services.AddTransientWithShellRoute<ItemDetailsPage, ItemAddingPageModel>("ItemDetailsPage");
 
 
 

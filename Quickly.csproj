@@ -90,13 +90,13 @@
 	  <Compile Update="Pages\ProfilePage.xaml.cs">
 	    <DependentUpon>ProfilePage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\TryingPage2.xaml.cs">
-	    <DependentUpon>TryingPage2.xaml</DependentUpon>
+	  <Compile Update="Pages\ItemDetailsPage.xaml.cs">
+	    <DependentUpon>ItemDetailsPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Pages\TryingPage2.xaml">
+	  <MauiXaml Update="Pages\ItemDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

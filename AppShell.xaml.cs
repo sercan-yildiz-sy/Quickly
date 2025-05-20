@@ -9,7 +9,7 @@ namespace Quickly
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute("TryingPage2", typeof(TryingPage2));
+            Routing.RegisterRoute("ItemDetailsPage", typeof(ItemDetailsPage));
             var currentTheme = Application.Current!.UserAppTheme;
             ThemeSegmentedControl.SelectedIndex = currentTheme == AppTheme.Light ? 0 : 1;
         }

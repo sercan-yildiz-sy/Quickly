@@ -6,9 +6,9 @@ namespace Quickly.Pages
 {
     public partial class MainPage : ContentPage
     {
-        private readonly TryingPageModel _model;
+        private readonly MainPageModel _model;
 
-        public MainPage(TryingPageModel model)
+        public MainPage(MainPageModel model)
         {
             InitializeComponent();
             BindingContext = _model = model;

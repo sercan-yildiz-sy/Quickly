@@ -8,7 +8,7 @@
     xmlns:pageModels="clr-namespace:Quickly.PageModels"
     xmlns:pullToRefresh="clr-namespace:Syncfusion.Maui.Toolkit.PullToRefresh;assembly=Syncfusion.Maui.Toolkit"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    x:DataType="pageModels:TryingPageModel"
+    x:DataType="pageModels:MainPageModel"
     BackgroundColor="#F3F3F3"
     Shell.NavBarIsVisible="False"
     Shell.TabBarIsVisible="True">
@@ -158,7 +158,7 @@
                             <DataTemplate x:DataType="models:Inventory">
                                 <controls:ProjectCardView HeightRequest="100" WidthRequest="165">
                                     <controls:ProjectCardView.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding GoToDetailsCommand, Source={RelativeSource AncestorType={x:Type pageModels:TryingPageModel}}, x:DataType=pageModels:TryingPageModel}" CommandParameter="{Binding .}" />
+                                        <TapGestureRecognizer Command="{Binding GoToDetailsCommand, Source={RelativeSource AncestorType={x:Type pageModels:MainPageModel}}, x:DataType=pageModels:MainPageModel}" CommandParameter="{Binding .}" />
                                     </controls:ProjectCardView.GestureRecognizers>
                                 </controls:ProjectCardView>
                             </DataTemplate>

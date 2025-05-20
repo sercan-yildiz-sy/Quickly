@@ -3,11 +3,11 @@ using System.Text.Json;
 
 namespace Quickly.Pages;
 
-public partial class TryingPage2 : ContentPage
+public partial class ItemDetailsPage : ContentPage
 {
-    private readonly TryingPage2PageModel _viewModel;
+    private readonly ItemDetailsPageModel _viewModel;
 
-    public TryingPage2(TryingPage2PageModel viewModel)
+    public ItemDetailsPage(ItemDetailsPageModel viewModel)
     {
         InitializeComponent();
         _viewModel = viewModel;

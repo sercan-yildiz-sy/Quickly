@@ -5,7 +5,6 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Quickly.Data;
 using Quickly.Models;
 using Quickly.Services;
 
@@ -132,7 +131,7 @@ namespace Quickly.PageModels
 
         [RelayCommand]
         private Task GoToDetailsAsync(Inventory inventory)
-             => Shell.Current.GoToAsync($"TryingPage2?id={inventory.Id}");
+             => Shell.Current.GoToAsync($"ItemDetailsPage?id={inventory.Id}");
 
     }
 }
