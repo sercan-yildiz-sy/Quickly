@@ -24,7 +24,9 @@ For this project, I used .NET 9.0 and SQLite for the backend data access with SQ
 
 ### Building and Running
 
-1. Clone the repository: git clone https://github.com/sercan-yildiz-sy/quickly.git cd quickly
+1. Clone the repository: 
+	git clone https://github.com/sercan-yildiz-sy/quickly.git 
+	cd quickly
 2. Open the solution in Visual Studio 2022.
 3. Restore NuGet packages.
 4. Select your target platform (Android, iOS, Windows, or MacCatalyst).
