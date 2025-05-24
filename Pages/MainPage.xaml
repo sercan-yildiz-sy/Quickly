@@ -63,26 +63,39 @@
                         FontFamily="LibreBaskerville-Regular"
                         FontSize="15"
                         HorizontalOptions="Center"
-                        Text="Category"
+                        Text="Location"
                         TextColor="#000000" />
+
+
                     <HorizontalStackLayout
                         Padding="25"
                         HorizontalOptions="Center"
-                        Spacing="55">
-                        <ImageButton
-                            BackgroundColor="Transparent"
-                            Command="{Binding PantryItemsCommand}"
-                            Source="pantry_icon.png" />
-                        <ImageButton
-                            BackgroundColor="Transparent"
-                            Command="{Binding FridgeItemsCommand}"
-                            Source="fridge_icon.png" />
-                        <ImageButton
-                            BackgroundColor="Transparent"
-                            Command="{Binding FreezerItemsCommand}"
-                            Source="freezer_icon.png" />
-
+                        Spacing="25">
+                        <Border
+                            Background="{Binding PantryButtonColor}"
+                            StrokeShape="RoundRectangle 10">
+                            <ImageButton
+                                Command="{Binding PantryItemsCommand}"
+                                Source="pantry_icon.png" />
+                        </Border>
+                        <Border
+                            Background="{Binding FridgeButtonColor}"
+                            StrokeShape="RoundRectangle 10">
+                            <ImageButton
+                                Command="{Binding FridgeItemsCommand}"
+                                Source="fridge_icon.png" />
+                        </Border>
+                        <Border
+                            Background="{Binding FreezerButtonColor}"
+                            StrokeShape="RoundRectangle 10">
+                            <ImageButton
+                                Command="{Binding FreezerItemsCommand}"
+                                Source="freezer_icon.png" />
+                        </Border>
                     </HorizontalStackLayout>
+
+
+
 
                     <HorizontalStackLayout
                         Margin="-20"

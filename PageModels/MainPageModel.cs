@@ -41,6 +41,7 @@ namespace Quickly.PageModels
         private string category = "All Items";
 
         private string location = "All";
+
         partial void OnCategoryChanged(string value)
         {
             Debug.WriteLine($"Category changed: {value}");
@@ -92,6 +93,10 @@ namespace Quickly.PageModels
                 IsBusy = false;
             }
         }
+        public Color PantryButtonColor => location == "Pantry" ? Color.FromArgb("#40C0372F") : Colors.Transparent;
+        public Color FridgeButtonColor => location == "Fridge" ? Color.FromArgb("#40C0372F") : Colors.Transparent;
+        public Color FreezerButtonColor => location == "Freezer" ? Color.FromArgb("#40C0372F") : Colors.Transparent;
+
 
 
 
@@ -99,16 +104,23 @@ namespace Quickly.PageModels
         public async Task PantryItemsAsync()
         {
             if (IsBusy)
-            {
                 return;
-            }
+
             try
             {
-                location = "Pantry";
+                if (location == "Pantry")
+                {
+                    location = "All";
+                }
+                else
+                {
+                    location = "Pantry";
+                }
                 await CurrentInventory(category).ConfigureAwait(false);
-               
+                OnPropertyChanged(nameof(PantryButtonColor));
+                OnPropertyChanged(nameof(FridgeButtonColor));
+                OnPropertyChanged(nameof(FreezerButtonColor));
             }
-
             catch (Exception ex)
             {
                 Debug.WriteLine($"Error loading inventory: {ex.Message}");
@@ -123,13 +135,23 @@ namespace Quickly.PageModels
         public async Task FridgeItemsAsync()
         {
             if (IsBusy)
-            {
                 return;
-            }
+
             try
             {
-                location = "Fridge";
+
+                if (location == "Fridge")
+                {
+                    location = "All";
+                }
+                else
+                {
+                    location = "Fridge";
+                }
                 await CurrentInventory(category).ConfigureAwait(false);
+                OnPropertyChanged(nameof(PantryButtonColor));
+                OnPropertyChanged(nameof(FridgeButtonColor));
+                OnPropertyChanged(nameof(FreezerButtonColor));
             }
             catch (Exception ex)
             {
@@ -145,15 +167,25 @@ namespace Quickly.PageModels
         public async Task FreezerItemsAsync()
         {
             if (IsBusy)
-            {
                 return;
-            }
+
             try
             {
-                location = "Freezer";
+
+                if (location == "Freezer")
+                {
+                    location = "All";
+                }
+                else
+                {
+                    location = "Freezer";
+                }
                 await CurrentInventory(category).ConfigureAwait(false);
+                OnPropertyChanged(nameof(PantryButtonColor));
+                OnPropertyChanged(nameof(FridgeButtonColor));
+                OnPropertyChanged(nameof(FreezerButtonColor));
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 Debug.WriteLine($"Error loading inventory: {ex.Message}");
             }
@@ -161,8 +193,8 @@ namespace Quickly.PageModels
             {
                 IsBusy = false;
             }
-
         }
+
 
         [RelayCommand]
         public async Task Refresh()
