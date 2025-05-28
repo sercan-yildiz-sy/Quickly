@@ -27,7 +27,7 @@
                 BackgroundColor="Transparent"
                 FontFamily="LibreBaskerville-Bold"
                 FontSize="25"
-                HorizontalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"
                 LineBreakMode="WordWrap"
                 LineHeight="1.01"

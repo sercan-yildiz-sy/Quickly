@@ -4,41 +4,23 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:Quickly.Pages"
-    xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.SegmentedControl;assembly=Syncfusion.Maui.Toolkit"
     Title="Quickly">
 
     <TabBar>
         <ShellContent
+            x:Name="MainShellContent"
             ContentTemplate="{DataTemplate pages:MainPage}"
             Icon="main_page.png"
             Route="main" />
         <ShellContent
+            x:Name="AddShellContent"
             ContentTemplate="{DataTemplate pages:ItemAddingPage}"
             Icon="add_page.png"
             Route="item_adding" />
-
         <ShellContent
+            x:Name="ProfileShellContent"
             ContentTemplate="{DataTemplate pages:ProfilePage}"
             Icon="profile_page.png"
             Route="profile" />
     </TabBar>
-
-    <Shell.FlyoutFooter>
-        <Grid Padding="15">
-            <sf:SfSegmentedControl
-                x:Name="ThemeSegmentedControl"
-                HorizontalOptions="Center"
-                SegmentHeight="40"
-                SegmentWidth="40"
-                SelectionChanged="SfSegmentedControl_SelectionChanged"
-                VerticalOptions="Center">
-                <sf:SfSegmentedControl.ItemsSource>
-                    <x:Array Type="{x:Type sf:SfSegmentItem}">
-                        <sf:SfSegmentItem ImageSource="{StaticResource IconLight}" />
-                        <sf:SfSegmentItem ImageSource="{StaticResource IconDark}" />
-                    </x:Array>
-                </sf:SfSegmentedControl.ItemsSource>
-            </sf:SfSegmentedControl>
-        </Grid>
-    </Shell.FlyoutFooter>
 </Shell>

@@ -1,8 +1,4 @@
-﻿using CommunityToolkit.Maui.Alerts;
-using CommunityToolkit.Maui.Core;
-using Font = Microsoft.Maui.Font;
-
-namespace Quickly
+﻿namespace Quickly
 {
     public partial class AppShell : Shell
     {
@@ -10,43 +6,30 @@ namespace Quickly
         {
             InitializeComponent();
             Routing.RegisterRoute("ItemDetailsPage", typeof(ItemDetailsPage));
-            var currentTheme = Application.Current!.UserAppTheme;
-            ThemeSegmentedControl.SelectedIndex = currentTheme == AppTheme.Light ? 0 : 1;
+            this.Navigated += OnShellNavigated;
         }
-        public static async Task DisplaySnackbarAsync(string message)
+
+        private void OnShellNavigated(object sender, ShellNavigatedEventArgs e)
         {
-            CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+            var mainTab = this.FindByName<ShellContent>("MainShellContent");
+            var addTab = this.FindByName<ShellContent>("AddShellContent");
+            var profileTab = this.FindByName<ShellContent>("ProfileShellContent");
 
-            var snackbarOptions = new SnackbarOptions
-            {
-                BackgroundColor = Color.FromArgb("#FF3300"),
-                TextColor = Colors.White,
-                ActionButtonTextColor = Colors.Yellow,
-                CornerRadius = new CornerRadius(0),
-                Font = Font.SystemFontOfSize(18),
-                ActionButtonFont = Font.SystemFontOfSize(14)
-            };
+            if (mainTab != null) mainTab.Icon = "main_page.png";
+            if (addTab != null) addTab.Icon = "add_page.png";
+            if (profileTab != null) profileTab.Icon = "profile_page.png";
 
-            var snackbar = Snackbar.Make(message, visualOptions: snackbarOptions);
+            var currentSection = this.CurrentItem?.CurrentItem;
+            var currentContent = currentSection?.CurrentItem as ShellContent;
 
-            await snackbar.Show(cancellationTokenSource.Token);
+            if (currentContent == mainTab)
+                mainTab.Icon = "main_page_active.png";
+            else if (currentContent == addTab)
+                addTab.Icon = "add_page_active.png";
+            else if (currentContent == profileTab)
+                profileTab.Icon = "profile_page_active.png";
         }
+        
 
-        public static async Task DisplayToastAsync(string message)
-        {
-            // Toast is currently not working in MCT on Windows
-            if (OperatingSystem.IsWindows())
-                return;
-
-            var toast = Toast.Make(message, textSize: 18);
-
-            var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
-            await toast.Show(cts.Token);
-        }
-
-        private void SfSegmentedControl_SelectionChanged(object sender, Syncfusion.Maui.Toolkit.SegmentedControl.SelectionChangedEventArgs e)
-        {
-            Application.Current!.UserAppTheme = e.NewIndex == 0 ? AppTheme.Light : AppTheme.Dark;
-        }
     }
 }

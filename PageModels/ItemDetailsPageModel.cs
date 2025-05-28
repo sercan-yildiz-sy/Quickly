@@ -28,13 +28,13 @@ namespace Quickly.PageModels
         }
 
         [ObservableProperty]
-        private List<string> _quantityTypes = new List<string> { "Unit", "kg", "lb", "lt", "oz" };
+        private List<string> _quantityTypes = new List<string> { "Unit", "kg", "g", "lb", "lt", "ml", "oz", "pack", "can", "bottle", "bag", "box" };
 
         [ObservableProperty]
         private List<string> _locations = new List<string> { "Pantry", "Fridge", "Freezer" };
 
         [ObservableProperty]
-        private List<string> _categories = new List<string> { "All Items", "Produce", "Meat", "Dry Food", "Canned Food", "Others" };
+        private List<string> _categories = new List<string> { "All Items", "Produce", "Meat", "Dairy", "Canned Products", "Dry Products", "Frozen Products", "Seafood", "Baking", "Condiments", "Pastry", "Plant-Based", "Snacks", "Beverages" };
 
 
         [ObservableProperty]
@@ -106,7 +106,13 @@ namespace Quickly.PageModels
             {
                 Debug.WriteLine($"Updating Inventory: Id={InventoryId}, Quantity={Inventory.Quantity}, Quantity_type= {Inventory.Quantity_Type}, Location = {Inventory.Location}, Category = {Inventory.Category}");
                 await QuicklyService.UpdateInventory(InventoryId, Inventory.Quantity, Inventory.Quantity_Type, Inventory.Location);
-                await Shell.Current.DisplayAlert("Success!", "Inventory updated successfully", "OK");
+                if (Inventory.Quantity == 0)
+                {
+                    await QuicklyService.DeleteInventory(InventoryId);
+                }
+                else {
+                    await Shell.Current.DisplayAlert("Success!", "Inventory updated successfully", "OK");
+                }
             }
             catch (Exception ex)
             {

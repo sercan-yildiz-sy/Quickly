@@ -7,125 +7,99 @@
     xmlns:fonts="clr-namespace:Fonts"
     xmlns:models="clr-namespace:Quickly.Models"
     xmlns:pageModels="clr-namespace:Quickly.PageModels"
-    xmlns:shimmer="clr-namespace:Syncfusion.Maui.Toolkit.Shimmer;assembly=Syncfusion.Maui.Toolkit"
     x:DataType="models:Inventory"
     Background="Transparent"
     Style="{StaticResource CardStyle}">
-    <shimmer:SfShimmer
-        BackgroundColor="Transparent"
-        IsActive="{Binding IsBusy, Source={RelativeSource AncestorType={x:Type pageModels:MainPageModel}}, x:DataType=pageModels:MainPageModel}"
-        VerticalOptions="FillAndExpand">
-        <shimmer:SfShimmer.CustomView>
-            <VerticalStackLayout Spacing="15">
-                <BoxView
-                    CornerRadius="48"
-                    HeightRequest="24"
-                    HorizontalOptions="Start"
-                    Style="{StaticResource ShimmerCustomViewStyle}"
-                    VerticalOptions="Start"
-                    WidthRequest="24" />
-                <BoxView HeightRequest="24" Style="{StaticResource ShimmerCustomViewStyle}" />
-                <BoxView HeightRequest="48" Style="{StaticResource ShimmerCustomViewStyle}" />
-                <BoxView
-                    Margin="0,12"
-                    HeightRequest="24"
-                    Style="{StaticResource ShimmerCustomViewStyle}" />
-            </VerticalStackLayout>
-        </shimmer:SfShimmer.CustomView>
-        <shimmer:SfShimmer.Content>
-            <Grid ColumnDefinitions="Auto, Auto ,*">
-                <Border
-                    Grid.Column="0"
-                    HeightRequest="70"
-                    StrokeShape="RoundRectangle, 15,15,15,15"
-                    WidthRequest="64">
-                    <Image
-                        Grid.Column="0"
-                        Aspect="AspectFill"
-                        HeightRequest="70"
-                        HorizontalOptions="Fill"
-                        Source="{Binding Image}"
-                        VerticalOptions="Fill"
-                        WidthRequest="70" />
-                </Border>
-                <BoxView
-                    Grid.Column="1"
-                    BackgroundColor="Transparent"
-                    WidthRequest="5" />
 
-                <Grid
-                    Grid.Column="2"
-                    ColumnDefinitions="*, *"
-                    HorizontalOptions="FillAndExpand"
-                    RowDefinitions="*, Auto, *">
+    <Grid ColumnDefinitions="Auto, Auto ,*">
+        <Border
+            Grid.Column="0"
+            HeightRequest="70"
+            StrokeShape="RoundRectangle, 15,15,15,15"
+            WidthRequest="64">
+            <Image
+                Grid.Column="0"
+                Aspect="AspectFill"
+                HeightRequest="70"
+                HorizontalOptions="Fill"
+                Source="{Binding Image}"
+                VerticalOptions="Fill"
+                WidthRequest="70" />
+        </Border>
+        <BoxView
+            Grid.Column="1"
+            BackgroundColor="Transparent"
+            WidthRequest="5" />
 
-                    <Label
-                        Grid.Row="0"
-                        Grid.ColumnSpan="2"
-                        FontFamily="LibreBaskerville-Regular"
-                        FontSize="12"
+        <Grid
+            Grid.Column="2"
+            ColumnDefinitions="*, *"
+            HorizontalOptions="Fill"
+            RowDefinitions="*, Auto, *">
+
+            <Label
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                FontFamily="LibreBaskerville-Regular"
+                FontSize="12"
+                HorizontalOptions="Start"
+                LineBreakMode="WordWrap"
+                LineHeight="0.8"
+                MaxLines="2"
+                Text="{Binding Name}"
+                TextColor="#000000"
+                VerticalOptions="Center" />
+
+            <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                FontFamily="Roboto"
+                FontSize="8"
+                HorizontalOptions="Start"
+                Text="quantity"
+                TextColor="#838383"
+                VerticalOptions="End" />
+
+            <HorizontalStackLayout Grid.Row="2" Grid.ColumnSpan="2">
+                <Grid>
+                    <Border
+                        Background="#FFFFFF"
+                        HeightRequest="18"
                         HorizontalOptions="Start"
-                        LineBreakMode="WordWrap"
-                        LineHeight="0.8"
-                        MaxLines="2"
-                        Text="{Binding Name}"
-                        TextColor="#000000"
-                        VerticalOptions="Center" />
-
+                        Stroke="#D9D9D9"
+                        StrokeShape="RoundRectangle 8,8,8,8"
+                        StrokeThickness="1.2"
+                        VerticalOptions="Fill"
+                        WidthRequest="25" />
                     <Label
-                        Grid.Row="1"
-                        Grid.Column="0"
                         FontFamily="Roboto"
                         FontSize="8"
-                        HorizontalOptions="Start"
-                        Text="quantity"
+                        HorizontalOptions="Center"
+                        Text="{Binding Quantity}"
                         TextColor="#838383"
-                        VerticalOptions="End" />
-
-                    <HorizontalStackLayout Grid.Row="2" Grid.ColumnSpan="2">
-                        <Grid>
-                            <Border
-                                Background="#FFFFFF"
-                                HeightRequest="18"
-                                HorizontalOptions="StartAndExpand"
-                                Stroke="#D9D9D9"
-                                StrokeShape="RoundRectangle 8,8,8,8"
-                                StrokeThickness="1.2"
-                                VerticalOptions="FillAndExpand"
-                                WidthRequest="25" />
-                            <Label
-                                FontFamily="Roboto"
-                                FontSize="8"
-                                HorizontalOptions="Center"
-                                Text="{Binding Quantity}"
-                                TextColor="#838383"
-                                VerticalOptions="Center" />
-                        </Grid>
-                        <BoxView BackgroundColor="Transparent" WidthRequest="5" />
-                        <Grid>
-                            <Border
-                                Background="#FFFFFF"
-                                HeightRequest="18"
-                                HorizontalOptions="StartAndExpand"
-                                Stroke="#D9D9D9"
-                                StrokeShape="RoundRectangle 8,8,8,8"
-                                StrokeThickness="1.2"
-                                VerticalOptions="FillAndExpand"
-                                WidthRequest="25" />
-                            <Label
-                                FontFamily="Roboto"
-                                FontSize="8"
-                                HorizontalOptions="Center"
-                                Text="{Binding Quantity_Type}"
-                                TextColor="#838383"
-                                VerticalOptions="Center" />
-                        </Grid>
-                    </HorizontalStackLayout>
-
+                        VerticalOptions="Center" />
                 </Grid>
+                <BoxView BackgroundColor="Transparent" WidthRequest="5" />
+                <Grid>
+                    <Border
+                        Background="#FFFFFF"
+                        HeightRequest="18"
+                        HorizontalOptions="Start"
+                        Stroke="#D9D9D9"
+                        StrokeShape="RoundRectangle 8,8,8,8"
+                        StrokeThickness="1.2"
+                        VerticalOptions="Fill"
+                        WidthRequest="25" />
+                    <Label
+                        FontFamily="Roboto"
+                        FontSize="8"
+                        HorizontalOptions="Center"
+                        Text="{Binding Quantity_Type}"
+                        TextColor="#838383"
+                        VerticalOptions="Center" />
+                </Grid>
+            </HorizontalStackLayout>
 
-            </Grid>
-
-        </shimmer:SfShimmer.Content>
-    </shimmer:SfShimmer>
+        </Grid>
+    </Grid>
 </Border>

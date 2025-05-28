@@ -38,7 +38,7 @@
                         BackgroundColor="Transparent"
                         FontFamily="LibreBaskerville-Bold"
                         FontSize="25"
-                        HorizontalOptions="CenterAndExpand"
+                        HorizontalOptions="Center"
                         HorizontalTextAlignment="Center"
                         LineBreakMode="WordWrap"
                         LineHeight="1.01"
@@ -90,11 +90,11 @@
                         <Border
                             Background="#FFFFFF"
                             HeightRequest="25"
-                            HorizontalOptions="StartAndExpand"
+                            HorizontalOptions="Start"
                             Stroke="#D9D9D9"
                             StrokeShape="RoundRectangle 8,8,8,8"
                             StrokeThickness="1.2"
-                            VerticalOptions="FillAndExpand"
+                            VerticalOptions="Fill"
                             WidthRequest="55" />
                         <Entry
                             x:Name="Quantity_Entry"
@@ -111,16 +111,16 @@
                         <Border
                             Background="#FFFFFF"
                             HeightRequest="25"
-                            HorizontalOptions="StartAndExpand"
+                            HorizontalOptions="Start"
                             Stroke="#18000000"
                             StrokeShape="RoundRectangle 10,10,10,10"
                             StrokeThickness="1.2"
-                            VerticalOptions="FillAndExpand"
+                            VerticalOptions="Fill"
                             WidthRequest="55" />
 
                         <Grid
                             ColumnDefinitions="*, Auto"
-                            HorizontalOptions="FillAndExpand"
+                            HorizontalOptions="Fill"
                             VerticalOptions="Center">
 
                             <Picker
@@ -130,7 +130,7 @@
                                 BackgroundColor="Transparent"
                                 FontFamily="Roboto"
                                 FontSize="10"
-                                HorizontalOptions="StartAndExpand"
+                                HorizontalOptions="Start"
                                 ItemsSource="{Binding QuantityTypes}"
                                 SelectedItem="{Binding Inventory.Quantity_Type, Mode=TwoWay}"
                                 TextColor="#838383"
@@ -164,16 +164,16 @@
                         <Border
                             Background="#FFFFFF"
                             HeightRequest="29"
-                            HorizontalOptions="StartAndExpand"
+                            HorizontalOptions="Start"
                             Stroke="#18000000"
                             StrokeShape="RoundRectangle 10,10,10,10"
                             StrokeThickness="1.2"
-                            VerticalOptions="FillAndExpand"
+                            VerticalOptions="Fill"
                             WidthRequest="100" />
 
                         <Grid
                             ColumnDefinitions="*, Auto"
-                            HorizontalOptions="FillAndExpand"
+                            HorizontalOptions="Fill"
                             VerticalOptions="Center">
 
                             <Picker
