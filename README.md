@@ -4,8 +4,12 @@
 Quickly is an application that offers quality time for housekeepers by assisting with kitchen inventory management. 
 By identifying that the lack of organisation in the house inventory leads to higher food and money waste, as well as fatigue and confusion, the main goal with this first iteration is to organise and update the pantry, fridge, and freezer.
 
+## Demo
 
-For this project, I used .NET 9.0 and SQLite for the backend data access with SQLite. The application is built as a cross-platform .NET MAUI app. 
+[![Watch the video](https://img.youtube.com/vi/dak9Aag-XDw/hqdefault.jpg)](https://youtu.be/dak9Aag-XDw)
+
+
+For this project, I used .NET 9.0 and SQLite for backend data storage, building the application as a cross-platform .NET MAUI app.
 
 ## Features
 
@@ -62,5 +66,3 @@ The inventory items in Quickly are represented with the following properties:
 - SQLitePCLRaw.bundle_green
 - CommunityToolkit.Mvvm
 - Syncfusion.Maui.Toolkit
-
-[![Watch the video](https://img.youtube.com/vi/dak9Aag-XDw/hqdefault.jpg)](https://youtu.be/dak9Aag-XDw)
