@@ -62,3 +62,5 @@ The inventory items in Quickly are represented with the following properties:
 - SQLitePCLRaw.bundle_green
 - CommunityToolkit.Mvvm
 - Syncfusion.Maui.Toolkit
+
+[![Watch the video](https://img.youtube.com/vi/dak9Aag-XDw/hqdefault.jpg)](https://youtu.be/dak9Aag-XDw)

@@ -13,7 +13,7 @@
     Shell.TabBarIsVisible="True">
 
     <Grid>
-        <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshCommand}">
+        <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
             <VerticalStackLayout Padding="{StaticResource LayoutPadding}" Spacing="{StaticResource LayoutSpacing}">
 
                 <Grid RowDefinitions="Auto, *, Auto">
@@ -50,7 +50,7 @@
                         BackgroundColor="Transparent"
                         HeightRequest="20" />
                 </Grid>
-                
+
                 <Label
                     FontFamily="LibreBaskerville-Regular"
                     FontSize="15"
@@ -63,26 +63,14 @@
                     Padding="25"
                     HorizontalOptions="Center"
                     Spacing="25">
-                    <Border
-                        Background="{Binding PantryButtonColor}"
-                        StrokeShape="RoundRectangle 10">
-                        <ImageButton
-                            Command="{Binding PantryItemsCommand}"
-                            Source="pantry_icon.png" />
+                    <Border Background="{Binding PantryButtonColor}" StrokeShape="RoundRectangle 10">
+                        <ImageButton Command="{Binding PantryItemsCommand}" Source="pantry_icon.png" />
                     </Border>
-                    <Border
-                        Background="{Binding FridgeButtonColor}"
-                        StrokeShape="RoundRectangle 10">
-                        <ImageButton
-                            Command="{Binding FridgeItemsCommand}"
-                            Source="fridge_icon.png" />
+                    <Border Background="{Binding FridgeButtonColor}" StrokeShape="RoundRectangle 10">
+                        <ImageButton Command="{Binding FridgeItemsCommand}" Source="fridge_icon.png" />
                     </Border>
-                    <Border
-                        Background="{Binding FreezerButtonColor}"
-                        StrokeShape="RoundRectangle 10">
-                        <ImageButton
-                            Command="{Binding FreezerItemsCommand}"
-                            Source="freezer_icon.png" />
+                    <Border Background="{Binding FreezerButtonColor}" StrokeShape="RoundRectangle 10">
+                        <ImageButton Command="{Binding FreezerItemsCommand}" Source="freezer_icon.png" />
                     </Border>
                 </HorizontalStackLayout>
 
