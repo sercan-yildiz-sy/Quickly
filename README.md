@@ -28,13 +28,14 @@ For this project, I used .NET 9.0 and SQLite for backend data storage, building 
 
 ### Building and Running
 
-1. Clone the repository: 
+1. Clone the repository:
+   
 	git clone https://github.com/sercan-yildiz-sy/quickly.git 
 	cd quickly
-2. Open the solution in Visual Studio 2022.
-3. Restore NuGet packages.
-4. Select your target platform (Android, iOS, Windows, or MacCatalyst).
-5. Build and run the application.
+3. Open the solution in Visual Studio 2022.
+4. Restore NuGet packages.
+5. Select your target platform (Android, iOS, Windows, or MacCatalyst).
+6. Build and run the application.
 
 ## Usage
 
