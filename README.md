@@ -9,7 +9,7 @@ By identifying that the lack of organisation in the house inventory leads to hig
 [![Watch the video](https://img.youtube.com/vi/dak9Aag-XDw/hqdefault.jpg)](https://youtu.be/dak9Aag-XDw)
 
 
-For this project, I used .NET 9.0 and SQLite for backend data storage, building the application as a cross-platform .NET MAUI app.
+For this project, I used .NET 9.0 and SQLite for backend data storage.
 
 ## Features
 
@@ -17,7 +17,6 @@ For this project, I used .NET 9.0 and SQLite for backend data storage, building 
 - Add, edit, and delete inventory items
 - Categorize items by type and location
 - Store images and quantities for each item
-- Cross-platform support (Android, iOS, Windows, MacCatalyst)
 
 ## Getting Started
 
@@ -29,11 +28,13 @@ For this project, I used .NET 9.0 and SQLite for backend data storage, building 
 ### Building and Running
 
 1. Clone the repository: 
-	git clone https://github.com/sercan-yildiz-sy/quickly.git 
+	
+git clone https://github.com/sercan-yildiz-sy/quickly.git 
+	
 	cd quickly
 2. Open the solution in Visual Studio 2022.
 3. Restore NuGet packages.
-4. Select your target platform (Android, iOS, Windows, or MacCatalyst).
+4. Select Android as your platform.
 5. Build and run the application.
 
 ## Usage
@@ -62,7 +63,4 @@ The inventory items in Quickly are represented with the following properties:
 
 - .NET 9.0
 - .NET MAUI
-- sqlite-net-pcl
-- SQLitePCLRaw.bundle_green
-- CommunityToolkit.Mvvm
-- Syncfusion.Maui.Toolkit
+- SQLite
