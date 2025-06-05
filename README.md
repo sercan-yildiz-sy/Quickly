@@ -28,7 +28,9 @@ For this project, I used .NET 9.0 and SQLite for backend data storage.
 ### Building and Running
 
 1. Clone the repository: 
+
 	git clone https://github.com/sercan-yildiz-sy/quickly.git 
+	
 	cd quickly
 2. Open the solution in Visual Studio 2022.
 3. Restore NuGet packages.
