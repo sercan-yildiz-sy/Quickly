@@ -61,6 +61,6 @@ The inventory items in Quickly are represented with the following properties:
 
 ## Technologies Used
 
-- .NET 9.0
+- C#
 - .NET MAUI
 - SQLite
