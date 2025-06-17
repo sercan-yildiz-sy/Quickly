@@ -4,9 +4,19 @@ using SQLite;
 
 namespace Quickly.Services
 {
+
+    /// <summary>
+    /// This class provides asynchronous CRUD operations for Inventory items using SQLite
+    /// </summary>
     public static class QuicklyService
     {
+
+        // SQLite connection instance
         static SQLiteAsyncConnection db;
+
+        /// <summary>
+        /// Initializes the SQLite database connection and creates the Inventory table if it doesn't exist
+        /// </summary>
         static async Task Init() {
             if (db != null) 
                 return;
@@ -17,7 +27,17 @@ namespace Quickly.Services
             await db.CreateTableAsync<Inventory>();
         }
 
-
+        /// <summary>
+        /// Adds a new inventory item to the database  
+        /// </summary>
+        /// <param name="ItemId">The item ID</param>
+        /// <param name="Name">The name of the item</param>
+        /// <param name="Image">The image path</param>
+        /// <param name="Quantity">The quantity of the item</param>
+        /// <param name="Quantity_Type">The type of quantity (e.g., kg, unit)</param>
+        /// <param name="Category">The category of the item</param>
+        /// <param name="Location">The storage location</param>
+        /// <returns>The newly added <see cref="Inventory"/> item</returns>
         public static async Task<Inventory> AddInventory(int ItemId, string Name, string Image, float Quantity, string Quantity_Type, string Category, string Location)
         {
             await Init();
@@ -37,6 +57,10 @@ namespace Quickly.Services
             return item;
         }
 
+        /// <summary>
+        /// Deletes an item from the inventory based on its Id.
+        /// </summary>
+        /// <param name="Id"></param>
         public static async Task DeleteInventory(int Id)
         {
             
@@ -44,6 +68,11 @@ namespace Quickly.Services
             await db.DeleteAsync<Inventory>(Id);
         }
 
+        /// <summary>
+        /// Retrieves all inventory items or items from a specific location.
+        /// </summary>
+        ///  <param name="Location"> The location to filter the inventory items by. If "All", retrieves all items.</param>
+        ///  <returns>A collection of <see cref="Inventory"/> items.</returns>
         public static async Task<IEnumerable<Inventory>> GetInventory(string Location = "All")
         {
 
@@ -59,6 +88,13 @@ namespace Quickly.Services
 
         }
 
+        /// <summary>
+        /// The method <c>UpdateInventory</c> updates the quantity, quantity type, and location of an existing inventory item based on its Id.
+        /// </summary> 
+        /// <param name="Id">The ID of the inventory item to update.</param>
+        /// <param name="Quantity">The new quantity.</param>
+        /// <param name="Quantity_Type">The new quantity type.</param>
+        /// <param name="Location">The new location.</param>
         public static async Task UpdateInventory(int Id, float Quantity, string Quantity_Type, string Location)
         {
             await Init();
@@ -85,7 +121,11 @@ namespace Quickly.Services
             }
         }
 
-
+        /// <summary>
+        /// The method <c>GetInventoryItem</c> retrieves a specific inventory item by its Id.
+        /// </summary>
+        /// <param name="Id">The ID of the inventory item.</param>
+        /// <returns>The <see cref="Inventory"/> item or null if not found</returns>
         public static async Task<Inventory> GetInventoryItem(int Id)
         {
             await Init();
