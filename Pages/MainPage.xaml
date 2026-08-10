@@ -35,117 +35,145 @@
                             VerticalOptions="Center" />
                         <Label
                             BackgroundColor="Transparent"
+                            TextColor="#C0372F"
                             FontFamily="LibreBaskerville-Bold"
                             FontSize="25"
                             HorizontalOptions="Center"
                             HorizontalTextAlignment="Center"
                             LineBreakMode="WordWrap"
                             LineHeight="1.01"
-                            Text="Quickly Inventory"
-                            TextColor="#C0372F"
-                            WidthRequest="130" />
+                            Text="Quickly&#10;Inventory"/>
                     </Grid>
-                    <BoxView
-                        Grid.Row="2"
-                        BackgroundColor="Transparent"
-                        HeightRequest="20" />
                 </Grid>
 
                 <Label
+                    Margin="0,20,0,0"
                     FontFamily="LibreBaskerville-Regular"
                     FontSize="15"
                     HorizontalOptions="Center"
                     Text="Location"
                     TextColor="#000000" />
 
-                <HorizontalStackLayout
-                    Margin="-20"
-                    Padding="25"
+                <Grid
+                    ColumnDefinitions="Auto, Auto, Auto"
+                    ColumnSpacing="25"
                     HorizontalOptions="Center"
-                    Spacing="25">
-                    <Border Background="{Binding PantryButtonColor}" StrokeShape="RoundRectangle 10">
+                    RowDefinitions="Auto, Auto"
+                    RowSpacing="8">
+
+                    <Border
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Background="{Binding PantryButtonColor}"
+                        StrokeShape="RoundRectangle 10"
+                        VerticalOptions="End">
                         <ImageButton Command="{Binding PantryItemsCommand}" Source="pantry_icon.png" />
                     </Border>
-                    <Border Background="{Binding FridgeButtonColor}" StrokeShape="RoundRectangle 10">
+
+                    <Border
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Background="{Binding FridgeButtonColor}"
+                        StrokeShape="RoundRectangle 10"
+                        VerticalOptions="End">
                         <ImageButton Command="{Binding FridgeItemsCommand}" Source="fridge_icon.png" />
                     </Border>
-                    <Border Background="{Binding FreezerButtonColor}" StrokeShape="RoundRectangle 10">
+
+                    <Border
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Background="{Binding FreezerButtonColor}"
+                        StrokeShape="RoundRectangle 10"
+                        VerticalOptions="End">
                         <ImageButton Command="{Binding FreezerItemsCommand}" Source="freezer_icon.png" />
                     </Border>
-                </HorizontalStackLayout>
 
-                <HorizontalStackLayout
-                    Margin="-10"
-                    HorizontalOptions="Center"
-                    Spacing="65">
                     <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
                         FontFamily="RobotoExtraBold"
                         FontSize="15"
+                        HorizontalOptions="Center"
                         Text="Pantry"
                         TextColor="#5F5F5F" />
+
                     <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
                         FontFamily="RobotoExtraBold"
                         FontSize="15"
+                        HorizontalOptions="Center"
                         Text="Fridge"
                         TextColor="#5F5F5F" />
+
                     <Label
+                        Grid.Row="1"
+                        Grid.Column="2"
                         FontFamily="RobotoExtraBold"
                         FontSize="15"
+                        HorizontalOptions="Center"
                         Text="Freezer"
                         TextColor="#5F5F5F" />
-                </HorizontalStackLayout>
-                <BoxView BackgroundColor="Transparent" HeightRequest="30" />
 
-                <Grid>
+
+                </Grid>
+
+                <Grid Margin="0,30,0,30">
                     <Border
+                        Padding="15,0,15,0"
                         Background="#FFFFFF"
                         HeightRequest="40"
                         HorizontalOptions="Start"
+                        MinimumWidthRequest="140"
                         Stroke="#18000000"
                         StrokeShape="RoundRectangle 10,10,10,10"
                         StrokeThickness="1.2"
-                        VerticalOptions="Fill"
-                        WidthRequest="180" />
-
-                    <Grid
-                        ColumnDefinitions="*, Auto"
-                        HorizontalOptions="Fill"
                         VerticalOptions="Center">
 
-                        <Picker
-                            x:Name="CategoryPicker"
-                            Title="All Items"
-                            Margin="15,5,0,0"
-                            BackgroundColor="Transparent"
-                            FontFamily="Roboto"
-                            FontSize="10"
-                            HorizontalOptions="Fill"
-                            ItemsSource="{Binding Categories}"
-                            SelectedItem="{Binding Category, Mode=TwoWay}"
-                            TextColor="#838383"
-                            VerticalOptions="Center" />
+                        <Grid>
 
-                        <Image
-                            Grid.Column="1"
-                            Margin="0,0,210,0"
-                            HeightRequest="20"
-                            HorizontalOptions="End"
-                            Source="dropdown_menu.png"
-                            VerticalOptions="Center"
-                            WidthRequest="20" />
-                    </Grid>
+                            <Picker
+                                x:Name="CategoryPicker"
+                                Title="All Items"
+                                BackgroundColor="Transparent"
+                                FontFamily="Roboto"
+                                FontSize="10"
+                                HorizontalOptions="Fill"
+                                ItemsSource="{Binding Categories}"
+                                SelectedItem="{Binding Category, Mode=TwoWay}"
+                                TextColor="#838383"
+                                VerticalOptions="Center" />
+
+                            <Image
+                                Grid.Column="1"
+                                HeightRequest="20"
+                                HorizontalOptions="End"
+                                InputTransparent="True"
+                                Source="dropdown_menu.png"
+                                VerticalOptions="Center"
+                                WidthRequest="20" />
+                        </Grid>
+                    </Border>
                 </Grid>
 
-                <CollectionView HorizontalScrollBarVisibility="Never" ItemsSource="{Binding Inventory}">
+                <CollectionView
+                    x:Name="InventoryCollectionView"
+                    HeightRequest="{DynamicResource CollectionViewHeight}"
+                    HorizontalScrollBarVisibility="Never"
+                    ItemsSource="{Binding Inventory}">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout
-                            HorizontalItemSpacing="15"
+                            HorizontalItemSpacing="16"
                             Orientation="Horizontal"
-                            Span="4" />
+                            Span="4"
+                            VerticalItemSpacing="16" />
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:Inventory">
-                            <controls:ProjectCardView HeightRequest="100" WidthRequest="165">
+                            <controls:ProjectCardView
+                                Padding="0"
+                                HorizontalOptions="Start"
+                                WidthRequest="{DynamicResource CardWidth}">
                                 <controls:ProjectCardView.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding GoToDetailsCommand, Source={RelativeSource AncestorType={x:Type pageModels:MainPageModel}}, x:DataType=pageModels:MainPageModel}" CommandParameter="{Binding .}" />
                                 </controls:ProjectCardView.GestureRecognizers>
@@ -153,11 +181,6 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-
-                <BoxView
-                    Grid.Row="2"
-                    BackgroundColor="Transparent"
-                    HeightRequest="10" />
 
             </VerticalStackLayout>
         </RefreshView>

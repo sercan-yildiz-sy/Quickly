@@ -134,13 +134,12 @@ namespace Quickly.PageModels
         }
 
         /// Gets the color for the Pantry button based on the current location filter.
-        public Color PantryButtonColor => location == "Pantry" ? Color.FromArgb("#40C0372F") : Colors.Transparent;
-
+        public Color PantryButtonColor => location == "Pantry" ? Color.FromArgb("#40C0372F") : Color.FromArgb("#F9F9F9");
         /// Gets the color for the Fridge button based on the current location filter.
-        public Color FridgeButtonColor => location == "Fridge" ? Color.FromArgb("#40C0372F") : Colors.Transparent;
+        public Color FridgeButtonColor => location == "Fridge" ? Color.FromArgb("#40C0372F") : Color.FromArgb("#F9F9F9");
 
         /// Gets the color for the Freezer button based on the current location filter.
-        public Color FreezerButtonColor => location == "Freezer" ? Color.FromArgb("#40C0372F") : Colors.Transparent;
+        public Color FreezerButtonColor => location == "Freezer" ? Color.FromArgb("#40C0372F") : Color.FromArgb("#F9F9F9");
 
         /// <summary>
         /// Handles the Pantry button click. Toggles the location filter and refreshes inventory.

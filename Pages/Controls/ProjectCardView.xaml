@@ -11,31 +11,27 @@
     Background="Transparent"
     Style="{StaticResource CardStyle}">
 
-    <Grid ColumnDefinitions="Auto, Auto ,*">
+    <Grid ColumnDefinitions="64*,88*" ColumnSpacing="8">
         <Border
             Grid.Column="0"
-            HeightRequest="70"
-            StrokeShape="RoundRectangle, 15,15,15,15"
-            WidthRequest="64">
+            Padding="0"
+            HorizontalOptions="Fill"
+            StrokeShape="RoundRectangle 15,15,15,15"
+            VerticalOptions="Fill">
             <Image
-                Grid.Column="0"
                 Aspect="AspectFill"
-                HeightRequest="70"
                 HorizontalOptions="Fill"
                 Source="{Binding Image}"
-                VerticalOptions="Fill"
-                WidthRequest="70" />
+                VerticalOptions="Fill" />
         </Border>
-        <BoxView
-            Grid.Column="1"
-            BackgroundColor="Transparent"
-            WidthRequest="5" />
 
         <Grid
-            Grid.Column="2"
-            ColumnDefinitions="*, *"
+            Grid.Column="1"
+            ColumnDefinitions="*,*"
             HorizontalOptions="Fill"
-            RowDefinitions="*, Auto, *">
+            RowDefinitions="Auto,Auto,Auto"
+            RowSpacing="4"
+            VerticalOptions="Center">
 
             <Label
                 Grid.Row="0"
@@ -60,17 +56,17 @@
                 TextColor="#838383"
                 VerticalOptions="End" />
 
-            <HorizontalStackLayout Grid.Row="2" Grid.ColumnSpan="2">
-                <Grid>
-                    <Border
-                        Background="#FFFFFF"
-                        HeightRequest="18"
-                        HorizontalOptions="Start"
-                        Stroke="#D9D9D9"
-                        StrokeShape="RoundRectangle 8,8,8,8"
-                        StrokeThickness="1.2"
-                        VerticalOptions="Fill"
-                        WidthRequest="25" />
+            <HorizontalStackLayout
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                Spacing="5">
+                <Border
+                    Padding="6,2"
+                    Background="#FFFFFF"
+                    HorizontalOptions="Start"
+                    Stroke="#D9D9D9"
+                    StrokeShape="RoundRectangle 8,8,8,8"
+                    StrokeThickness="1.2">
                     <Label
                         FontFamily="Roboto"
                         FontSize="8"
@@ -78,18 +74,15 @@
                         Text="{Binding Quantity}"
                         TextColor="#838383"
                         VerticalOptions="Center" />
-                </Grid>
-                <BoxView BackgroundColor="Transparent" WidthRequest="5" />
-                <Grid>
-                    <Border
-                        Background="#FFFFFF"
-                        HeightRequest="18"
-                        HorizontalOptions="Start"
-                        Stroke="#D9D9D9"
-                        StrokeShape="RoundRectangle 8,8,8,8"
-                        StrokeThickness="1.2"
-                        VerticalOptions="Fill"
-                        WidthRequest="25" />
+                </Border>
+
+                <Border
+                    Padding="6,2"
+                    Background="#FFFFFF"
+                    HorizontalOptions="Start"
+                    Stroke="#D9D9D9"
+                    StrokeShape="RoundRectangle 8,8,8,8"
+                    StrokeThickness="1.2">
                     <Label
                         FontFamily="Roboto"
                         FontSize="8"
@@ -97,7 +90,7 @@
                         Text="{Binding Quantity_Type}"
                         TextColor="#838383"
                         VerticalOptions="Center" />
-                </Grid>
+                </Border>
             </HorizontalStackLayout>
 
         </Grid>

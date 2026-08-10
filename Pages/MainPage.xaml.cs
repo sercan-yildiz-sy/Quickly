@@ -13,6 +13,7 @@ namespace Quickly.Pages
         // The view model for this page, providing inventory data and commands.
         private readonly MainPageModel _model;
 
+
         /// <summary>
         /// Initializes a new instance of the <see cref="MainPage"/> class.
         /// Sets up data binding to the provided view model.
@@ -33,5 +34,27 @@ namespace Quickly.Pages
             base.OnAppearing();
             await _model.Refresh();
         }
+
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height);
+
+            if (width <= 0) return;
+
+            const double visibleItems = 2.3;
+            const double horizontalSpacing = 16;
+            const int rows = 4;
+            const double verticalSpacing = 16;
+            const double estimatedCardHeight = 72;
+
+            double totalHorizontalSpacing = horizontalSpacing * (visibleItems - 1);
+            double cardWidth = (width - totalHorizontalSpacing) / visibleItems;
+
+            double collectionViewHeight = (estimatedCardHeight * rows) + (verticalSpacing * (rows - 1));
+
+            Resources["CardWidth"] = cardWidth;
+            Resources["CollectionViewHeight"] = collectionViewHeight;
+        }
+
     }
 }

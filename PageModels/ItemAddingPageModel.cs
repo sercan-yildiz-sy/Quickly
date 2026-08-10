@@ -147,8 +147,12 @@ namespace Quickly.PageModels
                 IsBusy = false;
             }
         }
-
-
+        [RelayCommand]
+        private async Task GoBackAsync()
+        {
+            Debug.WriteLine("GoBackAsync called.");
+            await Shell.Current.GoToAsync("..");
+        }
 
 
         /// <summary>
@@ -160,4 +164,6 @@ namespace Quickly.PageModels
              => Shell.Current.GoToAsync($"ItemDetailsPage?id={inventory.Id}");
 
     }
+
+
 }

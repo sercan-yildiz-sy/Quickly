@@ -6,5 +6,6 @@ namespace Quickly.Pages.Controls
         {
             InitializeComponent();
         }
+
     }
 }

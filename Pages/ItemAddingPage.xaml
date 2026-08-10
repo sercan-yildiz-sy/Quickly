@@ -13,9 +13,16 @@
     BackgroundColor="#F3F3F3">
 
 
-    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto">
-        <BoxView BackgroundColor="Transparent" HeightRequest="15" />
-        <Grid Grid.Row="1">
+    <Grid RowDefinitions="Auto, Auto, *">
+
+        <Grid Grid.Row="0" Margin="0,15,0,0">
+            <Button
+                BackgroundColor="#F3F3F3"
+                Command="{Binding GoBackCommand}"
+                HorizontalOptions="Start"
+                ImageSource="back_icon.png"
+                IsEnabled="True"
+                ZIndex="1" />
             <Image
                 Aspect="AspectFit"
                 HeightRequest="35"
@@ -31,46 +38,39 @@
                 HorizontalTextAlignment="Center"
                 LineBreakMode="WordWrap"
                 LineHeight="1.01"
-                Text="Quickly Add Item"
-                TextColor="#C0372F"
-                WidthRequest="160" />
+                Text="Quickly&#10;Add Item"
+                TextColor="#C0372F" />
         </Grid>
 
         <StackLayout
-            Grid.Row="2"
-            Padding="10"
+            Grid.Row="1"
+            Padding="0,10,0,20"
             HorizontalOptions="Center"
             VerticalOptions="Start">
             <Border
-                HeightRequest="32"
-                Stroke="#00000012"
-                StrokeShape="RoundRectangle, 10,10,10,10"
-                StrokeThickness="3"
-                WidthRequest="180">
-                <Grid
-                    Padding="0,0,10,0"
-                    BackgroundColor="White"
-                    ColumnDefinitions="*, Auto"
-                    HeightRequest="32"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    WidthRequest="180">
+                Padding="12,0,10,0"
+                Background="White"
+                HeightRequest="40"
+                HorizontalOptions="Center"
+                MinimumWidthRequest="160"
+                Stroke="#18000000"
+                StrokeShape="RoundRectangle 10, 10, 10, 10"
+                StrokeThickness="1.2">
+                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="6">
                     <Entry
-                        x:Name="Entry"
-                        Margin="5,0,0,0"
-                        BackgroundColor="Transparent"
+                        x:Name="SearchEntry"
                         FontFamily="Roboto"
                         FontSize="10"
+                        HorizontalOptions="Fill"
                         Placeholder="Search"
                         PlaceholderColor="#838383"
                         Text="{Binding SearchText, Mode=TwoWay}"
                         TextColor="#838383"
-                        VerticalOptions="Center"
-                        WidthRequest="150" />
-
+                        VerticalOptions="Center" />
                     <Image
+                        Grid.Column="1"
                         HeightRequest="13"
-                        HorizontalOptions="End"
+                        HorizontalOptions="Center"
                         Source="search_icon.png"
                         VerticalOptions="Center"
                         WidthRequest="13" />
@@ -78,13 +78,9 @@
             </Border>
         </StackLayout>
 
-        <BoxView
-            Grid.Row="3"
-            BackgroundColor="Transparent"
-            HeightRequest="20" />
 
         <CollectionView
-            Grid.Row="4"
+            Grid.Row="2"
             Margin="20,0,20,0"
             HorizontalOptions="Fill"
             ItemsSource="{Binding Suggestions}"
@@ -97,7 +93,7 @@
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Item">
-                    <Grid RowDefinitions="Auto, Auto, *">
+                    <Grid RowDefinitions="Auto, *" RowSpacing="10">
                         <Border
                             HeightRequest="140"
                             StrokeShape="RoundRectangle, 15,15,15,15"
@@ -116,10 +112,7 @@
                             </Image>
 
                         </Border>
-                        <BoxView
-                            Grid.Row="1"
-                            BackgroundColor="Transparent"
-                            HeightRequest="10" />
+
                         <Label
                             Grid.Row="2"
                             Grid.RowSpan="2"
