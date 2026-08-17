@@ -15,7 +15,7 @@
 
     <Grid RowDefinitions="Auto, Auto, *">
 
-        <Grid Grid.Row="0" Margin="0,15,0,0">
+        <Grid Grid.Row="0" Margin="15,15,15,0">
             <Button
                 BackgroundColor="#F3F3F3"
                 Command="{Binding GoBackCommand}"
@@ -52,7 +52,7 @@
                 Background="White"
                 HeightRequest="40"
                 HorizontalOptions="Center"
-                MinimumWidthRequest="160"
+                MinimumWidthRequest="180"
                 Stroke="#18000000"
                 StrokeShape="RoundRectangle 10, 10, 10, 10"
                 StrokeThickness="1.2">
@@ -81,46 +81,47 @@
 
         <CollectionView
             Grid.Row="2"
-            Margin="20,0,20,0"
+            Margin="20,0"
             HorizontalOptions="Fill"
             ItemsSource="{Binding Suggestions}"
             VerticalScrollBarVisibility="Never">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout
+                    HorizontalItemSpacing="20"
                     Orientation="Vertical"
                     Span="2"
                     VerticalItemSpacing="30" />
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Item">
-                    <Grid RowDefinitions="Auto, *" RowSpacing="10">
-                        <Border
-                            HeightRequest="140"
-                            StrokeShape="RoundRectangle, 15,15,15,15"
-                            WidthRequest="140">
-                            <Image
-                                Grid.Row="0"
-                                Aspect="AspectFill"
-                                HeightRequest="140"
-                                HorizontalOptions="Center"
-                                Source="{Binding Image}"
-                                VerticalOptions="Center"
-                                WidthRequest="140">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding AddInventoryCommand, Source={RelativeSource AncestorType={x:Type pageModels:ItemAddingPageModel}}, x:DataType=pageModels:ItemAddingPageModel}" CommandParameter="{Binding .}" />
-                                </Image.GestureRecognizers>
-                            </Image>
-
-                        </Border>
+                    <Grid
+                        HorizontalOptions="Fill"
+                        RowDefinitions="Auto,Auto"
+                        RowSpacing="10">
+                        <controls:SquareView Grid.Row="0" HorizontalOptions="Fill">
+                            <Border
+                                Padding="0"
+                                StrokeShape="RoundRectangle 15,15,15,15"
+                                StrokeThickness="0">
+                                <Image
+                                    Aspect="AspectFill"
+                                    HorizontalOptions="Fill"
+                                    Source="{Binding Image}"
+                                    VerticalOptions="Fill">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding AddInventoryCommand, Source={RelativeSource AncestorType={x:Type pageModels:ItemAddingPageModel}}, x:DataType=pageModels:ItemAddingPageModel}" CommandParameter="{Binding .}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Border>
+                        </controls:SquareView>
 
                         <Label
-                            Grid.Row="2"
-                            Grid.RowSpan="2"
+                            Grid.Row="1"
                             FontFamily="LibreBaskerville-Regular"
                             FontSize="12"
                             HorizontalOptions="Center"
                             LineBreakMode="WordWrap"
-                            LineHeight="0.8"
+                            LineHeight="1.0"
                             MaxLines="2"
                             Text="{Binding Name}"
                             TextColor="#000000"

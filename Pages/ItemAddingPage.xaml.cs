@@ -33,5 +33,7 @@ namespace Quickly.Pages
             base.OnAppearing();
             await _model.RefreshAsync();
         }
+
+
     }
 }

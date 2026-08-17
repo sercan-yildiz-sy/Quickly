@@ -42,15 +42,10 @@
                         HorizontalTextAlignment="Center"
                         LineBreakMode="WordWrap"
                         LineHeight="1.01"
-                        Text="Quickly Item Details"
-                        TextColor="#C0372F"
-                        WidthRequest="160" />
+                        Text="Quickly&#10;Item Details"
+                        TextColor="#C0372F" />
                 </Grid>
 
-                <BoxView
-                    Grid.Row="2"
-                    BackgroundColor="Transparent"
-                    HeightRequest="30" />
             </Grid>
 
             <VerticalStackLayout Padding="{StaticResource LayoutPadding}" Spacing="{StaticResource LayoutSpacing}">
